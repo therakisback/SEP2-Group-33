@@ -1,7 +1,7 @@
 //import
 
 /**
- * Class used to seperate base data for rays from main 3 classes
+ * Class used to separate base data for rays from main 3 classes
  *    to help pass information concerning rays between them.
  */
 
