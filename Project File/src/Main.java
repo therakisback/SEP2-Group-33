@@ -1,5 +1,18 @@
 //import
 
+/*
+  Brief summary of the basic ideas developed for how the game would function
+
+  For starters: the board will be stored in a 2d array of definite size as such:
+
+
+
+ */
+
+
+
+
+
 /**
  * "Controller" class for the game, manages the functionality
  *    between the Game class running the game and the UI class
