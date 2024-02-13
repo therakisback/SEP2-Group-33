@@ -2,7 +2,7 @@
 
 /**
  * Class used to seperate base data for rays from main 3 classes
- *    to help pass information between them.
+ *    to help pass information concerning rays between them.
  */
 
 public class Ray {
@@ -19,8 +19,8 @@ public class Ray {
     /**
      * Constructor for new ray object.
      * @param dir   Starting direction for ray.
-     * @param loc   Starting grid square of ray
-     * @param start Starting number / side of ray
+     * @param loc   Starting grid square of ray.
+     * @param start Starting number / side of ray.
      */
     public Ray(int dir, int loc, int start){
         // TODO
