@@ -1,6 +1,6 @@
 //import
 
-/*
+/**
  * "Game Manger" class for dealing with the primary functions
  *    and memory keeping of the game
  *

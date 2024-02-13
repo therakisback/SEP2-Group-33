@@ -1,6 +1,6 @@
 //import
 
-/*
+/**
  * "View manager" class for dealing with interactions with user IO
  *
  * Should be written with the idea that it is going to be
