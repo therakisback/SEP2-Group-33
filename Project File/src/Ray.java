@@ -9,7 +9,7 @@ public class Ray {
 
     // Data variables       ----------
 
-    // TODO
+    // TODO - Note: Make all variables private
     // Store directions of ray
     // Store starting location of array
     // Store grid location of ray particle thingy

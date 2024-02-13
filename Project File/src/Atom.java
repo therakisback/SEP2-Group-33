@@ -9,7 +9,7 @@ public class Atom {
 
     // Data Variables       ----------
 
-    // TODO
+    // TODO - Note: Make all variables private
     private boolean flag;   // Boolean to store whether atom is meant to be a flag
     // Store location of atom
     // Store nearby squares for atom to help with ray computing?
