@@ -47,8 +47,32 @@ public class Scoreboard {
         return new String[10];
     }
 
+    /**
+     * Gets every score from the scoreboard file and converts them
+     *    to a string array for easy reading / printing
+     *    <p>
+     *    String output : "#: Name: Score"
+     * @return String array of all scores
+     */
     public String[] getFullSB() {
         // TODO
         return new String[10];
+    }
+
+    /**
+     * Cuts the number of scores on the scoreboard to the top # of scores
+     * @param count amount of scores to keep,
+     *           <p>Ex: 100 means top 100 scores are kept, rest are deleted.
+     */
+    public void pruneScores(int count) {
+        // TODO
+    }
+
+    /**
+     * Private function for sorting the file of the scoreboard by top score.
+     * <p>Just going to help keep repetition to a minimum.
+     */
+    private void sortSB() {
+        // TODO
     }
 }
