@@ -41,5 +41,15 @@ public class Atom {
         return flag;
     }
 
+    /**
+     * Takes a list of atoms and converts it into a list of the locations of the atoms
+     * @param atoms the array of atoms to have the locations taken
+     * @return an array of ints marking the location of the atoms (0-60 inclusive)
+     */
+    public static int[] getLocations(Atom[] atoms) {
+        //TODO
+        return new int[4];
+    }
+
 
 }

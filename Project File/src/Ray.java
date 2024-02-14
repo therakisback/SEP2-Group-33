@@ -22,7 +22,7 @@ public class Ray {
      * @param loc   Starting grid square of ray.
      * @param start Starting number / side of ray.
      */
-    public Ray(int dir, int loc, int start){
+    public Ray(int loc, int dir, int start){
         // TODO
     }
 
