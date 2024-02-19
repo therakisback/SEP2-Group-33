@@ -18,9 +18,9 @@ public class Ray {
 
     /**
      * Constructor for new ray object.
-     * @param dir   Starting direction for ray.
-     * @param loc   Starting grid square of ray.
-     * @param start Starting number / side of ray.
+     * @param loc   Starting grid square of ray     (0-60)
+     * @param dir   Starting direction for ray      (0-5)
+     * @param start Starting number / side of ray.  (0-53)
      */
     public Ray(int loc, int dir, int start){
         // TODO
