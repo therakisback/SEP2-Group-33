@@ -17,14 +17,13 @@ Brief summary of the basic ideas developed for how the game would function
             1 /   \ 2
   (0, 0) = 0 |     | < next hex
    next hex > \   /  < next hex
-                ^ next hex
 
 Which is useful later with rays. Speaking of:
-Rays are much more like a particle to us, think of it as em radiation
+Rays are much more like a particle to us, think of it as light
    it's both particle and beam.
-Ex: Ray r = new Ray(0, 3, 3); has the following details:
-   First: the first number 0 is the location, marking the ray started
-      in hex 0. Imagine the ray as a little particle floating in that hex
+Ex: Ray r = new Ray(0, 0, 3, 3); has the following details:
+   First: the first two numbers 0 are the location, marking the ray started
+      in hex (0,0). Imagine the ray as a little particle floating in that hex
    Secondly: The first 3 is the direction of the ray, it marks like
       marking the starting point of a 1x1 board, as the rays go *away* from
       the sides: (this is also what makes it appear as a ray once the algorithm is finished)
@@ -38,10 +37,14 @@ Ex: Ray r = new Ray(0, 3, 3); has the following details:
       this just makes it easier to keep track of where to put the result
       of the ray.
 
-As for how rays handle atoms, with the numbering system it's all essentially math
+As for how rays handle atoms:
 
 After the computer generates where the atoms are going to be (non-repeating number 0-60 inclusive)
    the atoms are stored in an array, with their location hopefully easily accessible
+
+When the rays "tick" and move, they can check the locations of the atoms to see whether its inside 
+   the 6 hexes near the ray, meaning all the computer is doing is comparing the 6 hexagons
+   near the ray against the 4 atoms
 
 As a note for making constructors: 
   values for grid spaces must be between: 	0-60 inclusive
