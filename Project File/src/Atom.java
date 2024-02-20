@@ -16,10 +16,11 @@ public class Atom {
 
     /**
      * Constructor for new Atom object.
-     * @param loc   Grid location of new atom.
+     * @param row   Row location of new atom.
+     * @param col   Column location of new atom
      * @param flag  Whether specified atom object is meant to be a "flag atom".
      */
-    public Atom(int loc, boolean flag) {
+    public Atom(int row, int col, boolean flag) {
         this.flag = flag;
         // TODO
     }
@@ -29,8 +30,13 @@ public class Atom {
     /**
      * @return Location of specified atom.
      */
-    public int getLoc() {
+    public int getCol() {
         // TODO
+        return 0;
+    }
+
+    public int getRow() {
+        //TODO
         return 0;
     }
 
@@ -44,11 +50,11 @@ public class Atom {
     /**
      * Takes a list of atoms and converts it into a list of the locations of the atoms
      * @param atoms the array of atoms to have the locations taken
-     * @return an array of ints marking the location of the atoms (0-60 inclusive)
+     * @return a 2d array of ints marking the location of the atoms {[x1.y1], [x2,y2], [x3,y3], [x4,y4]}
      */
-    public static int[] getLocations(Atom[] atoms) {
+    public static int[][] getLocations(Atom[] atoms) {
         //TODO
-        return new int[4];
+        return new int[4][2];
     }
 
 

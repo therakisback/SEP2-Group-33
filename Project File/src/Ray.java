@@ -18,11 +18,12 @@ public class Ray {
 
     /**
      * Constructor for new ray object.
-     * @param loc   Starting grid square of ray     (0-60)
+     * @param row   Starting row of ray
+     * @param col   Starting col of ray
      * @param dir   Starting direction for ray      (0-5)
      * @param start Starting number / side of ray.  (0-53)
      */
-    public Ray(int loc, int dir, int start){
+    public Ray(int row, int col, int dir, int start){
         // TODO
     }
 
@@ -39,7 +40,13 @@ public class Ray {
     /**
      * @return Current grid location of ray.
      */
-    public int getLoc() {
+    public int getCol() {
+        // TODO
+        return 0;
+    }
+
+
+    public int getRow() {
         // TODO
         return 0;
     }
@@ -74,7 +81,12 @@ public class Ray {
     /**
      * @param location New ray grid location.
      */
-    public void setLoc(int location) {
+    public void setRow(int location) {
+        // TODO
+        return;
+    }
+
+    public void setCol(int location) {
         // TODO
         return;
     }
