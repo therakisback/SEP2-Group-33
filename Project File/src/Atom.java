@@ -1,6 +1,8 @@
 //import
 
 
+import java.util.ArrayList;
+
 /**
  * Class used to help seperate Atom data from 3 main classes
  *    to help pass information concerning atoms between them.
@@ -11,29 +13,31 @@ public class Atom {
 
     // TODO - Note: Make all variables private
     private boolean flag;   // Boolean to store whether atom is meant to be a flag
-    private int loc;   // Store location of atom
-    private int[] neighbours;
-    // Store nearby squares for atom to help with ray computing
-    /*
-        the ones directly next to it: location+1(exception: bottom right), location-1 (exception: top left)
-        the ones above and underneath are based on the line they're on (see paper with cases)
-     */
+    private int row;   // Store location of atom
+    private int col;
+    //arrayList to store the "neighbours" of the atom
+    //neighbour = the nearby grids
+    private ArrayList<Integer> neighbours;
+
 
     /**
      * Constructor for new Atom object.
-     * @param loc   Grid location of new atom.
+     * @param row   Grid location of new atom (row).
+     * @param col   Grid location of new atom (col).
      * @param flag  Whether specified atom object is meant to be a "flag atom".
      */
-    public Atom(int loc, boolean flag) {
-        this.loc = loc;
+    public Atom(int row, int col, boolean flag) {
+        this.row = row;
+        this.col = col;
         this.flag = flag;
     }
 
     //constructor for atoms from beginning
-    public Atom (int loc){
-        this.loc = loc;
+    public Atom (int row, int col){
+        this.row = row;
+        this.col = col;
         flag = true;
-        neighbours = new int[6];
+        neighbours = new ArrayList<>();
     }
 
     // Get functions        ----------
@@ -41,13 +45,72 @@ public class Atom {
     /**
      * @return Location of specified atom.
      */
-    public int getLoc() {
-        return loc;
+    public int getRow() {
+        return row;
     }
 
-    public void createNeighbours(){
-
+    public int getCol() {
+        return col;
     }
+
+    public ArrayList<Integer> getNeighbours(){
+        return neighbours;
+    }
+
+    public boolean validNewPos(int newRow, int newCol){
+        return (newRow >=0 && newRow < 9 && newCol >= 0 && newCol <9);
+    }
+
+    /**
+     * @param row   Grid location of atom (row).
+     * @param col   Grid location of atom (col).
+     */
+    public void createNeighbours(int row, int col) {
+        //ArrayList<Integer> nList = new ArrayList<>();
+        int newRow, newCol;
+        //pattern for neighbours of positions on top half of board
+        if (row >=0 && row < 4) {
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if ((i == -1 && j == 1) || (i == 0 && j == 0) || (i == 1 && j == -1))
+                        continue;
+                    newRow = row + i;
+                    newCol = col + j;
+                    if (validNewPos(newRow, newCol)) {
+                        neighbours.add(newRow);
+                        neighbours.add(newCol);
+                    }
+                }
+            }
+            //pattern for neighbours of positions on bottom half of board
+        } else if(row > 4) {
+                for (int i = -1; i < 2; i++) {
+                    for (int j = -1; j < 2; j++) {
+                        if (i == j) continue;
+                        newRow = row + i;
+                        newCol = col + j;
+                        if (validNewPos(newRow, newCol)) {
+                            neighbours.add(newRow);
+                            neighbours.add(newCol);
+                        }
+                    }
+                }
+            //pattern for neighbours of positions on row 4 = middle of board
+        } else {
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if ((i == -1 && j == 1) || (i == 0 && j == 0) || (i == 1 && j ==1)) continue;
+                    newRow = row + i;
+                    newCol = col + j;
+                    if (validNewPos(newRow, newCol)) {
+                        neighbours.add(newRow);
+                        neighbours.add(newCol);
+                    }
+                }
+            }
+        }
+    }
+
 
     //takes current position of ray and compares it to the neighbours of the atoms
     //needs to be called for all atoms, one at a time
@@ -64,6 +127,12 @@ public class Atom {
      */
     public boolean isFlag() {
         return flag;
+    }
+
+    public static void main(String[] args) {
+        Atom atom = new Atom(4,4);
+        atom.createNeighbours(4,4);
+        System.out.println(atom.getNeighbours());
     }
 
 
