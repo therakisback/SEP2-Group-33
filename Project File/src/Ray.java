@@ -7,6 +7,7 @@ import java.util.ArrayList;
  *    to help pass information concerning rays between them.
  */
 
+
 public class Ray {
 
     // Data variables       ----------
@@ -16,26 +17,35 @@ public class Ray {
     private int direction;
     // Store starting location of array
     private int start;
-    // Store grid location of ray particle thingy
-    private int loc;
+    // Store grid location of ray particle thingy (row + col)
+    private int row;
+    private int col;
     // Store result of ray after computed (end location, mark absorbed)
-    // ?result as in reflected/absorbed or the location of teh output of the array, unless it's absorbed?
+    /*
+        -1 - returned
+        0 - absorbed
+        1 - reflected
+     */
     private int end;
     // Store path of ray
     //stores each num of the grid the ray passed through; can increase as needed
-    private ArrayList<Integer> path;
+    private ArrayList<Integer> path; //?arrayList
 
     /**
      * Constructor for new ray object.
      * @param direction   Starting direction for ray.
-     * @param loc   Starting grid square of ray.
+     * @param row   Starting grid square of ray(row).
+     * @param col   Starting grid square of ray(col).
      * @param start Starting number / side of ray.
      */
-    public Ray(int direction, int loc, int start){
-        this.direction = direction;
-        this.loc = loc;
-        this.start = start;
-        path = new ArrayList<>();
+    public Ray( int row, int col, int direction, int start){
+        if (direction > 1 && direction < 7 && row >= 0 && row < 9 && col >= 0 && col < 9 && start > 0 && start < 54) {
+            this.row = row;
+            this.col = col;
+            this.direction = direction;
+            this.start = start;
+            path = new ArrayList<>();
+        } else throw new IllegalArgumentException("Invalid input");
     }
 
     // Get functions        -----------
@@ -48,10 +58,17 @@ public class Ray {
     }
 
     /**
-     * @return Current grid location of ray.
+     * @return Current grid location of ray (row).
      */
-    public int getLoc() {
-        return loc;
+    public int getRow(){
+        return row;
+    }
+
+    /**
+     * @return Current grid location of ray (col).
+     */
+    public int getCol(){
+        return col;
     }
 
     /**
@@ -75,28 +92,34 @@ public class Ray {
      * @param direction New ray direction input.
      */
     public void setDir(int direction) {
-        // TODO
-        this.direction = direction;
-        return;
+        if (direction > 0 && direction < 7) {
+            this.direction = direction;
+        }else throw new IllegalArgumentException("Invalid direction");
     }
 
     /**
-     * @param location New ray grid location.
+     * @param row New ray grid location (row).
      */
 
-    /*
-    as in move the current location based on the direction the ray is going in?
-     */
-    public void setLoc(int location) {
-        // TODO
-        loc = location;
-        path.add(location);
-        return;
+    public void setRow(int row) {
+        this.row = row;
+        path.add(row); //?
     }
 
-    public void setResult(int result) {
-        end = result;
-        return;
+    /**
+     * @param col New ray grid location (col).
+     */
+
+    public void setCol(int col) {
+        this.col = col;
+        path.add(col); //?
+    }
+
+    public void setEnd(int end) {
+        if (end != -1 && end != 0 && end != 1){
+            throw new IllegalArgumentException("Invalid result for end of ray path");
+        }
+        this.end = end;
     }
 
 

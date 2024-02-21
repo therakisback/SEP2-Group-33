@@ -27,17 +27,21 @@ public class Atom {
      * @param flag  Whether specified atom object is meant to be a "flag atom".
      */
     public Atom(int row, int col, boolean flag) {
-        this.row = row;
-        this.col = col;
-        this.flag = flag;
+        if (row >= 0 && row < 9 && col >= 0 && col < 9) {
+            this.row = row;
+            this.col = col;
+            this.flag = flag;
+        } else throw new IllegalArgumentException("Invalid row or column");
     }
 
     //constructor for atoms from beginning
     public Atom (int row, int col){
+        if (row >= 0 && row < 9 && col >= 0 && col < 9) {
         this.row = row;
         this.col = col;
         flag = true;
         neighbours = new ArrayList<>();
+        } else throw new IllegalArgumentException("Invalid row or column");
     }
 
     // Get functions        ----------
