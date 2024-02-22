@@ -127,11 +127,6 @@ public class Atom {
 
     }
 
-    public int getRow() {
-        //TODO
-        return 0;
-    }
-
     /**
      * @return Whether specified atom is a "flag atom"
      */
