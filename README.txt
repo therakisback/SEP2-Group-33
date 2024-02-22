@@ -50,3 +50,9 @@ As a note for making constructors:
   values for grid spaces must be between: 	0-60 inclusive
   values for direction must be between: 	0-5  inclusive
   values for board sides must be between:	0-53 inclusive
+
+For rays results follow this pattern:
+
+result = -2      : ray was returned to start
+result = -1      : ray was absorbed
+result = [0..53] : ray ended at side [0..53]
