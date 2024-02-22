@@ -12,9 +12,9 @@ public class Atom {
     // Data Variables       ----------
 
     // TODO - Note: Make all variables private
-    private boolean flag;   // Boolean to store whether atom is meant to be a flag
-    private int row;   // Store location of atom
-    private int col;
+    private final boolean flag;   // Boolean to store whether atom is meant to be a flag
+    private final int row;   // Store location of atom
+    private final int col;
     //arrayList to store the "neighbours" of the atom
     //neighbour = the nearby grids
     private ArrayList<Integer> neighbours;
@@ -65,11 +65,8 @@ public class Atom {
         return (newRow >=0 && newRow < 9 && newCol >= 0 && newCol <9);
     }
 
-    /**
-     * @param row   Grid location of atom (row).
-     * @param col   Grid location of atom (col).
-     */
-    public void createNeighbours(int row, int col) {
+
+    public void createNeighbours() {
         //ArrayList<Integer> nList = new ArrayList<>();
         int newRow, newCol;
         //pattern for neighbours of positions on top half of board
@@ -133,11 +130,12 @@ public class Atom {
         return flag;
     }
 
-    public static void main(String[] args) {
-        Atom atom = new Atom(4,4);
-        atom.createNeighbours(4,4);
-        System.out.println(atom.getNeighbours());
+    public static int[][] getLocations (Atom[] arr){
+        int[][] atoms = new int[4][2];
+        for (int i = 0; i < 4; i++){
+            atoms[i][0] = arr[i].getRow();
+            atoms[i][1] = arr[i].getCol();
+        }
+        return atoms;
     }
-
-
 }

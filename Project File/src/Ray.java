@@ -22,14 +22,14 @@ public class Ray {
     private int col;
     // Store result of ray after computed (end location, mark absorbed)
     /*
-        -1 - returned
-        0 - absorbed
-        1 - reflected
+        -2 - returned
+        -1 - absorbed
+        0 - 53 - end
      */
     private int end;
     // Store path of ray
     //stores each num of the grid the ray passed through; can increase as needed
-    private ArrayList<Integer> path; //?arrayList
+    private ArrayList<Integer> path;
 
     /**
      * Constructor for new ray object.
@@ -102,8 +102,11 @@ public class Ray {
      */
 
     public void setRow(int row) {
-        this.row = row;
-        path.add(row); //?
+        if (row > 0 && row < 9){
+            this.row = row;
+            path.add(row);
+        } else throw new IllegalArgumentException("Invalid new row");
+
     }
 
     /**
@@ -111,16 +114,71 @@ public class Ray {
      */
 
     public void setCol(int col) {
-        this.col = col;
-        path.add(col); //?
+        if (col > 0 && col < 9){
+            this.col = col;
+            path.add(col);
+        } else throw new IllegalArgumentException("Invalid new col");
     }
 
     public void setEnd(int end) {
-        if (end != -1 && end != 0 && end != 1){
+        if (end < -2 || end > 53){
             throw new IllegalArgumentException("Invalid result for end of ray path");
         }
         this.end = end;
     }
 
+    /**
+     * @return the neighbours of the ray in a 2d array form
+     */
 
+    //return a 2d array frm the arrayList of neighbours
+    public int[][] createNeighbours(){
+        ArrayList<Integer> neighbours = new ArrayList<>();
+        int newRow, newCol;
+        //pattern for neighbours of positions on top half of board
+        if (row >=0 && row < 4) {
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if ((i == -1 && j == 1) || (i == 0 && j == 0) || (i == 1 && j == -1))
+                        continue;
+                    newRow = row + i;
+                    newCol = col + j;
+                    neighbours.add(newRow);
+                    neighbours.add(newCol);
+                }
+            }
+            //pattern for neighbours of positions on bottom half of board
+        } else if(row > 4) {
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if (i == j) continue;
+                    newRow = row + i;
+                    newCol = col + j;
+                    neighbours.add(newRow);
+                    neighbours.add(newCol);
+                }
+            }
+            //pattern for neighbours of positions on row 4 = middle of board
+        } else {
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if ((i == -1 && j == 1) || (i == 0 && j == 0) || (i == 1 && j ==1)) continue;
+                    newRow = row + i;
+                    newCol = col + j;
+                    neighbours.add(newRow);
+                    neighbours.add(newCol);
+                }
+            }
+        }
+
+        int[][] proximity = new int[6][2];
+        int count = 0;
+        for (int i = 0; i < 6; i++){
+            proximity[i][0] = neighbours.get(count);
+            count++;
+            proximity[i][1] = neighbours.get(count);
+            count++;
+        }
+        return proximity;
+    }
 }
