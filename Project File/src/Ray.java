@@ -33,6 +33,7 @@ public class Ray {
 
     /**
      * Constructor for new ray object.
+
      * @param direction   Starting direction for ray.
      * @param row   Starting grid square of ray(row).
      * @param col   Starting grid square of ray(col).
@@ -46,6 +47,7 @@ public class Ray {
             this.start = start;
             path = new ArrayList<>();
         } else throw new IllegalArgumentException("Invalid input");
+
     }
 
     // Get functions        -----------
@@ -112,7 +114,6 @@ public class Ray {
     /**
      * @param col New ray grid location (col).
      */
-
     public void setCol(int col) {
         if (col > 0 && col < 9){
             this.col = col;

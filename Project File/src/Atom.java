@@ -22,6 +22,7 @@ public class Atom {
 
     /**
      * Constructor for new Atom object.
+
      * @param row   Grid location of new atom (row).
      * @param col   Grid location of new atom (col).
      * @param flag  Whether specified atom object is meant to be a "flag atom".
@@ -42,6 +43,7 @@ public class Atom {
         flag = true;
         neighbours = new ArrayList<>();
         } else throw new IllegalArgumentException("Invalid row or column");
+
     }
 
     // Get functions        ----------
@@ -49,6 +51,7 @@ public class Atom {
     /**
      * @return Location of specified atom.
      */
+
     public int getRow() {
         return row;
     }
@@ -121,6 +124,12 @@ public class Atom {
             return pos == i;
         }
         return false;
+
+    }
+
+    public int getRow() {
+        //TODO
+        return 0;
     }
 
     /**
@@ -129,6 +138,7 @@ public class Atom {
     public boolean isFlag() {
         return flag;
     }
+
 
     public static int[][] getLocations (Atom[] arr){
         int[][] atoms = new int[4][2];
