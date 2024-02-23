@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Class used to help seperate Atom data from 3 main classes
+ * Class used to help separate Atom data from 3 main classes
  *    to help pass information concerning atoms between them.
  */
 public class Atom {
 
     // Data Variables       ----------
-
-    // TODO - Note: Make all variables private
     private final boolean flag;   // Boolean to store whether atom is meant to be a flag
     private final int row;   // Store location of atom
     private final int col;

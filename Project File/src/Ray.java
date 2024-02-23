@@ -12,9 +12,8 @@ import java.util.Arrays;
 public class Ray {
 
     // Data variables       ----------
-
-    private int direction; // Store directions of ray
-    private int start; // Store starting location of array
+    private int direction; // Store directions of ray (1-6 -> for each hexagon side)
+    private final int start; // Store starting location of array
     // Store grid location of ray particle thingy (row + col)
     private int row;
     private int col;
@@ -32,7 +31,7 @@ public class Ray {
      * @param start Starting number / side of ray.
      */
     public Ray( int row, int col, int direction, int start){
-        if (direction > 1 && direction < 7 && row >= 0 && row < 9 && col >= 0 && col < 9 && start > 0 && start < 54) {
+        if (direction > 0 && direction < 7 && row >= 0 && row < 9 && col >= 0 && col < 9 && start >= 0 && start < 54) {
             this.row = row;
             this.col = col;
             this.direction = direction;
@@ -96,7 +95,7 @@ public class Ray {
      */
 
     public void setRow(int row) {
-        if (row > 0 && row < 9){
+        if (row >= 0 && row < 9){
             this.row = row;
             path.add(row);
         } else throw new IllegalArgumentException("Invalid new row");
@@ -107,7 +106,7 @@ public class Ray {
      * @param col New ray grid location.
      */
     public void setCol(int col) {
-        if (col > 0 && col < 9){
+        if (col >= 0 && col < 9){
             this.col = col;
             path.add(col);
         } else throw new IllegalArgumentException("Invalid new col");
