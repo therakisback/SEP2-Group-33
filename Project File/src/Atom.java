@@ -58,7 +58,7 @@ public class Atom {
 
 
     /**
-     * @return col of specified atom.
+     * @return column of specified atom.
      */
     public int getCol() {
         return col;
@@ -74,7 +74,7 @@ public class Atom {
 
 
     /**
-     * @return teh location of each atom (row col)
+     * @return the location of each atom in the array [(row1, col1),...(row4, col4)]
      */
     public static int[][] getLocations (Atom[] arr){
         int[][] atoms = new int[4][2];
