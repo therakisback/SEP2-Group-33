@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AtomTest {
@@ -49,4 +51,5 @@ class AtomTest {
         assertEquals(3, locs[2][0]);
         assertEquals(4, locs[3][0]);
     }
+
 }

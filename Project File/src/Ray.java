@@ -1,6 +1,7 @@
 //import
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Class used to separate base data for rays from main 3 classes
@@ -12,21 +13,12 @@ public class Ray {
 
     // Data variables       ----------
 
-    // TODO - Note: Make all variables private
-    // Store directions of ray
-    private int direction;
-    // Store starting location of array
-    private int start;
+    private int direction; // Store directions of ray
+    private int start; // Store starting location of array
     // Store grid location of ray particle thingy (row + col)
     private int row;
     private int col;
-    // Store result of ray after computed (end location, mark absorbed)
-    /*
-        -2 - returned
-        -1 - absorbed
-        0 - 53 - end
-     */
-    private int end;
+    private int end; // Store result of ray after computed (end location, mark absorbed)
     // Store path of ray
     //stores each num of the grid the ray passed through; can increase as needed
     private ArrayList<Integer> path;
@@ -100,7 +92,7 @@ public class Ray {
     }
 
     /**
-     * @param row New ray grid location (row).
+     * @param row New ray grid location.
      */
 
     public void setRow(int row) {
@@ -112,7 +104,7 @@ public class Ray {
     }
 
     /**
-     * @param col New ray grid location (col).
+     * @param col New ray grid location.
      */
     public void setCol(int col) {
         if (col > 0 && col < 9){
@@ -121,6 +113,9 @@ public class Ray {
         } else throw new IllegalArgumentException("Invalid new col");
     }
 
+    /**
+     * @param end End position on board of ray.
+     */
     public void setEnd(int end) {
         if (end < -2 || end > 53){
             throw new IllegalArgumentException("Invalid result for end of ray path");
@@ -129,10 +124,11 @@ public class Ray {
     }
 
     /**
+     * no need to check if the positions of the neighbours are valid
+     * because we're only checking if atoms are in that position and there are only 6 neighbours
      * @return the neighbours of the ray in a 2d array form
      */
 
-    //return a 2d array frm the arrayList of neighbours
     public int[][] createNeighbours(){
         ArrayList<Integer> neighbours = new ArrayList<>();
         int newRow, newCol;
