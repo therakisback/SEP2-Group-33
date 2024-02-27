@@ -10,10 +10,23 @@
  * A framework for this class and function is difficult,
  *    as it will rely on every other class
  */
+
+import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO
+        Game game = new Game();
+
+        game.setAtoms(
+                new Atom(1, 1, false),
+                new Atom(4, 4, false),
+                new Atom(2, 4, false),
+                new Atom(1, 4, false));
+
+
+
+        // Generate random atoms for game
+
     }
 }
 
