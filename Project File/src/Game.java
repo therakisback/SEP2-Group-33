@@ -12,16 +12,14 @@ public class Game {
     // Class variables      ----------
 
     // TODO
-    // Board array / arraylist / linked list // tree
-    // True atom array / arraylist
-    // Current Score variable
-    // Store past rays and their path here? - Could be stored elsewhere as well
+    // Board array / arraylist / linked list // tree?
+    Atom[] trueAtoms;
+    int score;
 
     /**
      * Constructor for game class, should only be used once in controller class.
      */
     public Game() {
-        // TODO
     }
 
     // Class functions      ----------
@@ -31,15 +29,33 @@ public class Game {
      * @param r Ray object to be used.
      */
     public void calculateRay(Ray r) {
-        // TODO
+        
+
+        while(true) {
+
+        }
     }
 
     /**
-     * Uses Random to create atom placements on board
+     * Takes input for set atom locations
+     * @param args Atoms to be included in array
+     */
+    public void setAtoms(Atom... args) {
+        trueAtoms = new Atom[args.length];
+        int i = 0;
+        for (Atom a : args) {
+            if(a.isFlag()) throw new IllegalArgumentException("True atoms cannot have flag marking.");
+            trueAtoms[i++] = a;
+        }
+    }
+
+    /**
+     * Randomly generates 4 atoms for game.
      */
     public void setAtoms() {
-        // TODO
+        // TODO - Ema
     }
+
 
     /**
      * Checks given atom flags with true atoms,
