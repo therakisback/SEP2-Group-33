@@ -15,7 +15,6 @@ public class Game {
     // Class variables      ----------
 
     // TODO
-    // Board array / arraylist / linked list // tree?
     Atom[] trueAtoms;
     int score;
 
@@ -32,7 +31,6 @@ public class Game {
      * @param r Ray object to be used.
      */
     public void calculateRay(Ray r) {
-
 
         while(true) {
 
@@ -53,12 +51,27 @@ public class Game {
     }
 
     /**
-     * Randomly generates 4 atoms for game.
+     * Uses Random to create atom placements on board
      */
-    public void setAtoms() {
-        // TODO - Ema
-        // trueAtoms[i] = random atom
+    public void setAtoms(int row) {
+        if (row < 0 || row > 8) throw new IllegalArgumentException("Row has to be between 0 and 8, inclusive");
+        trueAtoms = new Atom[4];
+        Random random = new Random();
+        int col = 0;
+        int n = 2;
+        for (int i = 0; i < 4; i++) {
+            if (row >= 0 && row < 5) {
+                col = random.nextInt(row + 4) + 1;
+            } else if (row >= 5 && row < 9) {
+                col = random.nextInt(row + n) + 1;
+                n = n - 2;
+            }
+            //I need n to be -2, -4
+            trueAtoms[i] = new Atom(row, col);
+        }
     }
+
+
 
 
     /**
