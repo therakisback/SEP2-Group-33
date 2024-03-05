@@ -28,9 +28,9 @@ Ex: Ray r = new Ray(0, 0, 3, 3); has the following details:
       marking the starting point of a 1x1 board, as the rays go *away* from
       the sides: (this is also what makes it appear as a ray once the algorithm is finished)
 
-           2 /   \ 3
-          1 |  *  | 4
-           6 \   / 5
+           1 /   \ 2
+          6 |  *  | 3
+           5 \   / 4
 
       In this case, the ray is going left, from side 3 to side 0.
    Lastly; The final number, the second 3, is the starting side of the ray,
