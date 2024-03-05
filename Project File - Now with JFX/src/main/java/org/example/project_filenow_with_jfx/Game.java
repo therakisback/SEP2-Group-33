@@ -32,8 +32,20 @@ public class Game {
      */
     public void calculateRay(Ray r) {
 
+        boolean[] atomNeightbors = new boolean[6];
+        // set true where there is an atom
+
         while(true) {
 
+            /*
+            if checkReturn(r, atomNeighbors) continue;
+            else if checkDoubleBounce(r, atomNeighbors) continue;
+            else if checkBounce(r, atomNeighbors) continue;
+            else if checkHit(r, atomNeighbors) break;
+             */
+
+            change row and column based on direction and position
+             */
         }
     }
 
