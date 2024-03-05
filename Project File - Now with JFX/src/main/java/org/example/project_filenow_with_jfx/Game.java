@@ -44,6 +44,7 @@ public class Game {
             else if checkHit(r, atomNeighbors) break;
              */
 
+            /*
             change row and column based on direction and position
              */
         }
