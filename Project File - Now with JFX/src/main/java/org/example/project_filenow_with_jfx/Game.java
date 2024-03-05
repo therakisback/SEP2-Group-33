@@ -38,14 +38,14 @@ public class Game {
         while(true) {
 
             /*
-            if checkReturn(r, atomNeighbors) continue;
-            else if checkDoubleBounce(r, atomNeighbors) continue;
-            else if checkBounce(r, atomNeighbors) continue;
-            else if checkHit(r, atomNeighbors) break;
+                // if checkReturn(r, atomNeighbors) continue;
+                // else if checkDoubleBounce(r, atomNeighbors) continue;
+                // else if checkBounce(r, atomNeighbors) continue;
+                /*else*/ if hitAtom(r, atomNeighbors) break;
              */
 
             /*
-            change row and column based on direction and position
+                change row and column based on direction and position
              */
         }
     }
@@ -97,7 +97,7 @@ public class Game {
 
     }
 
-    private boolean hitAtom(){
+    private boolean hitAtom(Ray r, Boolean[] rneighbors){
         boolean hitAtom = false;
         //checks if all neighbours of ray are not atoms, returns true if one of them is
 
