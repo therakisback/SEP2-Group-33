@@ -122,7 +122,7 @@ public class Ray {
     /**
      * no need to check if the positions of the neighbours are valid
      * because we're only checking if atoms are in that position and there are only 6 neighbours
-     * @return the neighbours of the ray in a 2d array form
+     * @return the neighbours of the ray in a 2d array form (row, column)
      */
 
     public int[][] createNeighbours(){

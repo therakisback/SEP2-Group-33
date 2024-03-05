@@ -14,10 +14,10 @@ Brief summary of the basic ideas developed for how the game would function
 
  Each outside face of the hexagons will be labeled with a number as well
 
-            1 /   \ 2
-  (0, 0) = 0 |     | < next hex
-   next hex > \   /  < next hex
-
+            1 /   \ 2                                           ^ ^
+  (0, 0) = 0 |(0,0)| < next hex      < This looks like an owl  (0,0)  *hoot*
+   next hex > \   /  < next hex                                |   |
+                                                               =M=M=
 Which is useful later with rays. Speaking of:
 Rays are much more like a particle to us, think of it as light
    it's both particle and beam.
@@ -48,7 +48,7 @@ When the rays "tick" and move, they can check the locations of the atoms to see 
 
 As a note for making constructors: 
   values for grid spaces must be between: 	0-60 inclusive
-  values for direction must be between: 	0-5  inclusive
+  values for direction must be between: 	1-6  inclusive
   values for board sides must be between:	0-53 inclusive
 
 For rays results follow this pattern:

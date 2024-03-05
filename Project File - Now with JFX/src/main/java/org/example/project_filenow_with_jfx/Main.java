@@ -20,11 +20,6 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
 
-        game.setAtoms(
-                new Atom(1, 1, false),
-                new Atom(4, 4, false),
-                new Atom(2, 4, false),
-                new Atom(1, 4, false));
 
 
 
