@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import java.lang.Double?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.project_filenow_with_jfx.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.project_filenow_with_jfx.HelloController">
+    <children>
+        <Button layoutX="274.0" layoutY="30.0" mnemonicParsing="false" onAction="#up" text="UP" />
+        <Button layoutX="53.0" layoutY="175.0" mnemonicParsing="false" onAction="#left" text="LEFT" />
+        <Button layoutX="522.0" layoutY="175.0" mnemonicParsing="false" onAction="#right" text="RIGHT" />
+        <Button layoutX="274.0" layoutY="346.0" mnemonicParsing="false" onAction="#down" text="DOWN" />
+        <Circle fx:id="myCircle" fill="DODGERBLUE" layoutX="408.0" layoutY="122.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+        <Button fx:id="logoutButton" layoutX="508.0" layoutY="30.0" mnemonicParsing="false" onAction="#logout" text="LOGOUT" />
+      <Polygon fill="#d10a0a" layoutX="-176.0" layoutY="165.0" points="309.7873840332031, 44.939453125, 374.3426208496094, 56.090065002441406, 402.0796813964844, 130.48011779785156, 351.2957763671875, 188.60227966308594, 286.89398193359375, 177.4781494140625, 256.3592529296875, 104.55707550048828" rotate="-9.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
+      <Polygon fill="DODGERBLUE" layoutX="116.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+    </children>
+</AnchorPane>

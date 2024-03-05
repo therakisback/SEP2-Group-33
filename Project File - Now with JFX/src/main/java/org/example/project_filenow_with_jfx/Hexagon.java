@@ -6,7 +6,7 @@ import javafx.scene.shape.Polygon;
 public class Hexagon {
 
     public int getHex_identifier() {
-        return hex_identifier;
+        return this.hex_identifier;
     }
 
     public void setHex_identifier(int hex_identifier) {

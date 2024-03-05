@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Display_Board extends Application {
     @Override
     public void start(Stage primaryStage) {
-        // Create a pane to hold the hexagon
+        // Create a pane to hold the hexagons
         Pane pane = new Pane();
         double size = 55;
 
