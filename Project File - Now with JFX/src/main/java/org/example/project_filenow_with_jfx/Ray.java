@@ -18,7 +18,7 @@ public class Ray {
     private int col;
     private int end; // Store result of ray after computed (end location, mark absorbed)
     // Store path of ray
-    //stores each num of the grid the ray passed through; can increase as needed
+    // Stores each num of the grid the ray passed through; can increase as needed
     private ArrayList<Integer> path;
 
     /**
@@ -129,7 +129,7 @@ public class Ray {
         ArrayList<Integer> neighbours = new ArrayList<>();
         int newRow, newCol;
         //pattern for neighbours of positions on top half of board
-        if (row >=0 && row < 4) {
+        if (row >= 0 && row < 4) {
             for (int i = -1; i < 2; i++) {
                 for (int j = -1; j < 2; j++) {
                     if ((i == -1 && j == 1) || (i == 0 && j == 0) || (i == 1 && j == -1))

@@ -53,10 +53,11 @@ public class Game {
     /**
      * Uses Random to create atom placements on board
      */
-    public void setAtoms(int row) {
+    public void setAtoms() {
+        Random random = new Random();
+        int row = random.nextInt(9);
         if (row < 0 || row > 8) throw new IllegalArgumentException("Row has to be between 0 and 8, inclusive");
         trueAtoms = new Atom[4];
-        Random random = new Random();
         int col = 0;
         int n = 2;
         for (int i = 0; i < 4; i++) {
@@ -81,6 +82,13 @@ public class Game {
      */
     public void submitGame(Atom[] atomFlags) {
 
+    }
+
+    private boolean hitAtom(){
+        boolean hitAtom = false;
+        //checks if all neighbours of ray are not atoms, returns true if one of them is
+
+        return false;
     }
 
 }
