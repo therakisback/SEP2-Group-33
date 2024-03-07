@@ -2,37 +2,35 @@ package org.example.project_filenow_with_jfx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
+import javafx.scene.input.MouseEvent;
 
 public class HelloController {
     @FXML
-    private Circle myCircle;
-    Hexagon a = new Hexagon();
+    public Polygon zeroZero;
+
+
 
     private double x,y;
-    public void up(ActionEvent e) {
+    @FXML
+    private void up(MouseEvent e) {
         System.out.println("UP");
-        myCircle.setCenterY(y -=5);
     }
-    public void down(ActionEvent e) {
-        System.out.println("DOWN");
-        myCircle.setCenterY(y +=5);
+    @FXML
+    private void placeAtom(MouseEvent e) {
+        System.out.println("hello");
+        zeroZero.setFill(Color.YELLOW);
     }
-    public void left(ActionEvent e) {
-        System.out.println("LEFT");
-        myCircle.setCenterX(x -=5);
-    }
-    public void right(ActionEvent e) {
-        System.out.println("RIGHT");
-        myCircle.setCenterX(x +=5);
-    }
+
     @FXML
     private Button logoutButton;
     @FXML
