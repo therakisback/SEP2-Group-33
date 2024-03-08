@@ -34,7 +34,7 @@ public class HelloController {
     }
     @FXML
     private void placeAtom(MouseEvent e) {
-        System.out.println("Dropped the A bomb");
+        System.out.println("Dropped the atom");
         Polygon source = (Polygon) e.getSource();
         source.setFill(Color.YELLOW);
     }
