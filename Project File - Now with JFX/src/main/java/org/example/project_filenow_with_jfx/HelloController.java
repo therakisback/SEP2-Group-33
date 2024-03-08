@@ -18,8 +18,13 @@ public class HelloController {
     @FXML
     public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
     oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
-    twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix;
-
+    twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix,
+    threeZero, threeOne, threeTwo, threeThree, threeFour, threeFive, threeSix, threeSeven,
+    fourZero, fourOne, fourTwo, fourThree, fourFour, fourFive, fourSix, fourSeven, fourEight,
+    fiveZero, fiveOne, fiveTwo, fiveThree, fiveFour, fiveFive, fiveSix, fiveSeven,
+    sixZero, sixOne, sixTwo, sixThree, sixFour, sixFive, sixSix,
+    sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
+    eightZero, eightOne, eightTwo, eightThree, eightFour;
 
 
     private double x,y;
