@@ -87,7 +87,6 @@ public class Game {
                 r.setEnd(edge);
                 break;
             }
-
         }
     }
 
