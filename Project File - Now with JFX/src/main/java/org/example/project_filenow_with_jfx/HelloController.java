@@ -16,7 +16,9 @@ import javafx.scene.input.MouseEvent;
 
 public class HelloController {
     @FXML
-    public Polygon zeroZero;
+    public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
+    oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
+    twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix;
 
 
 
@@ -27,8 +29,9 @@ public class HelloController {
     }
     @FXML
     private void placeAtom(MouseEvent e) {
-        System.out.println("hello");
-        zeroZero.setFill(Color.YELLOW);
+        System.out.println("Dropped the A bomb");
+        Polygon source = (Polygon) e.getSource();
+        source.setFill(Color.YELLOW);
     }
 
     @FXML
