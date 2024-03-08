@@ -192,7 +192,9 @@ public class Game {
     }
 
     /**
-     * Used to find whether a ray is on an edge hex facing an edge
+     * Used to find whether a ray is on an edge hex facing an edge.
+     * <p> This is, frankly, a bad method. I couldn't discern a pattern
+     * in the hexagons, and thus resorted to hard-coding 53 conditions.
      * @param r Ray to check if on edge
      * @return int for which edge the ray has "hit" or -1 for no hit
      */
@@ -204,29 +206,39 @@ public class Game {
         // interface used to create "functions" in method to
         // reduce repetition - which is a bad problem for this method
         interface output {int run(int a);} // a = col check
+        output i;
 
+        // NOTE: comments in telling what edge it marks assume
+        // every statement is collapsed if possible, IE shows: {...} a lot
         switch (dir) {
-            case 1: // This is the worst, as it has the border between 0 and 53
-                if (col == 0 && row <= 4) return (row * 2);         // edge 0  - 8  even
-                else if (row == 0)        return 54 - (col * 2);    // edge 46 - 52 even
-                else                      return -1;
+            case 1:
+                if (row == 0 && col != 0)      return 54 - (col * 2);   // edge 46 - 52 even
+                else if (col == 0 && row <= 4) return (row * 2);        // edge 0  - 8  even
+                else                           return -1;
             case 2:
-                if (row == 0) {
-
-                }
-                output k = (int a) -> {
+                // Takes edge column as a, and calculates edge from that.
+                i = (int a) -> {
                     if (col == a) return 45 - (row * 2);
                     else          return -1;
                 };
                 return switch (row) {
-                    case 1  -> k.run(5);
-                    case 2  -> k.run(6);
-                    case 3  -> k.run(7);
-                    case 4  -> k.run(8);
+                    case 0 -> switch (col) {
+                        // k.run does not work here, as edge is based on col
+                        case 0  -> 53;
+                        case 1  -> 51;
+                        case 2  -> 49;
+                        case 3  -> 47;
+                        case 4  -> 45;
+                        default -> -1;
+                    };
+                    case 1  -> i.run(5);
+                    case 2  -> i.run(6);
+                    case 3  -> i.run(7);
+                    case 4  -> i.run(8);
                     default -> -1;
-                };                          // edge 43 - 37 odd
+                };                              // edge 37 - 53 odd
             case 3:
-                output i = (int a) -> {
+                i = (int a) -> {
                     if (col == a) return 44 - (row * 2);
                     else return -1;
                 };
@@ -237,14 +249,36 @@ public class Game {
                     case 3, 5 -> i.run(7);
                     case 4    -> i.run(8);
                     default   -> -1;
-                };                          // edge 28 - 44 even
+                };                              // edge 28 - 44 even
             case 4:
-
+                i = (int a) -> {
+                    if (col == a) return 44 - (row * 2);
+                    else return -1;
+                };
+                return switch (row) {
+                    case 4 -> i.run(8);
+                    case 5 -> i.run(7);
+                    case 6 -> i.run(6);
+                    case 7 -> i.run(5);
+                    case 8 -> switch (col) {
+                            case 0  -> 19;
+                            case 1  -> 21;
+                            case 2  -> 23;
+                            case 3  -> 25;
+                            case 4  -> i.run(4);
+                            default -> -1;
+                        };
+                    default -> -1;
+                };                              // edge 19 - 35 odd
             case 5:
+                if (row == 8 && col != 0)      return 18 + (col * 2);   // edge 20 - 26 even
+                else if (col == 0 && row >= 4) return 2 + (row * 2);    // edge 10 - 18 even
+                else                           return -1;
 
             case 6:
-                if (col == 0) return (row * 2) + 1;
+                if (col == 0) return (row * 2) + 1;                     // edge 1 - 17 odd
                 else          return -1;
+            default: return -1;
         }
     }
 
