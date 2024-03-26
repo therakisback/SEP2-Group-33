@@ -8,7 +8,7 @@ public class GameTest {
     // Test atom hit cases
 
     Game g = new Game();
-    Ray r = new Ray(4,4,1,27);
+    Ray r = new Ray(8,4,1,27);
 
     @Test
     public void setAtoms() {

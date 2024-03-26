@@ -38,6 +38,7 @@ public class Game {
 
         // set true where there is an atom
         boolean[] atomNeighbors = new boolean[6];
+        boolean atomsNearby = false;
 
         // Ray added to list of all rays cast to show at end of game
         castRays.add(r);
@@ -46,7 +47,7 @@ public class Game {
         if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
 
         // Main tick loop   ---------
-        boolean start = true;      // Boolean to check if its the first tick of the ray.
+        int count = 0;      // Boolean to check if its the first tick of the ray.
         while(true) {
             // Calculate atomNeighbors - could probably optimise, but 24 checks is not worth it
             // created here so "atom checkers" don't have to create their own
@@ -60,24 +61,30 @@ public class Game {
                 }
                 index++;
             }
+            for (boolean a : atomNeighbors)
+                if (a) {
+                    atomsNearby = true;
+                    break;
+                }
 
             // Handles if the ray is created with an atom next to it.
-            if (start) {
-                start = false;
+            /*if (count == 0) {
                 for (boolean a : atomNeighbors) {
                     if (a) {
                         r.setEnd(-2);
                         break;
                     }
                 }
-            }
+            }*/
 
             // Atoms        ----------
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
-            if (!checkBounce(r, atomNeighbors)) {
-                if (hitAtom(r, atomNeighbors)) break;
+            if (atomsNearby) {
+                if (!checkBounce(r, atomNeighbors)) {
+                    if (hitAtom(r, atomNeighbors)) break;
+                }
             }
 
             // Moving       ----------
@@ -85,6 +92,11 @@ public class Game {
             moveRay(r); // Self-explanatory
 
             // Edge Check   ----------
+
+            // Debug        ----------
+            if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infite looping
+            count++;
+            System.out.println(r);
 
             // Check if ray is done (I.E. at edge hex, heading towards edge)
             // Done after moving so that we have no risk of running off the board
@@ -265,36 +277,43 @@ public class Game {
         switch (r.getDir()) {
             case 1: // Up and left
                 if (row <= 4) {
-                    r.setRow(--row);
-                    r.setCol(--col);
+                    r.setRow(row-1);
+                    r.setCol(col-1);
                 } else {
-                    r.setRow(--row);
+                    r.setRow(row-1);
                 }
+                break;
             case 2: // Up and right
                 if (row <= 4) {
-                    r.setRow(--row);
+                    r.setRow(row-1);
                 } else {
-                    r.setRow(--row);
-                    r.setCol(++col);
+                    r.setRow(row-1);
+                    r.setCol(col+1);
                 }
+                break;
             case 3: // Right
-                    r.setCol(++col);
+                    r.setCol(col+1);
+                    break;
             case 4: // Down and right
+                System.out.println(r.getDir());
                 if (row < 4) {
-                    r.setRow(++row);
-                    r.setCol(++col);
+                    r.setRow(row+1);
+                    r.setCol(col+1);
                 } else {
-                    r.setRow(++row);
+                    r.setRow(row+1);
                 }
+                break;
             case 5: // Down and left
                 if (row < 4) {
-                    r.setRow(++row);
+                    r.setRow(row+1);
                 } else {
-                    r.setRow(++row);
-                    r.setCol(--col);
+                    r.setRow(row+1);
+                    r.setCol(col-1);
                 }
+                break;
             case 6: // Left
-                    r.setCol(--col);
+                    r.setCol(col-1);
+                    break;
         }
     }
 
