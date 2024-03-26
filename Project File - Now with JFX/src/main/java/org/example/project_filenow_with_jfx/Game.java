@@ -65,10 +65,8 @@ public class Game {
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
-            /* if checkReturn(r, atomNeighbors) -> TODO - Sprint 3
-            else if checkDoubleBounce(r, atomNeighbors) ->TODO - Sprint 3
-            else if checkBounce(r, atomNeighbors) -> TODO - Sprint 3
-            else*/ if (hitAtom(r, atomNeighbors)) break;
+            if (checkBounce(r, atomNeighbors);
+            else if (hitAtom(r, atomNeighbors)) break;
 
             // Moving       ----------
 
@@ -128,9 +126,11 @@ public class Game {
      * Checks given atom flags with true atoms,
      * calculates score, and ends the game
      * @param atomFlags Array of flags to be checked with true atoms
+     * @return score for given flags and atoms
      */
-    public void submitGame(Atom[] atomFlags) {
+    public int submitGame(Atom[] atomFlags) {
         // TODO - sprint 4
+        return 0;
     }
 
 
@@ -177,11 +177,6 @@ public class Game {
         }
 
         return bounce;
-    }
-
-    private boolean checkReturn(Ray r, boolean[] atomNeighbors) {
-        // TODO - Sprint 3
-        return false;
     }
 
     /**

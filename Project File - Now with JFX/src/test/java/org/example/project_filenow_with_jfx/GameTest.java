@@ -10,8 +10,17 @@ public class GameTest {
     Game g = new Game();
     Ray r = new Ray(4,4,1,27);
 
+    @Test
     public void setAtoms() {
-        g.setAtoms(new Atom(1,1,false), new Atom(2,2, false));
+        g.setAtoms(new Atom(1,1,false), new Atom(2, 2, false));
+        assertEquals(g.trueAtoms[0], (new Atom(1, 1, false)));
+        assertEquals(g.trueAtoms[1], (new Atom(2, 2, false)));
+    }
+
+    @Test
+    public void setAtomsRand(){
+        g.setAtoms();
+        assertEquals(4, g.trueAtoms.length);
     }
 
     @Test
