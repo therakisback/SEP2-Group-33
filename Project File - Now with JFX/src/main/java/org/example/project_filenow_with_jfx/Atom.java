@@ -84,4 +84,26 @@ public class Atom {
         }
         return atoms;
     }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Atom a) {
+
+            if (a.getCol() != this.getCol()) return false;
+            if (a.getRow() != this.getRow()) return false;
+            if (a.isFlag() != this.isFlag()) return false;
+            return true;
+
+        } else return false;
+    }
+
+    static public boolean equals(Object obj1, Object obj2) {
+        if (obj1 instanceof Atom a && obj2 instanceof Atom b) {
+
+            if (a.getCol() != b.getCol()) return false;
+            if (a.getRow() != b.getRow()) return false;
+            if (a.isFlag() != b.isFlag()) return false;
+            return true;
+
+        } else return false;
+    }
 }

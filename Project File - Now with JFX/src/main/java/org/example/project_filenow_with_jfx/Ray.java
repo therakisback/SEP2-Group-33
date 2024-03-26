@@ -174,4 +174,27 @@ public class Ray {
         }
         return proximity;
     }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Ray r) {
+
+            // Using the two properties that are (mostly) unchanging for the ray,
+            //   as the same ray travels through multiple location and directions
+            //   they would be a bad way to judge whether the rays are equal
+            if (r.getStart() != this.getStart()) return false;
+            if (r.getResult() != this.getResult()) return false;
+            return true;
+
+        } else return false;
+    }
+
+    static public boolean equals(Object obj1, Object obj2) {
+        if (obj1 instanceof Ray r1 && obj2 instanceof Ray r2) {
+
+            if (r1.getStart() != r2.getStart()) return false;
+            if (r1.getResult() != r2.getResult()) return false;
+            return true;
+
+        } else return false;
+    }
 }
