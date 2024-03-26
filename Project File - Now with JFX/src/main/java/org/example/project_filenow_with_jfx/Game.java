@@ -109,14 +109,13 @@ public class Game {
     public void setAtoms() {
         Random random = new Random();
         int row = random.nextInt(9);
-        if (row < 0 || row > 8) throw new IllegalArgumentException("Row has to be between 0 and 8, inclusive");
         trueAtoms = new Atom[4];
         int col = 0;
         int n = 2;
         for (int i = 0; i < 4; i++) {
-            if (row >= 0 && row < 5) {
+            if (row < 5) {
                 col = random.nextInt(row + 4) + 1;
-            } else if (row >= 5 && row < 9) {
+            } else {
                 col = random.nextInt(row + n) + 1;
                 n = n - 2;
             }
@@ -124,9 +123,6 @@ public class Game {
             trueAtoms[i] = new Atom(row, col);
         }
     }
-
-
-
 
     /**
      * Checks given atom flags with true atoms,
@@ -137,11 +133,50 @@ public class Game {
         // TODO - sprint 4
     }
 
-    private boolean hitAtom(Ray r, boolean[] rneighbors){
-        boolean hitAtom = false;
-        //checks if all neighbours of ray are not atoms, returns true if one of them is
 
-        return false;
+    //direct hit based on direction, 6 cases
+    //ray needed for setEnd and direction change
+    private boolean hitAtom(Ray r, boolean[] atomNeighbors){
+        boolean hit = false;
+        switch (r.getDir()){
+            case 1:
+                if (atomNeighbors[0]) hit = true;
+            case 2:
+                if (atomNeighbors[1]) hit = true;
+            case 3:
+                if (atomNeighbors[3]) hit = true;
+            case 4:
+                if (atomNeighbors[5]) hit = true;
+            case 5:
+                if (atomNeighbors[4]) hit = true;
+            case 6:
+                if (atomNeighbors[2]) hit = true;
+        }
+        if (hit) r.setEnd(-1);
+        return hit;
+    }
+
+    private boolean checkBounce(Ray r, boolean[]atomNeighbors){
+        boolean bounce = false;
+
+        return bounce;
+    }
+
+    private boolean checkDoubleBounce(Ray r, boolean[]atomNeighbors){
+        boolean bounce = false;
+        switch (r.getDir()){
+            case 1:
+                if (atomNeighbors[0] && atomNeighbors[1]) bounce = true;
+            case 2:
+                if (atomNeighbors[2] && atomNeighbors[4]) bounce = true;
+            case 3:
+                if (atomNeighbors[2] && atomNeighbors[4]) bounce = true;
+            case 4:
+            case 5:
+            case 6:
+        }
+
+        return bounce;
     }
 
     /**
