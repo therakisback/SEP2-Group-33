@@ -106,4 +106,12 @@ public class Atom {
 
         } else return false;
     }
+
+    public String toString() {
+        return ("Position: (" + col + ", " + row + ") \tFlag:" + flag);
+    }
+
+    static public String toString(Atom a) {
+        return ("Position: (" + a.getRow() + ", " + a.getCol() + ") \tFlag:" + a.isFlag());
+    }
 }

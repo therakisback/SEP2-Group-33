@@ -20,7 +20,8 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
 
-
+        game.setAtoms(new Atom(1,1,false));
+        System.out.println(game.trueAtoms[0]);
 
 
         // Generate random atoms for game

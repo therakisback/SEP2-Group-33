@@ -65,7 +65,7 @@ public class Game {
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
-            if (checkBounce(r, atomNeighbors);
+            if (checkBounce(r, atomNeighbors)) System.out.println(".");
             else if (hitAtom(r, atomNeighbors)) break;
 
             // Moving       ----------

@@ -197,4 +197,12 @@ public class Ray {
 
         } else return false;
     }
+
+    public String toString() {
+        return ("Position: (" + row + ", " + col + ") \tStart: " + start + "\tResult: " + end);
+    }
+
+    static public String toString(Ray r) {
+        return ("Position: (" + r.getRow() + ", " + r.getCol() + ") \tStart: " + r.getStart() + "\tResult: " + r.getResult());
+    }
 }
