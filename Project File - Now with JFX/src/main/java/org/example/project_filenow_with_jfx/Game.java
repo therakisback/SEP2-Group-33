@@ -60,7 +60,7 @@ public class Game {
                 }
                 index++;
             }
-
+            
             // Atoms        ----------
 
             // Checks for atoms to change directions / absorb
