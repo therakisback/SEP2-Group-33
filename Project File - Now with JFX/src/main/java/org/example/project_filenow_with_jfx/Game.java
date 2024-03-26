@@ -46,7 +46,7 @@ public class Game {
         if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
 
         // Main tick loop   ---------
-
+        boolean start = true;      // Boolean to check if its the first tick of the ray.
         while(true) {
             // Calculate atomNeighbors - could probably optimise, but 24 checks is not worth it
             // created here so "atom checkers" don't have to create their own
@@ -61,12 +61,24 @@ public class Game {
                 index++;
             }
 
+            // Handles if the ray is created with an atom next to it.
+            if (start) {
+                start = false;
+                for (boolean a : atomNeighbors) {
+                    if (a) {
+                        r.setEnd(-2);
+                        break;
+                    }
+                }
+            }
+
             // Atoms        ----------
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
-            if (checkBounce(r, atomNeighbors)) System.out.println(".");
-            else if (hitAtom(r, atomNeighbors)) break;
+            if (!checkBounce(r, atomNeighbors)) {
+                if (hitAtom(r, atomNeighbors)) break;
+            }
 
             // Moving       ----------
 
