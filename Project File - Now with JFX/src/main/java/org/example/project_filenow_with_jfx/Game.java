@@ -32,7 +32,7 @@ public class Game {
      * Calculates the path and result of given ray
      * @param r Ray object to be used.
      */
-    public void calculateRay(Ray r) throws Exception{
+    public void calculateRay(Ray r) throws IllegalArgumentException{
 
         // Starting variables / Actions
 
@@ -43,7 +43,7 @@ public class Game {
         castRays.add(r);
 
         // If there are no atoms at all the game has been started wrong
-        if (trueAtoms == null) {throw new Exception("Atoms not created before attempting ray");}
+        if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
 
         // Main tick loop   ---------
 

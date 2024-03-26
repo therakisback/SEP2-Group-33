@@ -7,66 +7,50 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTest {
     // Test atom hit cases
 
+    Game g = new Game();
+    Ray r = new Ray(4,4,1,27);
+
+    public void setAtoms() {
+        g.setAtoms(new Atom(1,1,false), new Atom(2,2, false));
+    }
+
     @Test
     public void checkReturn() {
-        Ray r = new Ray(4,4,1,-1);
-        boolean[] neighbors = {true, true, false, false, false, false};
-
-        assertTrue(checkReturn(r, neighbors));
+        g.setAtoms(new Atom(4,3, false), new Atom(3,4, false));
+        g.calculateRay(r);
+        assertEquals(-2, r.getResult());
     }
 
     @Test
     public void checkDoubleBounce() {
+        //test 1
+        g.setAtoms(new Atom(4,3, false), new Atom(3,3, false));
+        g.calculateRay(r);
+        assertEquals(36, r.getResult());
 
+        //test 2
+        g.setAtoms(new Atom(3,3, false), new Atom(3,4, false));
+        g.calculateRay(r);
+        assertEquals(18, r.getResult());
     }
 
     @Test
     public void checkBounce() {
+        // test 1
+        g.setAtoms(new Atom(4,3, false));
+        g.calculateRay(r);
+        assertEquals(45, r.getResult());
 
+        //test 2
+        g.setAtoms(new Atom(3,4, false));
+        g.calculateRay(r);
+        assertEquals(9, r.getResult());
     }
 
     @Test
-    public void hit() {
-
+    public void checkHit() {
+        g.setAtoms(new Atom(3,3, false));
+        g.calculateRay(r);
+        assertEquals(-1, r.getResult());
     }
-
-    // Test ray moving correctly
-
-    @Test
-    public void moveRay() {
-
-    }
-
-    // Test edge hit cases
-
-    @Test
-    public void dir1() {
-
-    }
-
-    @Test
-    public void dir2() {
-
-    }
-
-    @Test
-    public void dir3() {
-
-    }
-
-    @Test
-    public void dir4() {
-
-    }
-
-    @Test
-    public void dir5() {
-
-    }
-
-    @Test
-    public void dir6() {
-
-    }
-
 }
