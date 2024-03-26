@@ -32,7 +32,7 @@ public class Game {
      * Calculates the path and result of given ray
      * @param r Ray object to be used.
      */
-    public void calculateRay(Ray r) throws Exception{
+    public void calculateRay(Ray r) throws IllegalArgumentException{
 
         // Starting variables / Actions
 
@@ -43,7 +43,7 @@ public class Game {
         castRays.add(r);
 
         // If there are no atoms at all the game has been started wrong
-        if (trueAtoms == null) {throw new Exception("Atoms not created before attempting ray");}
+        if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
 
         // Main tick loop   ---------
 
@@ -65,10 +65,8 @@ public class Game {
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
-            /* if checkReturn(r, atomNeighbors) -> TODO - Sprint 3
-            else if checkDoubleBounce(r, atomNeighbors) ->TODO - Sprint 3
-            else if checkBounce(r, atomNeighbors) -> TODO - Sprint 3
-            else*/ if (hitAtom(r, atomNeighbors)) break;
+            if (checkBounce(r, atomNeighbors);
+            else if (hitAtom(r, atomNeighbors)) break;
 
             // Moving       ----------
 
@@ -127,9 +125,11 @@ public class Game {
      * Checks given atom flags with true atoms,
      * calculates score, and ends the game
      * @param atomFlags Array of flags to be checked with true atoms
+     * @return score for given flags and atoms
      */
-    public void submitGame(Atom[] atomFlags) {
+    public int submitGame(Atom[] atomFlags) {
         // TODO - sprint 4
+        return 0;
     }
 
 
