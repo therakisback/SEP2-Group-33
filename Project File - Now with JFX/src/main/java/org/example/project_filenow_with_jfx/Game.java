@@ -179,6 +179,11 @@ public class Game {
         return bounce;
     }
 
+    private boolean checkReturn(Ray r, boolean[] atomNeighbors) {
+        // TODO - Sprint 3
+        return false;
+    }
+
     /**
      * Used to move ray one step
      * based on the rays direction and position
