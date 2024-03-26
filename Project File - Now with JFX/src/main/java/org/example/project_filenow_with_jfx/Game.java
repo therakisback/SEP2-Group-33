@@ -68,23 +68,23 @@ public class Game {
                 }
 
             // Handles if the ray is created with an atom next to it.
-            /*if (count == 0) {
+            if (count == 0) {
                 for (boolean a : atomNeighbors) {
                     if (a) {
                         r.setEnd(-2);
                         break;
                     }
                 }
-            }*/
+            }
 
             // Atoms        ----------
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
             if (atomsNearby) {
-                if (!checkBounce(r, atomNeighbors)) {
-                    if (hitAtom(r, atomNeighbors)) break;
-                }
+                if (checkBounce(r, atomNeighbors)) {
+                    checkBounce(r, atomNeighbors);
+                } else if (hitAtom(r, atomNeighbors)) break;
             }
 
             // Moving       ----------
@@ -96,7 +96,7 @@ public class Game {
             // Debug        ----------
             if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infite looping
             count++;
-            System.out.println(r);
+            //System.out.println(Ray.toString(r));
 
             // Check if ray is done (I.E. at edge hex, heading towards edge)
             // Done after moving so that we have no risk of running off the board
@@ -104,10 +104,10 @@ public class Game {
             if (edge == -1)  continue;
             else if (edge == r.getStart()){
                 r.setEnd(-2);
-                break;
+                return;
             } else {
                 r.setEnd(edge);
-                break;
+                return;
             }
         }
     }
@@ -307,7 +307,6 @@ public class Game {
                     r.setCol(col+1);
                     break;
             case 4: // Down and right
-                System.out.println(r.getDir());
                 if (row < 4) {
                     r.setRow(row+1);
                     r.setCol(col+1);
@@ -360,20 +359,20 @@ public class Game {
                     else          return -1;
                 };
                 return switch (row) {
-                    case 0 -> switch (col) {
+                    case 0: switch (col) {
                         // k.run does not work here, as edge is based on col
-                        case 0  -> 53;
-                        case 1  -> 51;
-                        case 2  -> 49;
-                        case 3  -> 47;
-                        case 4  -> 45;
-                        default -> -1;
-                    };
-                    case 1  -> i.run(5);
-                    case 2  -> i.run(6);
-                    case 3  -> i.run(7);
-                    case 4  -> i.run(8);
-                    default -> -1;
+                        case 0:  yield 53;
+                        case 1:  yield 51;
+                        case 2:  yield 49;
+                        case 3:  yield 47;
+                        case 4:  yield 45;
+                        default: yield -1;
+                    }
+                    case 1:  yield i.run(5);
+                    case 2:  yield i.run(6);
+                    case 3:  yield i.run(7);
+                    case 4:  yield i.run(8);
+                    default: yield -1;
                 };                              // edge 37 - 53 odd
             case 3:
                 i = (int a) -> {
@@ -403,7 +402,7 @@ public class Game {
                             case 1  -> 21;
                             case 2  -> 23;
                             case 3  -> 25;
-                            case 4  -> i.run(4);
+                            case 4  -> 27;
                             default -> -1;
                         };
                     default -> -1;

@@ -84,7 +84,11 @@ public class Ray {
      * @param direction New ray direction input.
      */
     public void setDir(int direction) {
-        this.direction = ((direction - 1) % 6) + 1; // Allow any integer and map it to the proper ones.
+        int temp;
+        temp = (direction - 1) % 6;
+        if (temp < 0) temp += 6;
+        this.direction = (temp + 1); // Allow any integer and map it to the proper ones.
+
     }
 
     /**

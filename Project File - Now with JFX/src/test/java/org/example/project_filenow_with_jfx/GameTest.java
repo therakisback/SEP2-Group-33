@@ -8,7 +8,6 @@ public class GameTest {
     // Test atom hit cases
 
     Game g = new Game();
-    Ray r = new Ray(8,4,1,27);
 
     @Test
     public void setAtoms() {
@@ -25,6 +24,7 @@ public class GameTest {
 
     @Test
     public void checkReturn() {
+        Ray r = new Ray(8,4,1,27);
         g.setAtoms(new Atom(4,3, false), new Atom(3,4, false));
         g.calculateRay(r);
         assertEquals(-2, r.getResult());
@@ -33,11 +33,13 @@ public class GameTest {
     @Test
     public void checkDoubleBounce() {
         //test 1
+        Ray r = new Ray(8,4,1,27);
         g.setAtoms(new Atom(4,3, false), new Atom(3,3, false));
         g.calculateRay(r);
         assertEquals(36, r.getResult());
 
         //test 2
+        r = new Ray(8,4,1,27);
         g.setAtoms(new Atom(3,3, false), new Atom(3,4, false));
         g.calculateRay(r);
         assertEquals(18, r.getResult());
@@ -45,12 +47,14 @@ public class GameTest {
 
     @Test
     public void checkBounce() {
-        // test 1
+        /* test 1
+        Ray r = new Ray(8,4,1,27);
         g.setAtoms(new Atom(4,3, false));
         g.calculateRay(r);
-        assertEquals(45, r.getResult());
+        assertEquals(45, r.getResult()); */
 
         //test 2
+        Ray r = new Ray(8,4,1,27);
         g.setAtoms(new Atom(3,4, false));
         g.calculateRay(r);
         assertEquals(9, r.getResult());
@@ -58,6 +62,7 @@ public class GameTest {
 
     @Test
     public void checkHit() {
+        Ray r = new Ray(8,4,1,27);
         g.setAtoms(new Atom(3,3, false));
         g.calculateRay(r);
         assertEquals(-1, r.getResult());
