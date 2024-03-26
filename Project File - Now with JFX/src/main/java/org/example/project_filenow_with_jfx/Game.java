@@ -168,16 +168,22 @@ public class Game {
         switch (r.getDir()){
             case 1:
                 if (atomNeighbors[0]) hit = true;
+                break;
             case 2:
                 if (atomNeighbors[1]) hit = true;
+                break;
             case 3:
                 if (atomNeighbors[3]) hit = true;
+                break;
             case 4:
                 if (atomNeighbors[5]) hit = true;
+                break;
             case 5:
                 if (atomNeighbors[4]) hit = true;
+                break;
             case 6:
                 if (atomNeighbors[2]) hit = true;
+                break;
         }
         if (hit) r.setEnd(-1);
         return hit;
@@ -205,6 +211,7 @@ public class Game {
                     bounce = true;
                     r.setDir(++dir);
                 }
+                break;
             case 2:
                 //return
                 if (atomNeighbors[0] && atomNeighbors[3]){
@@ -216,6 +223,7 @@ public class Game {
                     bounce = true;
                     r.setDir(--dir);
                 }
+                break;
             case 3:
                 //return
                 if (atomNeighbors[1] && atomNeighbors[5]){
@@ -227,6 +235,7 @@ public class Game {
                     bounce = true;
                     r.setDir(--dir);
                 }
+                break;
             case 4:
                 //return
                 if (atomNeighbors[3] && atomNeighbors[4]){
@@ -238,6 +247,7 @@ public class Game {
                     bounce = true;
                     r.setDir(--dir);
                 }
+                break;
             case 5:
                 //return
                 if (atomNeighbors[2] && atomNeighbors[5]){
@@ -249,6 +259,7 @@ public class Game {
                     bounce = true;
                     r.setDir(++dir);
                 }
+                break;
             case 6:
                 //return
                 if (atomNeighbors[0] && atomNeighbors[4]){
@@ -260,6 +271,7 @@ public class Game {
                     bounce = true;
                     r.setDir(++dir);
                 }
+                break;
         }
         return bounce;
     }
