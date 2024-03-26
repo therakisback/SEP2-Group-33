@@ -60,7 +60,7 @@ public class Game {
                 }
                 index++;
             }
-            
+
             // Atoms        ----------
 
             // Checks for atoms to change directions / absorb
@@ -119,7 +119,6 @@ public class Game {
                 col = random.nextInt(row + n) + 1;
                 n = n - 2;
             }
-            //I need n to be -2, -4
             trueAtoms[i] = new Atom(row, col);
         }
     }
@@ -134,8 +133,12 @@ public class Game {
     }
 
 
-    //direct hit based on direction, 6 cases
-    //ray needed for setEnd and direction change
+    /**
+     * @param r - ray to traverse board
+     * @param atomNeighbors - array of booleans containing positions
+     *                      of atom's neighbours
+     *
+     */
     private boolean hitAtom(Ray r, boolean[] atomNeighbors){
         boolean hit = false;
         switch (r.getDir()){
@@ -156,26 +159,84 @@ public class Game {
         return hit;
     }
 
+    /**
+     * @param r - ray to traverse board
+     * @param atomNeighbors - array of booleans containing positions
+     *                      of atom's neighbours
+     *
+     */
+
     private boolean checkBounce(Ray r, boolean[]atomNeighbors){
         boolean bounce = false;
-
-        return bounce;
-    }
-
-    private boolean checkDoubleBounce(Ray r, boolean[]atomNeighbors){
-        boolean bounce = false;
-        switch (r.getDir()){
+        int dir = r.getDir();
+        switch (dir){
             case 1:
-                if (atomNeighbors[0] && atomNeighbors[1]) bounce = true;
+                //return
+                if (atomNeighbors[1] && atomNeighbors[2]){
+                    r.setDir(dir+3);
+                }else if (atomNeighbors[1]){
+                    bounce = true;
+                    r.setDir(--dir);
+                }else if (atomNeighbors[2]){
+                    bounce = true;
+                    r.setDir(++dir);
+                }
             case 2:
-                if (atomNeighbors[2] && atomNeighbors[4]) bounce = true;
+                //return
+                if (atomNeighbors[0] && atomNeighbors[3]){
+                    r.setDir(dir+3);
+                }else if (atomNeighbors[0]){
+                    bounce = true;
+                    r.setDir(++dir);
+                }else if (atomNeighbors[3]){
+                    bounce = true;
+                    r.setDir(--dir);
+                }
             case 3:
-                if (atomNeighbors[2] && atomNeighbors[4]) bounce = true;
+                //return
+                if (atomNeighbors[1] && atomNeighbors[5]){
+                    r.setDir(dir+3);
+                }else if (atomNeighbors[1]){
+                    bounce = true;
+                    r.setDir(++dir);
+                }else if (atomNeighbors[5]){
+                    bounce = true;
+                    r.setDir(--dir);
+                }
             case 4:
+                //return
+                if (atomNeighbors[3] && atomNeighbors[4]){
+                    r.setDir(dir+3);
+                }else if (atomNeighbors[3]){
+                    bounce = true;
+                    r.setDir(++dir);
+                }else if (atomNeighbors[4]){
+                    bounce = true;
+                    r.setDir(--dir);
+                }
             case 5:
+                //return
+                if (atomNeighbors[2] && atomNeighbors[5]){
+                    r.setDir(dir+3);
+                }else if (atomNeighbors[2]){
+                    bounce = true;
+                    r.setDir(--dir);
+                }else if (atomNeighbors[5]){
+                    bounce = true;
+                    r.setDir(++dir);
+                }
             case 6:
+                //return
+                if (atomNeighbors[0] && atomNeighbors[4]){
+                    r.setDir(dir+3);
+                }else if (atomNeighbors[0]){
+                    bounce = true;
+                    r.setDir(--dir);
+                }else if (atomNeighbors[4]){
+                    bounce = true;
+                    r.setDir(++dir);
+                }
         }
-
         return bounce;
     }
 
