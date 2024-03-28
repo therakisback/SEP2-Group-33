@@ -53,8 +53,8 @@ public class Game {
             atomNeighbors = new boolean[6];
             int index = 0;
             for (int[] arr : r.createNeighbours()) {
-                for (Atom a : trueAtoms) {
-                    if (arr[0] == a.getRow() && arr[1] == a.getCol()) {
+                for (int[] a : Atom.getLocations(trueAtoms)) {
+                    if (arr[0] == a[0] && arr[1] == a[1]) {
                         atomNeighbors[index] = true;
                         break; // breaks only inner loop
                     }
@@ -91,19 +91,19 @@ public class Game {
             // Edge Check   ----------
 
             // Debug        ----------
-            if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infite looping
+            if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infinite looping
             count++;
             //System.out.println(Ray.toString(r));
 
             // Check if ray is done (I.E. at edge hex, heading towards edge)
             // Done after moving so that we have no risk of running off the board
             int edge = onEdge(r);
-            if (edge == -1)  continue;
-            else if (edge == r.getStart()){
-                r.setEnd(-2);
-                return;
-            } else {
-                r.setEnd(edge);
+            if (edge != -1) {
+                if (edge == r.getStart()) {
+                    r.setEnd(-2);
+                } else {
+                    r.setEnd(edge);
+                }
                 return;
             }
         }
@@ -129,7 +129,7 @@ public class Game {
         Random random = new Random();
         int row = random.nextInt(9);
         trueAtoms = new Atom[4];
-        int col = 0;
+        int col;
         int n = 2;
         for (int i = 0; i < 4; i++) {
             if (row < 5) {
@@ -187,7 +187,7 @@ public class Game {
     }
 
     /**
-     * @param r - ray to traverse board
+     * @param r - ray to check for bounce board
      * @param atomNeighbors - array of booleans containing positions
      *                      of atom's neighbours
      *
