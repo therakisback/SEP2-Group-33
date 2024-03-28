@@ -11,15 +11,17 @@ import java.util.ArrayList;
 public class Ray {
 
     // Data variables       ----------
-    private int direction; // Store directions of ray (1-6 -> for each hexagon side)
-    private final int start; // Store starting location of array
+    private int direction;      // Store directions of ray (1-6 -> for each hexagon side)
+    private final int start;    // Store starting location of array
+
     // Store grid location of ray particle thingy (row + col)
     private int row;
     private int col;
-    private int end; // Store result of ray after computed (end location, mark absorbed)
-    // Store path of ray
-    // Stores each num of the grid the ray passed through; can increase as needed
-    private ArrayList<Integer> path;
+    private int end;            // Store result of ray after computed (end location, mark absorbed)
+    /**
+     * Stores the path of the ray in int[] of length 4: [row, col, startDir, endDir]
+     */
+    private ArrayList<int[]> path;
 
     /**
      * Constructor for new ray object.
@@ -92,24 +94,24 @@ public class Ray {
     }
 
     /**
-     * @param row New ray grid location.
+     * Sets ray's row value to new integer
+     * @param row Integer value of grid row
      */
 
     public void setRow(int row) {
         if (row >= 0 && row < 9){
             this.row = row;
-            path.add(row);
         } else throw new IllegalArgumentException("Invalid new row");
 
     }
 
     /**
-     * @param col New ray grid location.
+     * Sets ray's column value to new integer
+     * @param col Integer value of grid column
      */
     public void setCol(int col) {
         if (col >= 0 && col < 9){
             this.col = col;
-            path.add(col);
         } else throw new IllegalArgumentException("Invalid new col");
     }
 
@@ -121,6 +123,21 @@ public class Ray {
             throw new IllegalArgumentException("Invalid result for end of ray path");
         }
         this.end = end;
+    }
+
+    /**
+     * Adds current row, column, and direction to path variable, with past direction stored.
+     */
+    public void addToPath(int pastDirection) {
+        path.add(new int[] {row, col, direction, pastDirection});
+    }
+
+    /**
+     * get the arraylist for the path values
+     * @return list of integer arrays signifying each hexagon: [row, column, endDirection, startDirection]
+     */
+    public ArrayList<int[]> getPath() {
+        return path;
     }
 
     /**

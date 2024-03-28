@@ -4,6 +4,7 @@ package org.example.project_filenow_with_jfx;//import
 
 import org.example.project_filenow_with_jfx.Game;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -20,8 +21,14 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
 
-        game.setAtoms(new Atom(1,1,false));
-        System.out.println(game.trueAtoms[0]);
+        game.setAtoms();
+        Ray r = new Ray(8,4,1,27);
+        game.calculateRay(r);
+        ArrayList<int[]> arr = r.getPath();
+        for (int[] a : arr) {
+            System.out.println("Row: " + a[0] + " \tCol: " + a[1] + " \tEnd Dir: " + a[2] + " \tStart Dir: " + a[3]);
+        }
+
 
 
         // Generate random atoms for game

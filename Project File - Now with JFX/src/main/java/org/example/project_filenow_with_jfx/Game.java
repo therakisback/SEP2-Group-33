@@ -13,11 +13,9 @@ import java.util.Random;
 public class Game {
 
     // Class variables      ----------
-
-    // TODO
-    Atom[] trueAtoms;
-    ArrayList<Ray> castRays= new ArrayList<>();
-    int score;
+    private Atom[] trueAtoms;
+    private ArrayList<Ray> castRays = new ArrayList<>();
+    private int score;
 
     /**
      * Constructor for game class, should only be used once in controller class.
@@ -37,8 +35,8 @@ public class Game {
         // Starting variables / Actions
 
         // set true where there is an atom
-        boolean[] atomNeighbors = new boolean[6];
-        boolean atomsNearby = false;
+        boolean[] atomNeighbors;
+        int pastDirection;
 
         // Ray added to list of all rays cast to show at end of game
         castRays.add(r);
@@ -47,10 +45,12 @@ public class Game {
         if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
 
         // Main tick loop   ---------
-        int count = 0;      // Boolean to check if its the first tick of the ray.
+        int count = 0;      // Boolean to check if it's the first tick of the ray.
         while(true) {
-            // Calculate atomNeighbors - could probably optimise, but 24 checks is not worth it
-            // created here so "atom checkers" don't have to create their own
+            // Basic Checks ----------
+            // Check hexagons neighboring ray for atoms
+            // created here so "atom bounce checkers" don't have to create their own
+            atomNeighbors = new boolean[6];
             int index = 0;
             for (int[] arr : r.createNeighbours()) {
                 for (Atom a : trueAtoms) {
@@ -61,11 +61,6 @@ public class Game {
                 }
                 index++;
             }
-            for (boolean a : atomNeighbors)
-                if (a) {
-                    atomsNearby = true;
-                    break;
-                }
 
             // Handles if the ray is created with an atom next to it.
             if (count == 0) {
@@ -77,15 +72,17 @@ public class Game {
                 }
             }
 
+            pastDirection = r.getDir();
+
             // Atoms        ----------
 
             // Checks for atoms to change directions / absorb
             // Done before moving for hopefully obvious reasons.
-            if (atomsNearby) {
-                if (checkBounce(r, atomNeighbors)) {
-                    checkBounce(r, atomNeighbors);
-                } else if (hitAtom(r, atomNeighbors)) break;
-            }
+            if (checkBounce(r, atomNeighbors)) {
+                checkBounce(r, atomNeighbors);
+            } else if (hitAtom(r, atomNeighbors)) break;
+
+            r.addToPath(pastDirection);
 
             // Moving       ----------
 
