@@ -18,7 +18,7 @@ public class Ray {
     private int col;
     private int end; // Store result of ray after computed (end location, mark absorbed)
     // Store path of ray
-    //stores each num of the grid the ray passed through; can increase as needed
+    // Stores each num of the grid the ray passed through; can increase as needed
     private ArrayList<Integer> path;
 
     /**
@@ -84,7 +84,11 @@ public class Ray {
      * @param direction New ray direction input.
      */
     public void setDir(int direction) {
-        this.direction = ((direction - 1) % 6) + 1; // Allow any integer and map it to the proper ones.
+        int temp;
+        temp = (direction - 1) % 6;
+        if (temp < 0) temp += 6;
+        this.direction = (temp + 1); // Allow any integer and map it to the proper ones.
+
     }
 
     /**
@@ -122,14 +126,14 @@ public class Ray {
     /**
      * no need to check if the positions of the neighbours are valid
      * because we're only checking if atoms are in that position and there are only 6 neighbours
-     * @return the neighbours of the ray in a 2d array form
+     * @return the neighbours of the ray in a 2d array form (row, column)
      */
 
     public int[][] createNeighbours(){
         ArrayList<Integer> neighbours = new ArrayList<>();
         int newRow, newCol;
         //pattern for neighbours of positions on top half of board
-        if (row >=0 && row < 4) {
+        if (row >= 0 && row < 4) {
             for (int i = -1; i < 2; i++) {
                 for (int j = -1; j < 2; j++) {
                     if ((i == -1 && j == 1) || (i == 0 && j == 0) || (i == 1 && j == -1))
@@ -173,5 +177,36 @@ public class Ray {
             count++;
         }
         return proximity;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Ray r) {
+
+            // Using the two properties that are (mostly) unchanging for the ray,
+            //   as the same ray travels through multiple location and directions
+            //   they would be a bad way to judge whether the rays are equal
+            if (r.getStart() != this.getStart()) return false;
+            if (r.getResult() != this.getResult()) return false;
+            return true;
+
+        } else return false;
+    }
+
+    static public boolean equals(Object obj1, Object obj2) {
+        if (obj1 instanceof Ray r1 && obj2 instanceof Ray r2) {
+
+            if (r1.getStart() != r2.getStart()) return false;
+            if (r1.getResult() != r2.getResult()) return false;
+            return true;
+
+        } else return false;
+    }
+
+    public String toString() {
+        return ("Position: (" + row + ", " + col + ") \tStart: " + start + "\tResult: " + end);
+    }
+
+    static public String toString(Ray r) {
+        return ("Position: (" + r.getRow() + ", " + r.getCol() + ") \tStart: " + r.getStart() + "\tResult: " + r.getResult());
     }
 }
