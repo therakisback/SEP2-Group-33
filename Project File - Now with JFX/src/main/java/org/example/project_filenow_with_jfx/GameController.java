@@ -4,17 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.input.MouseEvent;
 
-public class HelloController {
+import java.util.HashMap;
+
+public class GameController {
     @FXML
     public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
     oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -27,16 +24,55 @@ public class HelloController {
     eightZero, eightOne, eightTwo, eightThree, eightFour;
 
 
-    private double x,y;
+    private int flag = 0;
+    public Game game = new Game();
+
     @FXML
-    private void up(MouseEvent e) {
-        System.out.println("UP");
+    private void createAtom(MouseEvent e) {
+
+        int[] atom_place;
+        Polygon source = (Polygon) e.getSource();
+        String string = source.getId();
+        String[] parts = string.split("(?=[A-Z])");
+
+        atom_place = convertToNumbers(parts);
+        Atom atom = new Atom(atom_place[1], atom_place[0], false);
+        System.out.println("Atom created, " + atom.toString());
+
     }
+
+    private int[] convertToNumbers(String[] parts) {
+        int[] array = new int[2];
+        HashMap<String, Integer> numbers= new HashMap<String, Integer>();
+        numbers.put("zero", 0);
+        numbers.put("one", 1);
+        numbers.put("two", 2);
+        numbers.put("three", 3);
+        numbers.put("four", 4);
+        numbers.put("five", 5);
+        numbers.put("six", 6);
+        numbers.put("seven", 7);
+        numbers.put("eight", 8);
+
+        for(int i = 0; i < 2; i++){
+            array[i] = numbers.getOrDefault(parts[i].toLowerCase(), 0);
+        }
+        return array;
+    }
+
     @FXML
     private void placeAtom(MouseEvent e) {
-        System.out.println("Dropped the atom");
+
+        Atom a = new Atom(3,3 ,true);
         Polygon source = (Polygon) e.getSource();
-        source.setFill(Color.YELLOW);
+        if(source.getFill() == Color.YELLOW) {
+            source.setFill(Color.DODGERBLUE);
+            System.out.println("Removed atom flag");
+        }
+        else{
+            source.setFill(Color.YELLOW);
+            System.out.println("Placed atom flag");
+        }
     }
 
     @FXML
@@ -44,7 +80,7 @@ public class HelloController {
     @FXML
     private AnchorPane scenePane;
 
-    Stage stage;
+        Stage stage;
     @FXML
     public void logout(ActionEvent event){
 

@@ -14,7 +14,7 @@ public class Display_Board extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game-board.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Black Box");
         stage.setScene(scene);
 
         stage.show();
@@ -24,7 +24,7 @@ public class Display_Board extends Application {
             logout(stage);
         });
     }
-    public void logout(Stage stage){
+    public void logout(Stage stage){//logout function to exit the game
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
@@ -32,7 +32,6 @@ public class Display_Board extends Application {
         alert.setContentText("Are you sure you want to stop playing this super fun game???");
 
         if(alert.showAndWait().get() == ButtonType.OK){
-
             System.out.println("Great Success");
             stage.close();
         }
