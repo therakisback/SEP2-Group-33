@@ -70,7 +70,7 @@
       <Polygon fx:id="threeZero" fill="DODGERBLUE" layoutX="-2.0" layoutY="186.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="fiveZero" fill="DODGERBLUE" layoutX="-2.0" layoutY="273.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Button fx:id="logoutButton" layoutX="510.0" layoutY="28.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
-      <Label layoutX="163.0" layoutY="500.0" prefHeight="38.0" prefWidth="262.0" text="Place atoms by selecting quadrant" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="120.0" layoutY="500.0" prefHeight="38.0" prefWidth="375.0" text="Place or remove atom flags by selecting quadrant" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Myanmar Text Bold" size="16.0" />
          </font>

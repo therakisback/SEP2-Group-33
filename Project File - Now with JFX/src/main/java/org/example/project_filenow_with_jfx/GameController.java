@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +24,8 @@ public class GameController {
     sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
     eightZero, eightOne, eightTwo, eightThree, eightFour;
 
+    public Circle atom;
+
 
     private int flag = 0;
     public Game game = new Game();
@@ -38,8 +41,17 @@ public class GameController {
         atom_place = convertToNumbers(parts);
         Atom atom = new Atom(atom_place[1], atom_place[0], false);
         System.out.println("Atom created, " + atom.toString());
-
     }
+    /*@FXML
+    private void endGame(MouseEvent e) {
+        Circle source = (Circle) e.getSource();
+        //source.setOpacity(1);
+        //source.setId();
+        if(atom.getOpacity() == 0){
+            atom.setOpacity(1);
+        }
+
+    }*/
 
     private int[] convertToNumbers(String[] parts) {
         int[] array = new int[2];
@@ -85,13 +97,13 @@ public class GameController {
     public void logout(ActionEvent event){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
+        alert.setTitle("Exit");
         alert.setHeaderText("You are about to exit!");
         alert.setContentText("Are you sure you want to stop playing this super fun game???");
 
         if(alert.showAndWait().get() == ButtonType.OK){
             stage = (Stage) scenePane.getScene().getWindow();
-            System.out.println("Great Success");
+            System.out.println("Thanks for playing");
             stage.close();
         }
 
