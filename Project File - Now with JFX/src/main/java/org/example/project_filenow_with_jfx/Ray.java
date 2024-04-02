@@ -127,6 +127,7 @@ public class Ray {
 
     /**
      * Adds current row, column, and direction to path variable, with past direction stored.
+     * <p>[row, column, endDirection, startDirection]
      */
     public void addToPath(int pastDirection) {
         path.add(new int[] {row, col, direction, pastDirection});

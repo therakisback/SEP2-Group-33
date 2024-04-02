@@ -20,10 +20,20 @@ public class Game {
     private int score;
 
     /**
-     * Constructor for game class, should only be used once in controller class.
+     * Constructor for Game class objects
+     * No arguments - creates atoms randomly
      */
     public Game() {
+        setAtoms();
+    }
 
+    /**
+     * Constuctor for Game class objects
+     * @param args Atoms to be used for the game in place of random generation
+     */
+    public Game(Atom... args){
+        if(args.length != 4) throw new IllegalArgumentException("Must have four atoms");
+        setAtoms(args);
     }
 
     // Class functions      ----------
@@ -101,6 +111,7 @@ public class Game {
             // Done after moving so that we have no risk of running off the board
             int edge = onEdge(r);
             if (edge != -1) {
+                r.addToPath(r.getDir());
                 if (edge == r.getStart()) {
                     r.setEnd(-2);
                 } else {

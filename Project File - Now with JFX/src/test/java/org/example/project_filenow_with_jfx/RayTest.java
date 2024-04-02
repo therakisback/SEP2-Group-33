@@ -1,14 +1,13 @@
 package org.example.project_filenow_with_jfx;
 
+import org.junit.Test;
 
-import org.testng.annotations.Test;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
-class RayTest {
+public class RayTest {
 
     Ray r;
 
@@ -138,5 +137,16 @@ class RayTest {
     public void createNeighboursBottomEdge(){
         r = new Ray(8, 4, 5, 3);
         assertEquals("[[7, 4], [7, 5], [8, 3], [8, 5], [9, 3], [9, 4]]", Arrays.deepToString(r.createNeighbours()));
+    }
+
+    @Test
+    public void path() {
+        r = new Ray(8,4,1,27);
+        Game g = new Game(new Atom(8,0,false), new Atom(7,0,false), new Atom(6,0,false), new Atom(5,0,false));
+        g.calculateRay(r);
+        assertEquals(0, r.getResult());
+        ArrayList<int[]> path = r.getPath();
+        assertEquals("[8, 4, 1, 1]", Arrays.toString(path.getFirst()));
+        assertEquals("[0, 0, 1, 1]", Arrays.toString(path.getLast()));
     }
 }
