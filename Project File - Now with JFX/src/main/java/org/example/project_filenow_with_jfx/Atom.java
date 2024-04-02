@@ -78,7 +78,7 @@ public class Atom {
      */
     public static int[][] getLocations (Atom[] arr){
         int[][] atoms = new int[4][2];
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < arr.length; i++){
             atoms[i][0] = arr[i].getRow();
             atoms[i][1] = arr[i].getCol();
         }

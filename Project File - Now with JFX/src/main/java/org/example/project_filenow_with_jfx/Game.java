@@ -20,10 +20,20 @@ public class Game {
     private int score;
 
     /**
-     * Constructor for game class, should only be used once in controller class.
+     * Constructor for Game class objects
+     * No arguments - creates atoms randomly
      */
     public Game() {
+        setAtoms();
+    }
 
+    /**
+     * Constuctor for Game class objects
+     * @param args Atoms to be used for the game in place of random generation
+     */
+    public Game(Atom... args){
+        if(args.length != 4) throw new IllegalArgumentException("Must have four atoms");
+        setAtoms(args);
     }
 
     // Class functions      ----------
@@ -101,6 +111,7 @@ public class Game {
             // Done after moving so that we have no risk of running off the board
             int edge = onEdge(r);
             if (edge != -1) {
+                r.addToPath(r.getDir());
                 if (edge == r.getStart()) {
                     r.setEnd(-2);
                 } else {
@@ -129,18 +140,23 @@ public class Game {
      */
     public void setAtoms() {
         Random random = new Random();
-        int row = random.nextInt(9);
         trueAtoms = new Atom[4];
         int col;
-        int n = 2;
-        for (int i = 0; i < 4; i++) {
-            if (row < 5) {
-                col = random.nextInt(row + 4) + 1;
-            } else {
-                col = random.nextInt(row + n) + 1;
-                n = n - 2;
-            }
-            trueAtoms[i] = new Atom(row, col);
+        for (int i = 0; i < 4; i++){
+            int row = random.nextInt(8);
+            col = switch (row) {
+                //up until the 5th row, the columns up to which they go to = that row + 4
+                case 0, 1, 2, 3, 4 -> random.nextInt(row + 4) + 1;
+                //on the 5th row, the column goes up to 7
+                case 5 -> random.nextInt(7) + 1;
+                //on the 6th row, the column goes up to 6
+                case 6 -> random.nextInt(6) + 1;
+                //on the 7th row, the column goes up to 5
+                case 7 -> random.nextInt(5) + 1;
+                //on the 8th row, the column goes up to 4
+                default -> random.nextInt(4) + 1;
+            };
+            trueAtoms[i] = new Atom(row, col, false);
         }
     }
 
@@ -164,6 +180,7 @@ public class Game {
      */
     private boolean hitAtom(Ray r, boolean[] atomNeighbors){
         boolean hit = false;
+        //if neighbour is right in front of the ray, then it is a direct hit
         switch (r.getDir()){
             case 1:
                 if (atomNeighbors[0]) hit = true;
@@ -198,10 +215,13 @@ public class Game {
     private boolean checkBounce(Ray r, boolean[]atomNeighbors){
         boolean bounce = false;
         int dir = r.getDir();
+        //changes direction accordingly based on the neighbours' location
         switch (dir){
             case 1:
-                //return
+                //return case
+                //there is no bounce since we can check whether it returns directly based on the neighbours
                 if (atomNeighbors[1] && atomNeighbors[2]){
+                    //set direction to be the opposite of the one it goes in, so that it returns
                     r.setDir(dir+3);
                 }else if (atomNeighbors[1]){
                     bounce = true;
@@ -212,7 +232,8 @@ public class Game {
                 }
                 break;
             case 2:
-                //return
+                //return case
+                //there is no bounce since we can check whether it returns directly based on the neighbours
                 if (atomNeighbors[0] && atomNeighbors[3]){
                     r.setDir(dir+3);
                 }else if (atomNeighbors[0]){
@@ -224,7 +245,8 @@ public class Game {
                 }
                 break;
             case 3:
-                //return
+                //return case
+                //there is no bounce since we can check whether it returns directly based on the neighbours
                 if (atomNeighbors[1] && atomNeighbors[5]){
                     r.setDir(dir+3);
                 }else if (atomNeighbors[1]){
@@ -236,7 +258,8 @@ public class Game {
                 }
                 break;
             case 4:
-                //return
+                //return case
+                //there is no bounce since we can check whether it returns directly based on the neighbours
                 if (atomNeighbors[3] && atomNeighbors[4]){
                     r.setDir(dir+3);
                 }else if (atomNeighbors[3]){
@@ -248,7 +271,8 @@ public class Game {
                 }
                 break;
             case 5:
-                //return
+                //return case
+                //there is no bounce since we can check whether it returns directly based on the neighbours
                 if (atomNeighbors[2] && atomNeighbors[5]){
                     r.setDir(dir+3);
                 }else if (atomNeighbors[2]){
@@ -260,7 +284,8 @@ public class Game {
                 }
                 break;
             case 6:
-                //return
+                //return case
+                //there is no bounce since we can check whether it returns directly based on the neighbours
                 if (atomNeighbors[0] && atomNeighbors[4]){
                     r.setDir(dir+3);
                 }else if (atomNeighbors[0]){
