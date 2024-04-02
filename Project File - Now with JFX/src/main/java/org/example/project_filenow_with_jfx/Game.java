@@ -23,7 +23,11 @@ public class Game {
      * Constructor for game class, should only be used once in controller class.
      */
     public Game() {
+        setAtoms();
+    }
 
+    public Game(Atom... args){
+        setAtoms(args);
     }
 
     // Class functions      ----------

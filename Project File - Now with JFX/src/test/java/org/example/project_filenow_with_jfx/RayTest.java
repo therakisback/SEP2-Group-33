@@ -139,4 +139,10 @@ class RayTest {
         r = new Ray(8, 4, 5, 3);
         assertEquals("[[7, 4], [7, 5], [8, 3], [8, 5], [9, 3], [9, 4]]", Arrays.deepToString(r.createNeighbours()));
     }
+
+    @Test
+    public void path() {
+        r = new Ray(8,4,1,27);
+        Game g = new Game();
+    }
 }
