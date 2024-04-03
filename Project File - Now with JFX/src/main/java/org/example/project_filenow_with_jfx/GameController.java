@@ -69,23 +69,78 @@ public class GameController {
         String userInput = inputField.getText();
 
         // Convert the user input to an integer
-        int methodNumber;
+        int raySource;
         try {
-            methodNumber = Integer.parseInt(userInput);
+            raySource = Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter a valid integer.");
             return;
         }
 
         // Determine where to cast ray from based on the user input
-        if(methodNumber >= 0 && methodNumber <= 53){
-            System.out.println("ray cast from " + methodNumber);
-            switch(methodNumber){
+        if(raySource >= 0 && raySource <= 53){
+            System.out.println("ray cast from " + raySource);
+            /*
+            - create Ray object
+            - call calculateRay()
+
+            */
+            switch(raySource){//switch case won't be used when we integrate the game logic
                 case 0:
                     zero.setOpacity(1);
                     zero.setFill(Color.RED);
+                    //change hard coded part below here
                     twentySeven.setOpacity(1);
                     twentySeven.setFill(Color.RED);
+                    break;
+                case 1:
+                    one.setOpacity(1);
+                    one.setFill(Color.BEIGE);
+                    //change hard coded part below here
+                    fortyFour.setOpacity(1);
+                    fortyFour.setFill(Color.BEIGE);
+                    break;
+                case 2:
+                    two.setOpacity(1);
+                    two.setFill(Color.BLACK);
+                    //change hard coded part below here
+                    twentyFive.setOpacity(1);
+                    twentyFive.setFill(Color.BLACK);
+                    break;
+                case 3:
+                    three.setOpacity(1);
+                    three.setFill(Color.ROSYBROWN);
+                    //change hard coded part below here
+                    fortyTwo.setOpacity(1);
+                    fortyTwo.setFill(Color.ROSYBROWN);
+                    break;
+                case 25:
+                    twentyFive.setOpacity(1);
+                    twentyFive.setFill(Color.BLACK);
+                    //change hard coded part below here
+                    two.setOpacity(1);
+                    two.setFill(Color.BLACK);
+                    break;
+                case 27:
+                    twentySeven.setOpacity(1);
+                    twentySeven.setFill(Color.RED);
+                    //change hard coded part below here
+                    zero.setOpacity(1);
+                    zero.setFill(Color.RED);
+                    break;
+                case 42:
+                    fortyTwo.setOpacity(1);
+                    fortyTwo.setFill(Color.ROSYBROWN);
+                    //change hard coded part below here
+                    three.setOpacity(1);
+                    three.setFill(Color.ROSYBROWN);
+                    break;
+                case 44:
+                    fortyFour.setOpacity(1);
+                    fortyFour.setFill(Color.BEIGE);
+                    //change hard coded part below here
+                    one.setOpacity(1);
+                    one.setFill(Color.BEIGE);
                     break;
                 default:
                     break;
