@@ -53,8 +53,6 @@ public class Game {
 
         // Ray added to list of all rays cast to show at end of game
         castRays.add(r);
-        // Score increases with every placed array
-        score++;
 
         // If there are no atoms at all the game has been started wrong
         if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
