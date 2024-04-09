@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: org.example.project_filenow_with_jfx.Display_Board
+

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -41,7 +42,7 @@
       <Polygon fx:id="zeroTwo" fill="DODGERBLUE" layoutX="180.0" layoutY="57.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="zeroOne" fill="DODGERBLUE" layoutX="128.0" layoutY="57.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="zeroZero" fill="DODGERBLUE" layoutX="76.0" layoutY="57.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
-      <Polygon fx:id="zeroFour" fill="DODGERBLUE" layoutX="284.0" layoutY="57.0" onMousePressed="#createAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
+      <Polygon fx:id="zeroFour" fill="DODGERBLUE" layoutX="284.0" layoutY="57.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="eightZero" fill="DODGERBLUE" layoutX="76.0" layoutY="403.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="eightOne" fill="DODGERBLUE" layoutX="128.0" layoutY="403.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="eightThree" fill="DODGERBLUE" layoutX="232.0" layoutY="403.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
@@ -193,5 +194,6 @@
       <Rectangle fx:id="three" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="86.0" layoutY="109.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
       <Rectangle fx:id="two" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="119.0" layoutY="43.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
       <Rectangle fx:id="one" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="102.0" layoutY="63.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+      <BorderPane prefHeight="200.0" prefWidth="200.0" />
     </children>
 </AnchorPane>
