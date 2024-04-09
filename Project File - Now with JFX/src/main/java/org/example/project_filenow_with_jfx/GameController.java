@@ -82,6 +82,7 @@ public class GameController {
         // Determine where to cast ray from based on the user input
         if(raySource >= 0 && raySource <= 53){
             System.out.println("ray cast from " + raySource);
+
             /*
             Ray r = new Ray(int row, int col, int dir, raySource);
             game.calculateRay(r);
@@ -154,20 +155,6 @@ public class GameController {
             System.out.println("Invalid method number. Please enter a valid method number.");
         }
 
-    }
-
-    @FXML
-    private void createAtom(MouseEvent e) {
-
-        int[] atom_place;
-        Polygon source = (Polygon) e.getSource();
-        String string = source.getId();
-        String[] parts = string.split("(?=[A-Z])");
-
-        atom_place = convertToNumbers(parts);
-        Atom atom = new Atom(atom_place[1], atom_place[0], false);
-        atoms.add(atom);
-        System.out.println("Atom created, " + atom.toString());
     }
     @FXML
     public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
