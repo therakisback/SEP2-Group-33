@@ -28,7 +28,7 @@ public class GameController {
             fiveZero, fiveOne, fiveTwo, fiveThree, fiveFour, fiveFive, fiveSix, fiveSeven,
             sixZero, sixOne, sixTwo, sixThree, sixFour, sixFive, sixSix,
             sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
-            eightZero, eightOne, eightTwo, eightThree, eightFour = new Polygon();
+            eightZero, eightOne, eightTwo, eightThree, eightFour;
 
     public Polygon[] array_of_hexagons = {zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -41,13 +41,21 @@ public class GameController {
             eightZero, eightOne, eightTwo, eightThree, eightFour};
 
     @FXML
-    public Rectangle zero = new Rectangle(), one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen,
-            fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree,
-            twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty, thirtyOne, thirtyTwo,
-            thirtyThree, thirtyFour, thirtyFive, thirtySix, thirtySeven, thirtyEight, thirtyNine, forty, fortyOne,
-            fortyTwo, fortyThree, fortyFour, fortyFive, fortySix, fortySeven, fortyEight, fortyNine, fifty, fiftyOne,
-            fiftyTwo, fiftyThree = new Rectangle();
-    //zero.setUserData(zeroZero);
+    public Rectangle zero = new Rectangle(), one = new Rectangle(),         two = new Rectangle(),          three = new Rectangle(),
+            four = new Rectangle(),         five = new Rectangle(),         six = new Rectangle(),          seven = new Rectangle(),
+            eight = new Rectangle(),        nine = new Rectangle(),         ten = new Rectangle(),          eleven = new Rectangle(),
+            twelve = new Rectangle(),       thirteen = new Rectangle(),     fourteen = new Rectangle(),     fifteen = new Rectangle(),
+            sixteen = new Rectangle(),      seventeen = new Rectangle(),    eighteen = new Rectangle(),     nineteen = new Rectangle(),
+            twenty = new Rectangle(),       twentyOne = new Rectangle(),    twentyTwo = new Rectangle(),    twentyThree = new Rectangle(),
+            twentyFour = new Rectangle(),   twentyFive = new Rectangle(),   twentySix = new Rectangle(),    twentySeven = new Rectangle(),
+            twentyEight = new Rectangle(),  twentyNine = new Rectangle(),   thirty = new Rectangle(),       thirtyOne = new Rectangle(),
+            thirtyTwo = new Rectangle(),    thirtyThree = new Rectangle(),  thirtyFour = new Rectangle(),   thirtyFive = new Rectangle(),
+            thirtySix = new Rectangle(),    thirtySeven = new Rectangle(),  thirtyEight = new Rectangle(),  thirtyNine = new Rectangle(),
+            forty = new Rectangle(),        fortyOne = new Rectangle(),     fortyTwo = new Rectangle(),     fortyThree = new Rectangle(),
+            fortyFour = new Rectangle(),    fortyFive = new Rectangle(),    fortySix = new Rectangle(),     fortySeven = new Rectangle(),
+            fortyEight = new Rectangle(),   fortyNine = new Rectangle(),    fifty = new Rectangle(),        fiftyOne = new Rectangle(),
+            fiftyTwo = new Rectangle(),     fiftyThree = new Rectangle();
+
 
 
 
@@ -58,12 +66,26 @@ public class GameController {
             fortyTwo, fortyThree, fortyFour, fortyFive, fortySix, fortySeven, fortyEight, fortyNine, fifty, fiftyOne,
             fiftyTwo, fiftyThree};
 
+    @FXML
+    public void dataAssignemnt() {zero.setUserData(zeroZero); one.setUserData(zeroZero); two.setUserData(oneZero); three.setUserData(oneZero);
+        four.setUserData(twoZero); five.setUserData(twoZero); six.setUserData(threeZero); seven.setUserData(threeZero); eight.setUserData(fourZero);
+        nine.setUserData(fourZero); ten.setUserData(fourZero); eleven.setUserData(fiveZero); twelve.setUserData(fiveZero); thirteen.setUserData(sixZero);
+        fourteen.setUserData(sixZero); fifteen.setUserData(sevenZero); sixteen.setUserData(sevenZero); seventeen.setUserData(eightZero); eighteen.setUserData(eightZero);
+        nineteen.setUserData(eightZero); twenty.setUserData(eightOne); twentyOne.setUserData(eightOne); twentyTwo.setUserData(eightTwo); twentyThree.setUserData(eightTwo);
+        twentyFour.setUserData(eightThree); twentyFive.setUserData(eightThree); twentySix.setUserData(eightFour); twentySeven.setUserData(eightFour);
+        twentyEight.setUserData(eightFour); twentyNine.setUserData(sevenFive); thirty.setUserData(sevenFive); thirtyOne.setUserData(sixSix); thirtyTwo.setUserData(sixSix);
+        thirtyThree.setUserData(fiveSeven); thirtyFour.setUserData(fiveSeven); thirtyFive.setUserData(fourEight); thirtySix.setUserData(fourEight);
+        thirtySeven.setUserData(fourEight);thirtyEight.setUserData(threeSeven); thirtyNine.setUserData(threeSeven); forty.setUserData(twoSix); fortyOne.setUserData(twoSix);
+        fortyTwo.setUserData(oneFive); fortyThree.setUserData(oneFive); fortyFour.setUserData(zeroFour); fortyFive.setUserData(zeroFour); fortySix.setUserData(zeroFour);
+        fortySeven.setUserData(zeroThree); fortyEight.setUserData(zeroThree); fortyNine.setUserData(zeroTwo); fifty.setUserData(zeroTwo); fiftyOne.setUserData(zeroOne);
+        fiftyTwo.setUserData(zeroOne); fiftyThree.setUserData(zeroZero);};
+
 
 
     public int flag = 0;
     @FXML
     private Button endGameButton;
-    private Game game = new Game();
+    private final Game game = new Game();
     private Color col = new Color(0,0,0,0);
     private ArrayList<Atom> atoms = new ArrayList<Atom>();
     @FXML
@@ -75,7 +97,7 @@ public class GameController {
     private void castRay() {
         // Get user input from the TextField
         String userInput = inputField.getText();
-        zero.setUserData(zeroZero);
+        dataAssignemnt();
 
         // Convert the user input to an integer
         int raySource;
@@ -120,67 +142,8 @@ public class GameController {
             endSide.setFill(col);
             col = makeColour(col);
 
-            switch(raySource){//switch case won't be used when we integrate the game logic
-                case 0:
-                    zero.setOpacity(1);
-                    zero.setFill(Color.RED);
-                    //change hard coded part below here
-                    twentySeven.setOpacity(1);
-                    twentySeven.setFill(Color.RED);
-                    break;
-                case 1:
-                    one.setOpacity(1);
-                    one.setFill(Color.BEIGE);
-                    //change hard coded part below here
-                    fortyFour.setOpacity(1);
-                    fortyFour.setFill(Color.BEIGE);
-                    break;
-                case 2:
-                    two.setOpacity(1);
-                    two.setFill(Color.BLACK);
-                    //change hard coded part below here
-                    twentyFive.setOpacity(1);
-                    twentyFive.setFill(Color.BLACK);
-                    break;
-                case 3:
-                    three.setOpacity(1);
-                    three.setFill(Color.ROSYBROWN);
-                    //change hard coded part below here
-                    fortyTwo.setOpacity(1);
-                    fortyTwo.setFill(Color.ROSYBROWN);
-                    break;
-                case 25:
-                    twentyFive.setOpacity(1);
-                    twentyFive.setFill(Color.BLACK);
-                    //change hard coded part below here
-                    two.setOpacity(1);
-                    two.setFill(Color.BLACK);
-                    break;
-                case 27:
-                    twentySeven.setOpacity(1);
-                    twentySeven.setFill(Color.RED);
-                    //change hard coded part below here
-                    zero.setOpacity(1);
-                    zero.setFill(Color.RED);
-                    break;
-                case 42:
-                    fortyTwo.setOpacity(1);
-                    fortyTwo.setFill(Color.ROSYBROWN);
-                    //change hard coded part below here
-                    three.setOpacity(1);
-                    three.setFill(Color.ROSYBROWN);
-                    break;
-                case 44:
-                    fortyFour.setOpacity(1);
-                    fortyFour.setFill(Color.BEIGE);
-                    //change hard coded part below here
-                    one.setOpacity(1);
-                    one.setFill(Color.BEIGE);
-                    break;
-                default:
-                    break;
-            }
-            //TODO
+            //col = Ema's method
+
         }
         else {
             System.out.println("Invalid method number. Please enter a valid method number.");
