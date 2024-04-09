@@ -155,20 +155,20 @@ public class GameController {
     // return = dark blue (0, 0, 102, 1)
     // 18 colours including the initial one
     private Color makeColour (Color col){
-        if (col.getRed() < 256){
-            return new Color(col.getRed() + 64, col.getGreen(), col.getBlue(), 1 );
+        if (col.getRed() < 1.0){
+            return new Color(col.getRed() + 0.25, col.getGreen(), col.getBlue(), 1.0 );
         }
-        else if (col.getGreen() < 256){
-            return new Color(col.getRed(), col.getGreen() + 64, col.getBlue(), 1 );
+        else if (col.getGreen() < 1.0){
+            return new Color(col.getRed(), col.getGreen() + 0.25, col.getBlue(), 1.0 );
         }
-        else if (col.getBlue() < 256){
-            return new Color(col.getRed(), 64, col.getBlue() + 64, 1 );
+        else if (col.getBlue() < 1.0){
+            return new Color(col.getRed(), 0.25, col.getBlue() + 0.25, 1.0 );
         }
-        else if (col.getBlue() == 256){
-            return new Color(0, col.getGreen() + 64, 256, 1);
+        else if (col.getBlue() == 1.0){
+            return new Color(0, col.getGreen() + 0.25, 1.0, 1.0);
         }
         // final color - light grey
-        return new Color(96,96,96,1);
+        return new Color(0.37,0.37,0.37,1.0);
     }
     @FXML
     public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
