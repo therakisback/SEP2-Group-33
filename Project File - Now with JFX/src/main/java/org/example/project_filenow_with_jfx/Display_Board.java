@@ -22,6 +22,7 @@ public class Display_Board extends Application {
 
         stage.show();
 
+
         stage.setOnCloseRequest(event -> {
             event.consume();
             logout(stage);
