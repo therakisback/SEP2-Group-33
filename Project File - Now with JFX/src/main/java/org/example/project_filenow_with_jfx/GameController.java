@@ -47,7 +47,6 @@ public class GameController {
             thirtyThree, thirtyFour, thirtyFive, thirtySix, thirtySeven, thirtyEight, thirtyNine, forty, fortyOne,
             fortyTwo, fortyThree, fortyFour, fortyFive, fortySix, fortySeven, fortyEight, fortyNine, fifty, fiftyOne,
             fiftyTwo, fiftyThree = new Rectangle();
-
     //zero.setUserData(zeroZero);
 
 
@@ -65,6 +64,7 @@ public class GameController {
     @FXML
     private Button endGameButton;
     private Game game = new Game();
+    private Color col = new Color(0,0,0);
     private ArrayList<Atom> atoms = new ArrayList<Atom>();
     @FXML
     private TextField inputField;
@@ -89,17 +89,38 @@ public class GameController {
         // Determine where to cast ray from based on the user input
         if(raySource >= 0 && raySource <= 53){
             System.out.println("ray cast from " + raySource);
+            Rectangle side = array_of_sides[raySource];
             int dir;
-            // Direction
-            if (raySource < 0 || raySource > 53)
-                 if (raySource >= 20 && raySource <= 36 && raySource % 2 == 0) dir = 1;
-            
 
-            /*
-            Ray r = new Ray(int row, int col, int dir, raySource);
+            // Direction - this is fun
+                 if (raySource >= 19 && raySource <= 35 && raySource % 2 == 1) dir = 1;
+            else if (raySource >= 10 && raySource <= 26 && raySource % 2 == 0) dir = 2;
+            else if (raySource <= 17 && raySource % 2 == 1) dir = 3;
+            else if (raySource >= 46 || raySource <= 8) dir = 4;
+            else if (raySource >= 37 && raySource % 2 == 1) dir = 5;
+            else dir = 6;
+
+            // Row and Column
+            int[] ray_place;
+            Polygon source = (Polygon) side.getUserData();
+            String string = source.getId();
+            String[] parts = string.split("(?=[A-Z])");
+
+            ray_place = convertToNumbers(parts);
+
+            // Ray calculation
+            Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
             game.calculateRay(r);
             int rayRes = r.getResult();
-             */
+            Rectangle endSide = array_of_sides[rayRes];
+
+            side.setOpacity(1);
+            side.setFill(Color.color(0));
+            endSide.setOpacity(1);
+            endSide.setFill(col);
+            //col = Ema's method
+            int colorVal = 0x000000;
+            Color colo = new Color(colorVal);
 
             switch(raySource){//switch case won't be used when we integrate the game logic
                 case 0:
