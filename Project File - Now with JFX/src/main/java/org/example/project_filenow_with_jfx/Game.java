@@ -17,7 +17,6 @@ public class Game {
     // Class variables      ----------
     private Atom[] trueAtoms;
     private ArrayList<Ray> castRays = new ArrayList<>();
-    private int score;
     File fi = new File("src/main/java/org/example/project_filenow_with_jfx/Scoreboard.txt");
 
     /**
@@ -53,8 +52,6 @@ public class Game {
 
         // Ray added to list of all rays cast to show at end of game
         castRays.add(r);
-        // Score increases with every placed array
-        score++;
 
         // If there are no atoms at all the game has been started wrong
         if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
@@ -170,7 +167,7 @@ public class Game {
      * @return score for given flags and atoms
      */
     public int submitGame(Atom[] atomFlags) {
-        // TODO - sprint 4
+        int score = 0;
         for (Atom atom : trueAtoms) {
             for (Atom flag : atomFlags) {
                 //for every wrongly guessed atom, the score increases by 5
@@ -464,10 +461,9 @@ public class Game {
     // File IO      ----------
     public void writeToLeaderboard(String username, int score) {
         try {
-            FileWriter fwr = new FileWriter(fi);
+            FileWriter fwr = new FileWriter(fi, true);
             BufferedWriter fw = new BufferedWriter(fwr);
-            fw.newLine();
-            fw.write(username + "\t\t\t" + score);
+            fw.write(username + "\t\t\t" + score + "\n");
             fw.close();
         } catch (IOException e) {System.out.println(e);}
     }

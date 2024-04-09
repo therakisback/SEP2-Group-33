@@ -19,20 +19,6 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-    Game g = new Game();
-    char user = 'a';
-    int score = 26;
-    for (int i = 0; i < 26; i++) {
-        g.writeToLeaderboard(Character.toString(user), score);
-        user++;
-        score--;
-    }
-
-        System.out.println(g.getLeaderboard().size());
-
-
-
-        // Generate random atoms for game
 
     }
 }

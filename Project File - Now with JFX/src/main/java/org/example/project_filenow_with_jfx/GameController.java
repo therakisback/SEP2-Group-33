@@ -172,8 +172,7 @@ public class GameController {
     @FXML
     public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
         int score = game.submitGame(atoms.toArray(new Atom[4]));
-
-        System.out.println("Game Over");
+        System.out.println("Game Over, your score was: " + score);
         //switch to new scene
     }
 
@@ -198,11 +197,18 @@ public class GameController {
 
     @FXML
     private void placeAtom(MouseEvent e) {//allows you to place up to 4 flags
-        Atom a = new Atom(3,3 ,true);
+        int[] atom_place;
         Polygon source = (Polygon) e.getSource();
+        String string = source.getId();
+        String[] parts = string.split("(?=[A-Z])");
+
+        atom_place = convertToNumbers(parts);
+        Atom atom = new Atom(atom_place[1], atom_place[0], false);
+
         if(source.getFill() == Color.YELLOW) {
             source.setFill(Color.DODGERBLUE);
             System.out.println("Removed atom flag");
+            atoms.remove(atom);
             flag--;
             endGameButton.setOpacity(0);
         }
@@ -210,11 +216,13 @@ public class GameController {
             if(flag < 3){
                 source.setFill(Color.YELLOW);
                 System.out.println("Placed atom flag");
+                atoms.add(atom);
                 flag++;
             }
             else if(flag < 4){
                 source.setFill(Color.YELLOW);
                 System.out.println("Placed atom flag");
+                atoms.add(atom);
                 flag++;
                 endGameButton.setOpacity(1);
             }
