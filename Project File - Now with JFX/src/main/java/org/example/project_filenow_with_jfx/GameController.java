@@ -61,18 +61,31 @@ public class GameController {
     public Rectangle[] array_of_sides = new Rectangle[54];
 
     @FXML
-    public void dataAssignment() {array_of_sides[0] = zero; zero.setUserData(zeroZero); one.setUserData(zeroZero); two.setUserData(oneZero); three.setUserData(oneZero);
-        four.setUserData(twoZero); five.setUserData(twoZero); six.setUserData(threeZero); seven.setUserData(threeZero); eight.setUserData(fourZero);
-        nine.setUserData(fourZero); ten.setUserData(fourZero); eleven.setUserData(fiveZero); twelve.setUserData(fiveZero); thirteen.setUserData(sixZero);
-        fourteen.setUserData(sixZero); fifteen.setUserData(sevenZero); sixteen.setUserData(sevenZero); seventeen.setUserData(eightZero); eighteen.setUserData(eightZero);
-        nineteen.setUserData(eightZero); twenty.setUserData(eightOne); twentyOne.setUserData(eightOne); twentyTwo.setUserData(eightTwo); twentyThree.setUserData(eightTwo);
-        twentyFour.setUserData(eightThree); twentyFive.setUserData(eightThree); twentySix.setUserData(eightFour); twentySeven.setUserData(eightFour);
-        twentyEight.setUserData(eightFour); twentyNine.setUserData(sevenFive); thirty.setUserData(sevenFive); thirtyOne.setUserData(sixSix); thirtyTwo.setUserData(sixSix);
-        thirtyThree.setUserData(fiveSeven); thirtyFour.setUserData(fiveSeven); thirtyFive.setUserData(fourEight); thirtySix.setUserData(fourEight);
-        thirtySeven.setUserData(fourEight);thirtyEight.setUserData(threeSeven); thirtyNine.setUserData(threeSeven); forty.setUserData(twoSix); fortyOne.setUserData(twoSix);
-        fortyTwo.setUserData(oneFive); fortyThree.setUserData(oneFive); fortyFour.setUserData(zeroFour); fortyFive.setUserData(zeroFour); fortySix.setUserData(zeroFour);
-        fortySeven.setUserData(zeroThree); fortyEight.setUserData(zeroThree); fortyNine.setUserData(zeroTwo); fifty.setUserData(zeroTwo); fiftyOne.setUserData(zeroOne);
-        fiftyTwo.setUserData(zeroOne);array_of_sides[53] = fiftyThree; array_of_sides[53].setUserData(zeroZero);};
+    public void dataAssignment() {array_of_sides[0] = zero; array_of_sides[0].setUserData(zeroZero); array_of_sides[1] = one; array_of_sides[1].setUserData(zeroZero);
+        array_of_sides[2] = two; array_of_sides[2].setUserData(oneZero); array_of_sides[3] = three; array_of_sides[3].setUserData(oneZero);
+        array_of_sides[4] = four; array_of_sides[4].setUserData(twoZero); array_of_sides[5] = five; array_of_sides[5].setUserData(twoZero);
+        array_of_sides[6] = six; array_of_sides[6].setUserData(threeZero); array_of_sides[7] = seven; array_of_sides[7].setUserData(threeZero);
+        array_of_sides[8] = eight; array_of_sides[8].setUserData(fourZero); array_of_sides[9] = nine; array_of_sides[9].setUserData(fourZero); array_of_sides[10] = ten; array_of_sides[10].setUserData(fourZero);
+        array_of_sides[11] = eleven; array_of_sides[11].setUserData(fiveZero); array_of_sides[12] = twelve; array_of_sides[12].setUserData(fiveZero);
+        array_of_sides[13] = thirteen; array_of_sides[13].setUserData(sixZero); array_of_sides[14] = fourteen; array_of_sides[14].setUserData(sixZero);
+        array_of_sides[15] = fifteen; array_of_sides[15].setUserData(sevenZero); array_of_sides[16] = sixteen; array_of_sides[16].setUserData(sevenZero);
+        array_of_sides[17] = seventeen; array_of_sides[17].setUserData(eightZero); array_of_sides[18] = eighteen; array_of_sides[18].setUserData(eightZero); array_of_sides[19] = nineteen; array_of_sides[19].setUserData(eightZero);
+        array_of_sides[20] = twenty; array_of_sides[20].setUserData(eightOne); array_of_sides[21] = twentyOne; array_of_sides[21].setUserData(eightOne);
+        array_of_sides[22] = twentyTwo; array_of_sides[22].setUserData(eightTwo); array_of_sides[23] = twentyThree; array_of_sides[23].setUserData(eightTwo);
+        array_of_sides[24] = twentyFour; array_of_sides[24].setUserData(eightThree); array_of_sides[25] = twentyFive; array_of_sides[25].setUserData(eightThree);
+        array_of_sides[26] = twentySix; array_of_sides[26].setUserData(eightFour); array_of_sides[27] = twentySeven; array_of_sides[27].setUserData(eightFour); array_of_sides[28] = twentyEight; array_of_sides[28].setUserData(eightFour);
+        array_of_sides[29] = twentyNine; array_of_sides[29].setUserData(sevenFive); array_of_sides[30] = thirty; array_of_sides[30].setUserData(sevenFive);
+        array_of_sides[31] = thirtyOne; array_of_sides[31].setUserData(sixSix); array_of_sides[32] = thirtyTwo; array_of_sides[32].setUserData(sixSix);
+        array_of_sides[33] = thirtyThree; array_of_sides[33].setUserData(fiveSeven); array_of_sides[34] = thirtyFour; array_of_sides[34].setUserData(fiveSeven);
+        array_of_sides[35] = thirtyFive; array_of_sides[35].setUserData(fourEight); array_of_sides[36] = thirtySix; array_of_sides[36].setUserData(fourEight); array_of_sides[37] = thirtySeven; array_of_sides[37].setUserData(fourEight);
+        array_of_sides[38] = thirtyEight; array_of_sides[38].setUserData(threeSeven); array_of_sides[39] = thirtyNine; array_of_sides[39].setUserData(threeSeven);
+        array_of_sides[40] = forty; array_of_sides[40].setUserData(twoSix); array_of_sides[41] = fortyOne; array_of_sides[41].setUserData(twoSix);
+        array_of_sides[42] = fortyTwo; array_of_sides[42].setUserData(oneFive); array_of_sides[43] = fortyThree; array_of_sides[43].setUserData(oneFive);
+        array_of_sides[44] = fortyFour; array_of_sides[44].setUserData(zeroFour); array_of_sides[45] = fortyFive; array_of_sides[45].setUserData(zeroFour); array_of_sides[46] = fortySix; array_of_sides[46].setUserData(zeroFour);
+        array_of_sides[47] = fortySeven; array_of_sides[47].setUserData(zeroThree); array_of_sides[48] = fortyEight; array_of_sides[48].setUserData(zeroThree);
+        array_of_sides[49] = fortyNine; array_of_sides[49].setUserData(zeroTwo); array_of_sides[50] = fifty; array_of_sides[50].setUserData(zeroTwo);
+        array_of_sides[51] = fiftyOne; array_of_sides[51].setUserData(zeroOne); array_of_sides[52] = fiftyTwo; array_of_sides[52].setUserData(zeroOne);
+        array_of_sides[53] = fiftyThree; array_of_sides[53].setUserData(zeroZero);};
 
 
 
@@ -105,7 +118,7 @@ public class GameController {
         if(raySource >= 0 && raySource <= 53){
             System.out.println("ray cast from " + raySource);
             dataAssignment();
-            Rectangle side = array_of_sides[raySource];
+            Rectangle side = array_of_sides[raySource]; //side
             int dir;
 
             // Direction - this is fun
