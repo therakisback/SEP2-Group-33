@@ -20,7 +20,7 @@ public class GameController {
     //The Polygons and rectangles represent the hexagons and sides on the board
     // I've put them into arrays to allow for easier manipulation
     @FXML
-    public Polygon zeroZero = new Polygon(), zeroOne, zeroTwo, zeroThree, zeroFour,
+    public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
             twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix,
             threeZero, threeOne, threeTwo, threeThree, threeFour, threeFive, threeSix, threeSeven,
@@ -28,7 +28,7 @@ public class GameController {
             fiveZero, fiveOne, fiveTwo, fiveThree, fiveFour, fiveFive, fiveSix, fiveSeven,
             sixZero, sixOne, sixTwo, sixThree, sixFour, sixFive, sixSix,
             sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
-            eightZero, eightOne, eightTwo, eightThree, eightFour = new Polygon();
+            eightZero, eightOne, eightTwo, eightThree, eightFour;
 
     public Polygon[] array_of_hexagons = {zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -41,13 +41,13 @@ public class GameController {
             eightZero, eightOne, eightTwo, eightThree, eightFour};
 
     @FXML
-    public Rectangle zero = new Rectangle(), one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen,
+    public Rectangle zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen,
             fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree,
             twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty, thirtyOne, thirtyTwo,
             thirtyThree, thirtyFour, thirtyFive, thirtySix, thirtySeven, thirtyEight, thirtyNine, forty, fortyOne,
             fortyTwo, fortyThree, fortyFour, fortyFive, fortySix, fortySeven, fortyEight, fortyNine, fifty, fiftyOne,
-            fiftyTwo, fiftyThree = new Rectangle();
-    //zero.setUserData(zeroZero);
+            fiftyTwo, fiftyThree;
+
 
 
 
@@ -57,6 +57,20 @@ public class GameController {
             thirtyThree, thirtyFour, thirtyFive, thirtySix, thirtySeven, thirtyEight, thirtyNine, forty, fortyOne,
             fortyTwo, fortyThree, fortyFour, fortyFive, fortySix, fortySeven, fortyEight, fortyNine, fifty, fiftyOne,
             fiftyTwo, fiftyThree};
+
+    @FXML
+    public void dataAssignemnt() {zero.setUserData(zeroZero); one.setUserData(zeroZero); two.setUserData(oneZero); three.setUserData(oneZero);
+        four.setUserData(twoZero); five.setUserData(twoZero); six.setUserData(threeZero); seven.setUserData(threeZero); eight.setUserData(fourZero);
+        nine.setUserData(fourZero); ten.setUserData(fourZero); eleven.setUserData(fiveZero); twelve.setUserData(fiveZero); thirteen.setUserData(sixZero);
+        fourteen.setUserData(sixZero); fifteen.setUserData(sevenZero); sixteen.setUserData(sevenZero); seventeen.setUserData(eightZero); eighteen.setUserData(eightZero);
+        nineteen.setUserData(eightZero); twenty.setUserData(eightOne); twentyOne.setUserData(eightOne); twentyTwo.setUserData(eightTwo); twentyThree.setUserData(eightTwo);
+        twentyFour.setUserData(eightThree); twentyFive.setUserData(eightThree); twentySix.setUserData(eightFour); twentySeven.setUserData(eightFour);
+        twentyEight.setUserData(eightFour); twentyNine.setUserData(sevenFive); thirty.setUserData(sevenFive); thirtyOne.setUserData(sixSix); thirtyTwo.setUserData(sixSix);
+        thirtyThree.setUserData(fiveSeven); thirtyFour.setUserData(fiveSeven); thirtyFive.setUserData(fourEight); thirtySix.setUserData(fourEight);
+        thirtySeven.setUserData(fourEight);thirtyEight.setUserData(threeSeven); thirtyNine.setUserData(threeSeven); forty.setUserData(twoSix); fortyOne.setUserData(twoSix);
+        fortyTwo.setUserData(oneFive); fortyThree.setUserData(oneFive); fortyFour.setUserData(zeroFour); fortyFive.setUserData(zeroFour); fortySix.setUserData(zeroFour);
+        fortySeven.setUserData(zeroThree); fortyEight.setUserData(zeroThree); fortyNine.setUserData(zeroTwo); fifty.setUserData(zeroTwo); fiftyOne.setUserData(zeroOne);
+        fiftyTwo.setUserData(zeroOne); fiftyThree.setUserData(zeroZero);};
 
 
 
@@ -75,7 +89,7 @@ public class GameController {
     private void castRay() {
         // Get user input from the TextField
         String userInput = inputField.getText();
-        zero.setUserData(zeroZero);
+        dataAssignemnt();
 
         // Convert the user input to an integer
         int raySource;
