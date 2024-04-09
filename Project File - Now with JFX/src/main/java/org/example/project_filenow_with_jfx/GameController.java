@@ -82,6 +82,11 @@ public class GameController {
         // Determine where to cast ray from based on the user input
         if(raySource >= 0 && raySource <= 53){
             System.out.println("ray cast from " + raySource);
+            int dir;
+            // Direction
+            if (raySource < 0 || raySource > 53)
+                 if (raySource >= 20 && raySource <= 36 && raySource % 2 == 0) dir = 1;
+            
 
             /*
             Ray r = new Ray(int row, int col, int dir, raySource);
