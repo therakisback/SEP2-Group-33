@@ -11,7 +11,8 @@ import java.util.Arrays;
 public class Atom {
 
     // Data Variables       ----------
-    private final boolean flag;   // Boolean to store whether atom is meant to be a flag
+    private boolean flag;   // Boolean to store whether atom is meant to be a flag
+   // final
     private final int row;   // Store location of atom
     private final int col;
 
@@ -70,6 +71,11 @@ public class Atom {
      */
     public boolean isFlag() {
         return flag;
+    }
+
+    // Used to change flag value when player's guess is correct
+    public void setFlag(boolean flag){
+        this.flag =flag;
     }
 
 

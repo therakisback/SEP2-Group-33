@@ -52,6 +52,8 @@ public class Game {
 
         // Ray added to list of all rays cast to show at end of game
         castRays.add(r);
+        // Score increases with every placed array
+        score++;
 
         // If there are no atoms at all the game has been started wrong
         if (trueAtoms == null) {throw new IllegalArgumentException("Atoms not created before attempting ray");}
@@ -168,7 +170,17 @@ public class Game {
      */
     public int submitGame(Atom[] atomFlags) {
         // TODO - sprint 4
-        return 0;
+        for (Atom atom : trueAtoms) {
+            for (Atom flag : atomFlags) {
+                //for every wrongly guessed atom, the score increases by 5
+                if (flag.getRow() != atom.getRow() || flag.getCol() != atom.getCol()){
+                    score = score + 5;
+                }
+                // Correct guess, so flag can now be seen as an actual atom (change color when displayed maybe?)
+                flag.setFlag(false);
+            }
+        }
+        return score;
     }
 
 
@@ -176,7 +188,6 @@ public class Game {
      * @param r - ray to traverse board
      * @param atomNeighbors - array of booleans containing positions
      *                      of atom's neighbours
-     *
      */
     private boolean hitAtom(Ray r, boolean[] atomNeighbors){
         boolean hit = false;
