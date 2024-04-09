@@ -2,8 +2,8 @@ package org.example.project_filenow_with_jfx;
 
 import javafx.fxml.FXML;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 
 /**
  * "Game Manger" class for dealing with the primary functions
@@ -18,6 +18,7 @@ public class Game {
     private Atom[] trueAtoms;
     private ArrayList<Ray> castRays = new ArrayList<>();
     private int score;
+    File fi = new File("src/main/java/org/example/project_filenow_with_jfx/Scoreboard.txt");
 
     /**
      * Constructor for Game class objects
@@ -179,6 +180,11 @@ public class Game {
                 // Correct guess, so flag can now be seen as an actual atom (change color when displayed maybe?)
                 flag.setFlag(false);
             }
+        }
+        // Score counts ray markers on board as well
+        for (Ray r : castRays) {
+            if (r.getResult() >= 0) score += 2;
+            else score++;
         }
         return score;
     }
@@ -452,6 +458,29 @@ public class Game {
                 else          return -1;
             default: return -1;
         }
+    }
+
+
+    // File IO      ----------
+    public void writeToLeaderboard(String username, int score) {
+        try {
+            FileWriter fwr = new FileWriter(fi);
+            BufferedWriter fw = new BufferedWriter(fwr);
+            fw.newLine();
+            fw.write(username + "\t\t\t" + score);
+            fw.close();
+        } catch (IOException e) {System.out.println(e);}
+    }
+
+    public List<String> getLeaderboard() {
+        List<String> ldb = new ArrayList<>();
+        try {
+            Scanner fr = new Scanner(fi);
+            while (fr.hasNext()) {
+                ldb.add(fr.nextLine());
+            }
+        } catch (IOException e) {System.out.println(e);}
+        return ldb;
     }
 
 }

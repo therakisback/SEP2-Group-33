@@ -11,7 +11,7 @@ import java.io.File;
 public class Scoreboard {
 
     // Class objects        ----------
-    private final String filePath = "src/Scoreboard.csv";       // file path for the scoreboard - will never change
+    private final String filePath = "src/Scoreboard.txt";       // file path for the scoreboard - will never change
     File sbf;                                                   // File object for (s)core(b)oard (f)ile
 
 

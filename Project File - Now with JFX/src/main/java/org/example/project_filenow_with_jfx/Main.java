@@ -19,15 +19,16 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        Game game = new Game();
+    Game g = new Game();
+    char user = 'a';
+    int score = 26;
+    for (int i = 0; i < 26; i++) {
+        g.writeToLeaderboard(Character.toString(user), score);
+        user++;
+        score--;
+    }
 
-        game.setAtoms();
-        Ray r = new Ray(8,4,1,27);
-        game.calculateRay(r);
-        ArrayList<int[]> arr = r.getPath();
-        for (int[] a : arr) {
-            System.out.println("Row: " + a[0] + " \tCol: " + a[1] + " \tEnd Dir: " + a[2] + " \tStart Dir: " + a[3]);
-        }
+        System.out.println(g.getLeaderboard().size());
 
 
 

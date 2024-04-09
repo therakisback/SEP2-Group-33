@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.input.MouseEvent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameController {
@@ -57,7 +58,8 @@ public class GameController {
     public int flag = 0;
     @FXML
     private Button endGameButton;
-    public Game game = new Game();
+    private Game game = new Game();
+    private ArrayList<Atom> atoms = new ArrayList<Atom>();
     @FXML
     private TextField inputField;
 
@@ -81,10 +83,11 @@ public class GameController {
         if(raySource >= 0 && raySource <= 53){
             System.out.println("ray cast from " + raySource);
             /*
-            - create Ray object
-            - call calculateRay()
+            Ray r = new Ray(int row, int col, int dir, raySource);
+            game.calculateRay(r);
+            int rayRes = r.getResult();
+             */
 
-            */
             switch(raySource){//switch case won't be used when we integrate the game logic
                 case 0:
                     zero.setOpacity(1);
@@ -163,10 +166,12 @@ public class GameController {
 
         atom_place = convertToNumbers(parts);
         Atom atom = new Atom(atom_place[1], atom_place[0], false);
+        atoms.add(atom);
         System.out.println("Atom created, " + atom.toString());
     }
     @FXML
     public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
+        int score = game.submitGame(atoms.toArray(new Atom[4]));
 
         System.out.println("Game Over");
         //switch to new scene
