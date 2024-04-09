@@ -64,7 +64,7 @@ public class GameController {
     @FXML
     private Button endGameButton;
     private Game game = new Game();
-    private Color col = new Color(0,0,0);
+    private Color col = new Color(0,0,0,0);
     private ArrayList<Atom> atoms = new ArrayList<Atom>();
     @FXML
     private TextField inputField;
@@ -115,12 +115,10 @@ public class GameController {
             Rectangle endSide = array_of_sides[rayRes];
 
             side.setOpacity(1);
-            side.setFill(Color.color(0));
+            side.setFill(col);
             endSide.setOpacity(1);
             endSide.setFill(col);
             //col = Ema's method
-            int colorVal = 0x000000;
-            Color colo = new Color(colorVal);
 
             switch(raySource){//switch case won't be used when we integrate the game logic
                 case 0:
