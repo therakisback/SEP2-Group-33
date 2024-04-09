@@ -20,7 +20,7 @@ public class GameController {
     //The Polygons and rectangles represent the hexagons and sides on the board
     // I've put them into arrays to allow for easier manipulation
     @FXML
-    public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
+    public Polygon zeroZero = new Polygon(), zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
             twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix,
             threeZero, threeOne, threeTwo, threeThree, threeFour, threeFive, threeSix, threeSeven,
@@ -41,12 +41,20 @@ public class GameController {
             eightZero, eightOne, eightTwo, eightThree, eightFour};
 
     @FXML
-    public Rectangle zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen,
-            fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree,
-            twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty, thirtyOne, thirtyTwo,
-            thirtyThree, thirtyFour, thirtyFive, thirtySix, thirtySeven, thirtyEight, thirtyNine, forty, fortyOne,
-            fortyTwo, fortyThree, fortyFour, fortyFive, fortySix, fortySeven, fortyEight, fortyNine, fifty, fiftyOne,
-            fiftyTwo, fiftyThree;
+    public Rectangle zero = new Rectangle(), one = new Rectangle(),         two = new Rectangle(),          three = new Rectangle(),
+            four = new Rectangle(),         five = new Rectangle(),         six = new Rectangle(),          seven = new Rectangle(),
+            eight = new Rectangle(),        nine = new Rectangle(),         ten = new Rectangle(),          eleven = new Rectangle(),
+            twelve = new Rectangle(),       thirteen = new Rectangle(),     fourteen = new Rectangle(),     fifteen = new Rectangle(),
+            sixteen = new Rectangle(),      seventeen = new Rectangle(),    eighteen = new Rectangle(),     nineteen = new Rectangle(),
+            twenty = new Rectangle(),       twentyOne = new Rectangle(),    twentyTwo = new Rectangle(),    twentyThree = new Rectangle(),
+            twentyFour = new Rectangle(),   twentyFive = new Rectangle(),   twentySix = new Rectangle(),    twentySeven = new Rectangle(),
+            twentyEight = new Rectangle(),  twentyNine = new Rectangle(),   thirty = new Rectangle(),       thirtyOne = new Rectangle(),
+            thirtyTwo = new Rectangle(),    thirtyThree = new Rectangle(),  thirtyFour = new Rectangle(),   thirtyFive = new Rectangle(),
+            thirtySix = new Rectangle(),    thirtySeven = new Rectangle(),  thirtyEight = new Rectangle(),  thirtyNine = new Rectangle(),
+            forty = new Rectangle(),        fortyOne = new Rectangle(),     fortyTwo = new Rectangle(),     fortyThree = new Rectangle(),
+            fortyFour = new Rectangle(),    fortyFive = new Rectangle(),    fortySix = new Rectangle(),     fortySeven = new Rectangle(),
+            fortyEight = new Rectangle(),   fortyNine = new Rectangle(),    fifty = new Rectangle(),        fiftyOne = new Rectangle(),
+            fiftyTwo = new Rectangle(),     fiftyThree = new Rectangle();
 
 
 
@@ -77,7 +85,7 @@ public class GameController {
     public int flag = 0;
     @FXML
     private Button endGameButton;
-    private Game game = new Game();
+    private final Game game = new Game();
     private Color col = new Color(0,0,0,0);
     private ArrayList<Atom> atoms = new ArrayList<Atom>();
     @FXML
