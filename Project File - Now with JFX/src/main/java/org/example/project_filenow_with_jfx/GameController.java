@@ -140,12 +140,35 @@ public class GameController {
             side.setFill(col);
             endSide.setOpacity(1);
             endSide.setFill(col);
+            col = makeColour(col);
+
             //col = Ema's method
+
         }
         else {
             System.out.println("Invalid method number. Please enter a valid method number.");
         }
 
+    }
+
+    // hit = dark green (0, 51, 0, 1)
+    // return = dark blue (0, 0, 102, 1)
+    // 18 colours including the initial one
+    private Color makeColour (Color col){
+        if (col.getRed() < 256){
+            return new Color(col.getRed() + 64, col.getGreen(), col.getBlue(), 1 );
+        }
+        else if (col.getGreen() < 256){
+            return new Color(col.getRed(), col.getGreen() + 64, col.getBlue(), 1 );
+        }
+        else if (col.getBlue() < 256){
+            return new Color(col.getRed(), 64, col.getBlue() + 64, 1 );
+        }
+        else if (col.getBlue() == 256){
+            return new Color(0, col.getGreen() + 64, 256, 1);
+        }
+        // final color - light grey
+        return new Color(96,96,96,1);
     }
     @FXML
     public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
