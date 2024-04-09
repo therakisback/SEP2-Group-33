@@ -30,6 +30,7 @@ public class GameController {
             sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
             eightZero, eightOne, eightTwo, eightThree, eightFour;
 
+    @FXML
     public Polygon[] array_of_hexagons = {zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
             twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix,
@@ -56,9 +57,7 @@ public class GameController {
             fortyEight = new Rectangle(),   fortyNine = new Rectangle(),    fifty = new Rectangle(),        fiftyOne = new Rectangle(),
             fiftyTwo = new Rectangle(),     fiftyThree = new Rectangle();
 
-
-
-
+    @FXML
     public Rectangle[] array_of_sides = {zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen,
             fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree,
             twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty, thirtyOne, thirtyTwo,
@@ -67,7 +66,7 @@ public class GameController {
             fiftyTwo, fiftyThree};
 
     @FXML
-    public void dataAssignemnt() {zero.setUserData(zeroZero); one.setUserData(zeroZero); two.setUserData(oneZero); three.setUserData(oneZero);
+    public void dataAssignment() {zero.setUserData(zeroZero); one.setUserData(zeroZero); two.setUserData(oneZero); three.setUserData(oneZero);
         four.setUserData(twoZero); five.setUserData(twoZero); six.setUserData(threeZero); seven.setUserData(threeZero); eight.setUserData(fourZero);
         nine.setUserData(fourZero); ten.setUserData(fourZero); eleven.setUserData(fiveZero); twelve.setUserData(fiveZero); thirteen.setUserData(sixZero);
         fourteen.setUserData(sixZero); fifteen.setUserData(sevenZero); sixteen.setUserData(sevenZero); seventeen.setUserData(eightZero); eighteen.setUserData(eightZero);
@@ -78,7 +77,7 @@ public class GameController {
         thirtySeven.setUserData(fourEight);thirtyEight.setUserData(threeSeven); thirtyNine.setUserData(threeSeven); forty.setUserData(twoSix); fortyOne.setUserData(twoSix);
         fortyTwo.setUserData(oneFive); fortyThree.setUserData(oneFive); fortyFour.setUserData(zeroFour); fortyFive.setUserData(zeroFour); fortySix.setUserData(zeroFour);
         fortySeven.setUserData(zeroThree); fortyEight.setUserData(zeroThree); fortyNine.setUserData(zeroTwo); fifty.setUserData(zeroTwo); fiftyOne.setUserData(zeroOne);
-        fiftyTwo.setUserData(zeroOne); fiftyThree.setUserData(zeroZero);};
+        fiftyTwo.setUserData(zeroOne);array_of_sides[53].setUserData(zeroZero);};
 
 
 
@@ -97,7 +96,6 @@ public class GameController {
     private void castRay() {
         // Get user input from the TextField
         String userInput = inputField.getText();
-        dataAssignemnt();
 
         // Convert the user input to an integer
         int raySource;
@@ -124,6 +122,7 @@ public class GameController {
 
             // Row and Column
             int[] ray_place;
+            dataAssignment();
             Polygon source = (Polygon) side.getUserData();
             String string = source.getId();
             String[] parts = string.split("(?=[A-Z])");
@@ -132,6 +131,7 @@ public class GameController {
 
             // Ray calculation
             Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
+            System.out.println(r);
             game.calculateRay(r);
             int rayRes = r.getResult();
             Rectangle endSide = array_of_sides[rayRes];
