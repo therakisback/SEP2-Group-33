@@ -142,7 +142,7 @@ public class GameController {
             System.out.println(r);
             game.calculateRay(r);
             int rayRes = r.getResult();
-            Rectangle endSide = array_of_sides[0];
+            Rectangle endSide = array_of_sides[rayRes];
 
             side.setOpacity(1);
             side.setFill(col);
