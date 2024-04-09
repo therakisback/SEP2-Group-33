@@ -169,14 +169,20 @@ public class Game {
     public int submitGame(Atom[] atomFlags) {
         int score = 0;
         for (Atom atom : trueAtoms) {
+            int count = 0;
             for (Atom flag : atomFlags) {
-                //for every wrongly guessed atom, the score increases by 5
+                //check each flag with each true atom
                 if (flag.getRow() != atom.getRow() || flag.getCol() != atom.getCol()){
-                    score = score + 5;
+                    count++;
+                } else {
+                    //correct guess, so flag can now be seen as an actual atom (change color when displayed maybe?)
+                    flag.setFlag(false);
+                    break;
                 }
-                // Correct guess, so flag can now be seen as an actual atom (change color when displayed maybe?)
-                flag.setFlag(false);
             }
+            //none of the flags correspond to the true atom (each atom at a time)
+            //for every wrongly guessed atom, the score increases by 5
+            if (count == 4) score += 5;
         }
         // Score counts ray markers on board as well
         for (Ray r : castRays) {
