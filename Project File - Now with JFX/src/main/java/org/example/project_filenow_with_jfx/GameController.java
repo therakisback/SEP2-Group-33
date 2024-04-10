@@ -116,7 +116,6 @@ public class GameController {
 
         // Determine where to cast ray from based on the user input
         if(raySource >= 0 && raySource <= 53){
-            System.out.println("ray cast from " + raySource);
             dataAssignment();
             Rectangle side = array_of_sides[raySource]; //side
             int dir;
@@ -139,19 +138,24 @@ public class GameController {
 
             // Ray calculation
             Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
-            System.out.println(r);
             game.calculateRay(r);
             int rayRes = r.getResult();
-            Rectangle endSide = array_of_sides[rayRes];
-
             side.setOpacity(1);
-            side.setFill(col);
-            endSide.setOpacity(1);
-            endSide.setFill(col);
-            col = makeColour(col);
+            if (rayRes == -1) {
+                side.setFill(Color.color(0, 0.2, 0, 1));
+                System.out.println("Hit");
+            } else if (rayRes == -2) {
+                side.setFill(Color.color(0, 0, 0.4, 1));
+                System.out.println("Return");
+            } else {
+                Rectangle endSide = array_of_sides[rayRes];
 
-            //col = Ema's method
-
+                side.setFill(col);
+                endSide.setOpacity(1);
+                endSide.setFill(col);
+                col = makeColour(col);
+                System.out.println("Side");
+            }
         }
         else {
             System.out.println("Invalid method number. Please enter a valid method number.");

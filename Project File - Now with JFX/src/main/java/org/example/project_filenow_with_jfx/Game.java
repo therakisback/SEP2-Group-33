@@ -34,6 +34,7 @@ public class Game {
     public Game(Atom... args){
         if(args.length != 4) throw new IllegalArgumentException("Must have four atoms");
         setAtoms(args);
+
     }
 
     // Class functions      ----------
@@ -58,7 +59,9 @@ public class Game {
 
         // Main tick loop   ---------
         int count = 0;      // Boolean to check if it's the first tick of the ray.
+        mainloop:
         while(true) {
+            //System.out.println(r);
             // Basic Checks ----------
             // Check hexagons neighboring ray for atoms
             // created here so "atom bounce checkers" don't have to create their own
@@ -74,12 +77,20 @@ public class Game {
                 index++;
             }
 
-            // Handles if the ray is created with an atom next to it.
+            // Handles if the ray is created with an atom next to it or on it.
             if (count == 0) {
+                // Auto hit - atom on it
+                for (Atom a : trueAtoms) {
+                    if (r.getCol() == a.getCol() && r.getRow() == a.getRow()) {
+                        r.setEnd(-1);
+                        break mainloop;
+                    }
+                }
+                // Auto return - atom next to it
                 for (boolean a : atomNeighbors) {
                     if (a) {
                         r.setEnd(-2);
-                        break;
+                        break mainloop;
                     }
                 }
             }
@@ -94,21 +105,10 @@ public class Game {
                 checkBounce(r, atomNeighbors);
             } else if (hitAtom(r, atomNeighbors)) break;
 
-            r.addToPath(pastDirection);
-
-            // Moving       ----------
-
-            moveRay(r); // Self-explanatory
-
-            // Edge Check   ----------
-
-            // Debug        ----------
-            if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infinite looping
-            count++;
-            //System.out.println(Ray.toString(r));
+            r.addToPath(pastDirection); // Stores path step to ray object
 
             // Check if ray is done (I.E. at edge hex, heading towards edge)
-            // Done after moving so that we have no risk of running off the board
+            // Done before moving so that we have no risk of running off the board
             int edge = onEdge(r);
             if (edge != -1) {
                 r.addToPath(r.getDir());
@@ -119,6 +119,16 @@ public class Game {
                 }
                 return;
             }
+
+            // Moving       ----------
+
+            moveRay(r); // Self-explanatory
+
+            // Edge Check   ----------
+
+            // Debug        ----------
+            if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infinite looping
+            count++;
         }
     }
 
@@ -141,10 +151,14 @@ public class Game {
     public void setAtoms() {
         Random random = new Random();
         trueAtoms = new Atom[4];
-        int col;
+        colLoop:
         for (int i = 0; i < 4; i++){
             int row = random.nextInt(8);
-            col = switch (row) {
+            int col;
+            if (row <= 4)   col = Math.abs(random.nextInt() % (row + 5));
+            else            col = random.nextInt(13 - row);
+            System.out.println("Row: " + row + "\t Col: " + col);
+            /*col = switch (row) {
                 //up until the 5th row, the columns up to which they go to = that row + 4
                 case 0, 1, 2, 3, 4 -> random.nextInt(row + 4) + 1;
                 //on the 5th row, the column goes up to 7
@@ -155,7 +169,11 @@ public class Game {
                 case 7 -> random.nextInt(5) + 1;
                 //on the 8th row, the column goes up to 4
                 default -> random.nextInt(4) + 1;
-            };
+            };*/
+            boolean pass = true;
+            for (int k = 0; k < i; k++) {
+                if (row == trueAtoms[k].getRow() && col == trueAtoms[k].getCol()) {i--; continue colLoop;}
+            }
             trueAtoms[i] = new Atom(row, col, false);
         }
     }
