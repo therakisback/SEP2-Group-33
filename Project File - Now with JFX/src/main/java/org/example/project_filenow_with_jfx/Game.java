@@ -1,7 +1,5 @@
 package org.example.project_filenow_with_jfx;
 
-import javafx.fxml.FXML;
-
 import java.io.*;
 import java.util.*;
 
@@ -176,6 +174,13 @@ public class Game {
             }
             trueAtoms[i] = new Atom(row, col, false);
         }
+    }
+
+    /**
+     * @return Array of true atoms used to calculate ray paths
+     */
+    public Atom[] getAtoms() {
+        return trueAtoms;
     }
 
     /**
@@ -483,6 +488,12 @@ public class Game {
 
 
     // File IO      ----------
+
+    /**
+     * Writes information to leaderboard file
+     * @param username Username to be recorded with score
+     * @param score New Score to be recorded
+     */
     public void writeToLeaderboard(String username, int score) {
         try {
             FileWriter fwr = new FileWriter(fi, true);
@@ -492,12 +503,32 @@ public class Game {
         } catch (IOException e) {System.out.println(e);}
     }
 
+    /**
+     * Retrieves info from leaderboard file
+     * @return List of Strings, each String is one line of "username \t score"
+     */
     public List<String> getLeaderboard() {
         List<String> ldb = new ArrayList<>();
         try {
             Scanner fr = new Scanner(fi);
             while (fr.hasNext()) {
                 ldb.add(fr.nextLine());
+            }
+        } catch (IOException e) {System.out.println(e);}
+        return ldb;
+    }
+
+    /**
+     * @param count The number of top leaderboard scores to return
+     * @return The leaderboard scores from 1st - nth
+     */
+    public List<String> getLeaderboard(int count) {
+        List<String> ldb = new ArrayList<>();
+        try {
+            Scanner fr = new Scanner(fi);
+            while (fr.hasNext() && count != 0) {
+                ldb.add(fr.nextLine());
+                count--;
             }
         } catch (IOException e) {System.out.println(e);}
         return ldb;

@@ -18,14 +18,12 @@ public class Ray {
     private int row;
     private int col;
     private int end;            // Store result of ray after computed (end location, mark absorbed)
-    /**
-     * Stores the path of the ray in int[] of length 4: [row, col, startDir, endDir]
-     */
+
+    /**Stores the path of the ray in int[] of length 4: [row, col, startDir, endDir]*/
     private ArrayList<int[]> path;
 
     /**
      * Constructor for new ray object.
-
      * @param direction   Starting direction for ray.
      * @param row   Starting grid square of ray(row).
      * @param col   Starting grid square of ray(col).
@@ -44,47 +42,25 @@ public class Ray {
 
     // Get functions        -----------
 
-    /**
-     * @return Current direction of the ray.
-     */
-    public int getDir() {
-        return direction;
-    }
+    /**@return Current direction of the ray.*/
+    public int getDir() { return direction; }
 
-    /**
-     * @return Current grid location of ray (row).
-     */
-    public int getRow(){
-        return row;
-    }
+    /**@return Current grid location of ray (row).*/
+    public int getRow(){ return row; }
 
-    /**
-     * @return Current grid location of ray (col).
-     */
-    public int getCol(){
-        return col;
-    }
+    /**@return Current grid location of ray (col).*/
+    public int getCol(){ return col; }
 
-    /**
-     * @return Starting location of ray.
-     */
-    public int getStart() {
-        return start;
-    }
+    /**@return Starting location of ray.*/
+    public int getStart() { return start; }
 
-    /**
-     * @return Ending result of ray, if one is specified.
-     */
-    public int getResult() {
-        return end;
-    }
+    /**@return Ending result of ray, if one is specified.*/
+    public int getResult() { return end; }
 
 
     // Set functions        -----------
 
-    /**
-     * @param direction New ray direction input.
-     */
+    /**@param direction New ray direction input.*/
     public void setDir(int direction) {
         int temp;
         temp = (direction - 1) % 6;
@@ -146,7 +122,6 @@ public class Ray {
      * because we're only checking if atoms are in that position and there are only 6 neighbours
      * @return the neighbours of the ray in a 2d array form (row, column)
      */
-
     public int[][] createNeighbours(){
         ArrayList<Integer> neighbours = new ArrayList<>();
         int newRow, newCol;
@@ -197,6 +172,11 @@ public class Ray {
         return proximity;
     }
 
+    /**
+     * Compares start and end of ray to decide if they are equal,as path could be variable for the same ray
+     * @param obj Object to compare to
+     * @return boolean whether the two objects are equal
+     */
     public boolean equals(Object obj) {
         if (obj instanceof Ray r) {
 
@@ -210,6 +190,12 @@ public class Ray {
         } else return false;
     }
 
+    /**
+     * Static version of ray equals method
+     * @param obj1 First object in comparison
+     * @param obj2 Second object in comparison
+     * @return boolean on whether the two objects have same start and end values
+     */
     static public boolean equals(Object obj1, Object obj2) {
         if (obj1 instanceof Ray r1 && obj2 instanceof Ray r2) {
 
@@ -220,10 +206,18 @@ public class Ray {
         } else return false;
     }
 
+    /**
+     * Method to convert information in ray object to a string
+     * @return String dispaying position, start, and result
+     */
     public String toString() {
         return ("Position: (" + row + ", " + col + ") \tStart: " + start + "\tResult: " + end);
     }
 
+    /**
+     * Static method to convert information in ray object to a string
+     * @return String dispaying position, start, and result
+     */
     static public String toString(Ray r) {
         return ("Position: (" + r.getRow() + ", " + r.getCol() + ") \tStart: " + r.getStart() + "\tResult: " + r.getResult());
     }

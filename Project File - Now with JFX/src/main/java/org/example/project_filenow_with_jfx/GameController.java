@@ -19,6 +19,10 @@ import java.util.HashMap;
 public class GameController {
     //The Polygons and rectangles represent the hexagons and sides on the board
     // I've put them into arrays to allow for easier manipulation
+
+    // JavaFX Variables ----------
+
+    /**Polygons used for creating hexagon grid - name indicates rowColumn */
     @FXML
     public Polygon zeroZero = new Polygon(), zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -30,6 +34,7 @@ public class GameController {
             sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
             eightZero, eightOne, eightTwo, eightThree, eightFour;
 
+    /** Array of Hexagons used in grid */
     @FXML
     public Polygon[] array_of_hexagons = {zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -41,6 +46,7 @@ public class GameController {
             sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
             eightZero, eightOne, eightTwo, eightThree, eightFour};
 
+    /** Rectangles used to represent sides / ray casting - name indicates side number to match */
     @FXML
     public Rectangle zero = new Rectangle(), one = new Rectangle(),         two = new Rectangle(),          three = new Rectangle(),
             four = new Rectangle(),         five = new Rectangle(),         six = new Rectangle(),          seven = new Rectangle(),
@@ -57,9 +63,11 @@ public class GameController {
             fortyEight = new Rectangle(),   fortyNine = new Rectangle(),    fifty = new Rectangle(),        fiftyOne = new Rectangle(),
             fiftyTwo = new Rectangle(),     fiftyThree = new Rectangle();
 
+    /** Array of rectangles to hold all side shapes */
     @FXML
     public Rectangle[] array_of_sides = new Rectangle[54];
 
+    /** Function to assign arrays of rectangles and hexagons, also assigns connections to each as needed */
     @FXML
     public void dataAssignment() {array_of_sides[0] = zero; array_of_sides[0].setUserData(zeroZero); array_of_sides[1] = one; array_of_sides[1].setUserData(zeroZero);
         array_of_sides[2] = two; array_of_sides[2].setUserData(oneZero); array_of_sides[3] = three; array_of_sides[3].setUserData(oneZero);
@@ -88,18 +96,28 @@ public class GameController {
         array_of_sides[53] = fiftyThree; array_of_sides[53].setUserData(zeroZero);};
 
 
+    // Class variables ----------
 
-    public int flag = 0;
+    public int flag = 0;                                    // Counter for number of "flag atoms" placed on game board
     @FXML
     private Button endGameButton;
-    private final Game game = new Game();
-    private Color col = new Color(0,0,0,0);
-    private ArrayList<Atom> atoms = new ArrayList<Atom>();
+    private final Game game = new Game();                   // Game class object used in ray calculation
+    private Color col = new Color(0,0,0,0);     // Color used in assigning ray markers
+    private ArrayList<Atom> atoms = new ArrayList<Atom>();      // Arraylist to hold onto atom objects placed on board
     @FXML
     private TextField inputField;
 
     @FXML
     private Button castRayButton;
+
+    @FXML
+    private AnchorPane scenePane;
+
+    Stage stage;
+
+    /**
+     * Method to handle casting rays from text input box
+     */
     @FXML
     private void castRay() {
         // Get user input from the TextField
@@ -163,10 +181,15 @@ public class GameController {
 
     }
 
-    // hit = dark green (0, 51, 0, 1)
-    // return = dark blue (0, 0, 102, 1)
-    // 18 colours including the initial one
+    /**
+     * Method to make a new color for ray markers
+     * <p>18 colours including the initial one
+     * @param col Color object to have color changed from
+     * @return Color object with new color
+     */
     private Color makeColour (Color col){
+        // hit = dark green (0, 51, 0, 1)
+        // return = dark blue (0, 0, 102, 1)
         if (col.getRed() < 1.0){
             return new Color(col.getRed() + 0.25, col.getGreen(), col.getBlue(), 1.0 );
         }
@@ -182,6 +205,11 @@ public class GameController {
         // final color - light grey
         return new Color(0.37,0.37,0.37,1.0);
     }
+
+    /**
+     * Button function to end the game when all atom flags are placed
+     * @param e ActionEvent to reference button press
+     */
     @FXML
     public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
         int score = game.submitGame(atoms.toArray(new Atom[4]));
@@ -189,6 +217,11 @@ public class GameController {
         //switch to new scene
     }
 
+    /**
+     * Method to convert hexagon name into an array of numbers for dimension
+     * @param parts Name to be converted into dimension
+     * @return int[] containing row and column numbers
+     */
     private int[] convertToNumbers(String[] parts) {
         int[] array = new int[2];
         HashMap<String, Integer> numbers= new HashMap<String, Integer>();
@@ -208,6 +241,10 @@ public class GameController {
         return array;
     }
 
+    /**
+     * Function to run when a hexagon is pressed in order to place / remove an atom flag
+     * @param e MouseEvent to represent click made
+     */
     @FXML
     private void placeAtom(MouseEvent e) {//allows you to place up to 4 flags
         int[] atom_place;
@@ -243,12 +280,16 @@ public class GameController {
 
     }
 
+    /**
+     *
+     */
     @FXML
     private Button logoutButton;
-    @FXML
-    private AnchorPane scenePane;
 
-        Stage stage;
+    /**
+     * Function to handle when window "x" is pressed, or exit button is pressed
+     * @param event Event detecting close button request
+     */
     @FXML
     public void logout(ActionEvent event){
 
