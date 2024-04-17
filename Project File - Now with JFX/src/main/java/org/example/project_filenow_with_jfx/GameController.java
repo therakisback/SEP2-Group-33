@@ -2,6 +2,10 @@ package org.example.project_filenow_with_jfx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -13,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,6 +26,11 @@ public class GameController {
     // I've put them into arrays to allow for easier manipulation
 
     // JavaFX Variables ----------
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
 
     /**Polygons used for creating hexagon grid - name indicates rowColumn */
     @FXML
@@ -112,8 +122,6 @@ public class GameController {
 
     @FXML
     private AnchorPane scenePane;
-
-    Stage stage;
 
     /**
      * Method to handle casting rays from text input box
@@ -211,9 +219,15 @@ public class GameController {
      * @param e ActionEvent to reference button press
      */
     @FXML
-    public void endGame(ActionEvent e) {//when four flags are placed, button appears to end the Game
+    public void endGame(ActionEvent e) throws IOException {//when four flags are placed, button appears to end the Game
         int score = game.submitGame(atoms.toArray(new Atom[4]));
         System.out.println("Game Over, your score was: " + score);
+
+        Parent root = FXMLLoader.load(getClass().getResource("end-game.fxml"));
+        stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
         //switch to new scene
     }
 
