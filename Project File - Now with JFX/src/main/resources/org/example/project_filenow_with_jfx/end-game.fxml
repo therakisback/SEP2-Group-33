@@ -3,14 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.project_filenow_with_jfx.GameController">
+<AnchorPane fx:id="scenePane" prefHeight="613.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.project_filenow_with_jfx.GameController">
     <children>
         <Polygon fx:id="fiveOne" fill="DODGERBLUE" layoutX="50.0" layoutY="272.0" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
-        <Polygon fx:id="fiveTwo" fill="DODGERBLUE" layoutX="102.0" layoutY="272.0"  points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
+        <Polygon fx:id="fiveTwo" fill="DODGERBLUE" layoutX="102.0" layoutY="272.0" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
         <Polygon fx:id="fiveFour" fill="DODGERBLUE" layoutX="206.0" layoutY="272.0" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
         <Polygon fx:id="fiveThree" fill="DODGERBLUE" layoutX="154.0" layoutY="272.0" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
         <Polygon fx:id="fiveFive" fill="DODGERBLUE" layoutX="258.0" layoutY="272.0" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
@@ -77,11 +78,11 @@
             </font>
         </Label>
         <Button fx:id="endGameButton" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#endGame" opacity="0.0" text="End Game" />
+        <Label layoutX="118.0" layoutY="128.0" text="4" />
         <Label layoutX="150.0" layoutY="67.0" text="1" />
         <Label layoutX="167.0" layoutY="43.0" text="0" textOverrun="WORD_ELLIPSIS" wrapText="true" />
         <Label layoutX="146.0" layoutY="85.0" text="2" />
         <Label layoutX="127.0" layoutY="104.0" text="3" />
-        <Label layoutX="118.0" layoutY="128.0" text="4" />
         <Label layoutX="98.0" layoutY="153.0" text="5" />
         <Label layoutX="86.0" layoutY="172.0" text="6" />
         <Label layoutX="69.0" layoutY="190.0" text="7" />
@@ -185,6 +186,7 @@
         <Rectangle fx:id="three" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="86.0" layoutY="109.0" opacity="0.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
         <Rectangle fx:id="two" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="119.0" layoutY="43.0" opacity="0.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
         <Rectangle fx:id="one" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="102.0" layoutY="63.0" opacity="0.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+      <Line endX="76.20001220703125" endY="301.8000183105469" layoutX="308.0" layoutY="102.0" startX="64.0" startY="281.9800109863281" stroke="WHITE" strokeWidth="5.0" />
     </children>
 
 </AnchorPane>

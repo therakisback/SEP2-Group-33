@@ -220,14 +220,16 @@ public class GameController {
      */
     @FXML
     public void endGame(ActionEvent e) throws IOException {//when four flags are placed, button appears to end the Game
-        int score = game.submitGame(atoms.toArray(new Atom[4]));
-        System.out.println("Game Over, your score was: " + score);
+        if(endGameButton.getOpacity() == 1){
+            int score = game.submitGame(atoms.toArray(new Atom[4]));
+            System.out.println("Game Over, your score was: " + score);
 
-        Parent root = FXMLLoader.load(getClass().getResource("end-game.fxml"));
-        stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("end-game.fxml"));
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
         //switch to new scene
     }
 
