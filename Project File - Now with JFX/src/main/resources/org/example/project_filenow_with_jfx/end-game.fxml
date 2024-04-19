@@ -187,10 +187,19 @@
         <Rectangle fx:id="three" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="86.0" layoutY="109.0" opacity="0.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
         <Rectangle fx:id="two" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="119.0" layoutY="43.0" opacity="0.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
         <Rectangle fx:id="one" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="102.0" layoutY="63.0" opacity="0.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
-      <Line endX="72.19998168945312" endY="303.8000183105469" layoutX="339.0" layoutY="145.0" startX="-159.80001831054688" startY="-83.4000015258789" stroke="WHITE" strokeWidth="5.0" />
-      <Line endX="-168.19998168945312" endY="294.6000061035156" layoutX="349.0" layoutY="155.0" startX="60.600006103515625" startY="-91.79999542236328" stroke="WHITE" strokeWidth="5.0" />
-      <Line endX="179.98004150390625" endY="99.98001098632812" layoutX="349.0" layoutY="155.0" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero" endX="-237.80001831054688" endY="100.98001098632812" layoutX="349.0" layoutY="155.0" onMousePressed="#pointLine" rotate="120.0" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
       <TextField editable="false" layoutX="219.0" layoutY="529.0" text="Your Score was: " />
+      <Line endX="-237.80001831054688" endY="100.98001098632812" layoutX="375.0" layoutY="109.0" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line endX="-237.80001831054688" endY="100.98001098632812" layoutX="429.0" layoutY="109.0" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line endX="-237.80001831054688" endY="100.98001098632812" layoutX="481.0" layoutY="109.0" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero1" endX="-237.80001831054688" endY="100.98001098632812" layoutX="400.0" layoutY="154.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero2" endX="-237.80001831054688" endY="100.98001098632812" layoutX="451.0" layoutY="155.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero3" endX="-237.80001831054688" endY="100.98001098632812" layoutX="503.0" layoutY="154.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero4" endX="-237.80001831054688" endY="100.98001098632812" layoutX="558.0" layoutY="154.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero41" endX="-237.80001831054688" endY="100.98001098632812" layoutX="609.0" layoutY="154.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero411" endX="-237.80001831054688" endY="100.98001098632812" layoutX="661.0" layoutY="154.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero412" endX="-237.80001831054688" endY="100.98001098632812" layoutX="714.0" layoutY="154.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
+      <Line fx:id="lineZero413" endX="-237.80001831054688" endY="100.98001098632812" layoutX="767.0" layoutY="153.0" onMousePressed="#pointLine" startX="-287.9800109863281" startY="100.98001098632812" stroke="WHITE" strokeWidth="5.0" />
     </children>
 
 </AnchorPane>

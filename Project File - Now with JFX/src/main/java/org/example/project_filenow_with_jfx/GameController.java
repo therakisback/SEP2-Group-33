@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
@@ -22,6 +23,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameController {
+    /*
+    * Hey My idea for the visible rays in the endgame is to have one line per hexagon
+    * each line can be turned to point to wherever it will exit each hexagon
+    * the only problem is that it won't look as good at the point where it changes direction
+    * any line that we don't need to see can just have an opacity of 0 */
+    public Line lineZero; //each line can be given an ID to match the hexagon??
+
+    @FXML
+    private void pointLine() {
+        lineZero.setRotate(lineZero.getRotate() + 60);
+        //if exit side is == 1
+        //line.setRotate(120);
+    }
+
     //The Polygons and rectangles represent the hexagons and sides on the board
     // I've put them into arrays to allow for easier manipulation
 
