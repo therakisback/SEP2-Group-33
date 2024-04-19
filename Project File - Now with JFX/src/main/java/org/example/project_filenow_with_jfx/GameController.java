@@ -191,7 +191,7 @@ public class GameController {
             int rayRes = r.getResult();
             side.setOpacity(1);
             if (rayRes == -1) {
-                side.setFill(Color.color(0, 0.2, 0, 1));
+                side.setFill(Color.color(0.9, 0.8, 0.8, 1));
                 System.out.println("Hit");
             } else if (rayRes == -2) {
                 side.setFill(Color.color(0, 0, 0.4, 1));
