@@ -191,6 +191,8 @@ public class Game {
      */
     public int submitGame(Atom[] atomFlags) {
         int score = 0;
+        System.out.println("Atoms: " + Arrays.toString(trueAtoms));
+        System.out.println("Flags: " + Arrays.toString(atomFlags));
         for (Atom atom : trueAtoms) {
             int count = 0;
             for (Atom flag : atomFlags) {
@@ -496,9 +498,22 @@ public class Game {
      */
     public void writeToLeaderboard(String username, int score) {
         try {
-            FileWriter fwr = new FileWriter(fi, true);
-            BufferedWriter fw = new BufferedWriter(fwr);
-            fw.write(username + "\t\t\t" + score + "\n");
+            boolean written = false;
+            List<String> ldb = getLeaderboard();            // Get current scores
+            FileWriter fwr = new FileWriter(fi);
+            BufferedWriter fw = new BufferedWriter(fwr);    // Open file writer
+
+            // Go through printing lines to find where new score belongs
+            for (String s : ldb) {
+                int oldScore = Integer.parseInt(s.substring((s.length())-2, s.length()-1));
+                if (oldScore > score) {     // If next score is greater than current, we are at boundary
+                    fw.write(username + "\t\t\t" + score + "\n");
+                    fw.write(s);
+                    written = true;
+                    break;
+                } else fw.write(s);         // Otherwise score is less than (better)
+            }
+            if (!written) fw.write(username + "\t\t\t" + score + "\n");
             fw.close();
         } catch (IOException e) {System.out.println(e);}
     }

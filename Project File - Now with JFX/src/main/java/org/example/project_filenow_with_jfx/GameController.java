@@ -27,7 +27,11 @@ public class GameController {
     * Hey My idea for the visible rays in the endgame is to have one line per hexagon
     * each line can be turned to point to wherever it will exit each hexagon
     * the only problem is that it won't look as good at the point where it changes direction
-    * any line that we don't need to see can just have an opacity of 0 */
+    * any line that we don't need to see can just have an opacity of 0
+    *
+    * Wouldn't the line end up being disjointed where it turns? Im not sure i understand
+    * */
+
     public Line lineZero; //each line can be given an ID to match the hexagon??
 
     @FXML
@@ -49,7 +53,7 @@ public class GameController {
 
     /**Polygons used for creating hexagon grid - name indicates rowColumn */
     @FXML
-    public Polygon zeroZero = new Polygon(), zeroOne, zeroTwo, zeroThree, zeroFour,
+    public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
             twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix,
             threeZero, threeOne, threeTwo, threeThree, threeFour, threeFive, threeSix, threeSeven,
@@ -61,15 +65,7 @@ public class GameController {
 
     /** Array of Hexagons used in grid */
     @FXML
-    public Polygon[] array_of_hexagons = {zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
-            oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
-            twoZero, twoOne, twoTwo, twoThree, twoFour, twoFive, twoSix,
-            threeZero, threeOne, threeTwo, threeThree, threeFour, threeFive, threeSix, threeSeven,
-            fourZero, fourOne, fourTwo, fourThree, fourFour, fourFive, fourSix, fourSeven, fourEight,
-            fiveZero, fiveOne, fiveTwo, fiveThree, fiveFour, fiveFive, fiveSix, fiveSeven,
-            sixZero, sixOne, sixTwo, sixThree, sixFour, sixFive, sixSix,
-            sevenZero, sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive,
-            eightZero, eightOne, eightTwo, eightThree, eightFour};
+    public Polygon[][] array_of_hexagons = new Polygon[9][9];
 
     /** Rectangles used to represent sides / ray casting - name indicates side number to match */
     @FXML
@@ -118,7 +114,17 @@ public class GameController {
         array_of_sides[47] = fortySeven; array_of_sides[47].setUserData(zeroThree); array_of_sides[48] = fortyEight; array_of_sides[48].setUserData(zeroThree);
         array_of_sides[49] = fortyNine; array_of_sides[49].setUserData(zeroTwo); array_of_sides[50] = fifty; array_of_sides[50].setUserData(zeroTwo);
         array_of_sides[51] = fiftyOne; array_of_sides[51].setUserData(zeroOne); array_of_sides[52] = fiftyTwo; array_of_sides[52].setUserData(zeroOne);
-        array_of_sides[53] = fiftyThree; array_of_sides[53].setUserData(zeroZero);};
+        array_of_sides[53] = fiftyThree; array_of_sides[53].setUserData(zeroZero);
+        array_of_hexagons[0][0] = zeroZero; array_of_hexagons[0][1] = zeroOne;array_of_hexagons[0][2] = zeroTwo;array_of_hexagons[0][3] = zeroThree;array_of_hexagons[0][4] = zeroFour;
+        array_of_hexagons[1][0] = oneZero; array_of_hexagons[1][1] = oneOne;array_of_hexagons[1][2] = oneTwo;array_of_hexagons[1][3] = oneThree;array_of_hexagons[1][4] = oneFour;array_of_hexagons[1][5] = oneFive;
+        array_of_hexagons[2][0] = twoZero; array_of_hexagons[2][1] = twoOne;array_of_hexagons[2][2] = twoTwo;array_of_hexagons[2][3] = twoThree;array_of_hexagons[2][4] = twoFour;array_of_hexagons[2][5] = twoFive;array_of_hexagons[2][6] = twoSix;
+        array_of_hexagons[3][0] = threeZero; array_of_hexagons[3][1] = threeOne;array_of_hexagons[3][2] = threeTwo;array_of_hexagons[3][3] = threeThree;array_of_hexagons[3][4] = threeFour;array_of_hexagons[3][5] = threeFive;array_of_hexagons[3][6] = threeSix;array_of_hexagons[3][7] = threeSeven;
+        array_of_hexagons[4][0] = fourZero; array_of_hexagons[4][1] = fourOne;array_of_hexagons[4][2] = fourTwo;array_of_hexagons[4][3] = fourThree;array_of_hexagons[4][4] = fourFour;array_of_hexagons[4][5] = fourFive;array_of_hexagons[4][6] = fourSix;array_of_hexagons[4][7] = fourSeven;array_of_hexagons[4][8] = fourEight;
+        array_of_hexagons[5][0] = fiveZero; array_of_hexagons[5][1] = fiveOne;array_of_hexagons[5][2] = fiveTwo;array_of_hexagons[5][3] = fiveThree;array_of_hexagons[5][4] = fiveFour;array_of_hexagons[5][5] = fiveFive;array_of_hexagons[5][6] = fiveSix;array_of_hexagons[5][7] = fiveSeven;
+        array_of_hexagons[6][0] = sixZero; array_of_hexagons[6][1] = sixOne;array_of_hexagons[6][2] = sixTwo;array_of_hexagons[6][3] = sixThree;array_of_hexagons[6][4] = sixFour;array_of_hexagons[6][5] = sixFive;array_of_hexagons[6][6] = sixSix;
+        array_of_hexagons[7][0] = sevenZero; array_of_hexagons[7][1] = sevenOne;array_of_hexagons[7][2] = sevenTwo;array_of_hexagons[7][3] = sevenThree;array_of_hexagons[7][4] = sevenFour;array_of_hexagons[7][5] = sevenFive;
+        array_of_hexagons[8][0] = eightZero; array_of_hexagons[8][1] = eightOne;array_of_hexagons[8][2] = eightTwo;array_of_hexagons[8][3] = eightThree;array_of_hexagons[8][4] = eightFour;
+    }
 
 
     // Class variables ----------
@@ -128,9 +134,11 @@ public class GameController {
     private Button endGameButton;
     private final Game game = new Game();                   // Game class object used in ray calculation
     private Color col = new Color(0,0,0,0);     // Color used in assigning ray markers
-    private ArrayList<Atom> atoms = new ArrayList<Atom>();      // Arraylist to hold onto atom objects placed on board
+    private ArrayList<Atom> atoms = new ArrayList<>();     // Arraylist to hold onto atom objects placed on board
     @FXML
-    private TextField inputField;
+    private TextField inputField; // Text box used to input ray cast numbers
+    @FXML
+    private TextField scoreField;
 
     @FXML
     private Button castRayButton;
@@ -244,6 +252,18 @@ public class GameController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            dataAssignment();
+
+            // Set atoms flags to yellow
+            for(Atom a : atoms) {
+                array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.YELLOW);
+            }
+            // Set atoms to red
+            for (Atom a : game.getAtoms()) {
+                array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.RED);
+            }
+
+            //scoreField.setText("Your score was: " + score);
         }
         //switch to new scene
     }
@@ -284,7 +304,7 @@ public class GameController {
         String[] parts = string.split("(?=[A-Z])");
 
         atom_place = convertToNumbers(parts);
-        Atom atom = new Atom(atom_place[1], atom_place[0], false);
+        Atom atom = new Atom(atom_place[0], atom_place[1], false);
 
         if(source.getFill() == Color.YELLOW) {
             source.setFill(Color.DODGERBLUE);
