@@ -296,9 +296,11 @@ public class GameController {
      * Function to run when a hexagon is pressed in order to place / remove an atom flag
      * @param e MouseEvent to represent click made
      */
+    ArrayList<Polygon> list_of_flags = new ArrayList<Polygon>();
     @FXML
     private void placeAtom(MouseEvent e) {//allows you to place up to 4 flags
         int[] atom_place;
+
         Polygon source = (Polygon) e.getSource();
         String string = source.getId();
         String[] parts = string.split("(?=[A-Z])");
@@ -312,6 +314,7 @@ public class GameController {
             atoms.remove(atom);
             flag--;
             endGameButton.setOpacity(0);
+            list_of_flags.remove(source);
         }
         else{
             if(flag < 3){
@@ -319,6 +322,7 @@ public class GameController {
                 System.out.println("Placed atom flag");
                 atoms.add(atom);
                 flag++;
+                list_of_flags.add(source);
             }
             else if(flag < 4){
                 source.setFill(Color.YELLOW);
@@ -326,6 +330,7 @@ public class GameController {
                 atoms.add(atom);
                 flag++;
                 endGameButton.setOpacity(1);
+                list_of_flags.add(source);
             }
         }
 
