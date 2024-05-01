@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameController {
+
+
     /*
     * Hey My idea for the visible rays in the endgame is to have one line per hexagon
     * each line can be turned to point to wherever it will exit each hexagon
