@@ -22,38 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GameController {
-
-
-    /*
-    * Hey My idea for the visible rays in the endgame is to have one line per hexagon
-    * each line can be turned to point to wherever it will exit each hexagon
-    * the only problem is that it won't look as good at the point where it changes direction
-    * any line that we don't need to see can just have an opacity of 0
-    *
-    * Wouldn't the line end up being disjointed where it turns? Im not sure i understand
-    * */
-
-    public Line lineZero; //each line can be given an ID to match the hexagon??
-
-    @FXML
-    private void pointLine() {
-        lineZero.setRotate(lineZero.getRotate() + 60);
-        //if exit side is == 1
-        //line.setRotate(120);
-    }
-
-    //The Polygons and rectangles represent the hexagons and sides on the board
-    // I've put them into arrays to allow for easier manipulation
-
-    // JavaFX Variables ----------
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-
-    /**Polygons used for creating hexagon grid - name indicates rowColumn */
+public class EndGameController {
     @FXML
     public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -127,239 +96,20 @@ public class GameController {
         array_of_hexagons[7][0] = sevenZero; array_of_hexagons[7][1] = sevenOne;array_of_hexagons[7][2] = sevenTwo;array_of_hexagons[7][3] = sevenThree;array_of_hexagons[7][4] = sevenFour;array_of_hexagons[7][5] = sevenFive;
         array_of_hexagons[8][0] = eightZero; array_of_hexagons[8][1] = eightOne;array_of_hexagons[8][2] = eightTwo;array_of_hexagons[8][3] = eightThree;array_of_hexagons[8][4] = eightFour;
     }
-
-
-    // Class variables ----------
-
-    public int flag = 0;                                    // Counter for number of "flag atoms" placed on game board
     @FXML
-    private Button endGameButton;
-    public final Game game = new Game();                   // Game class object used in ray calculation
-    public Color col = new Color(0,0,0,0);     // Color used in assigning ray markers
-    public ArrayList<Atom> atoms = new ArrayList<>();     // Arraylist to hold onto atom objects placed on board
-    @FXML
-    private TextField inputField; // Text box used to input ray cast numbers
-    @FXML
-    private TextField scoreField;
+    private AnchorPane endScenePane;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    public ArrayList<Atom> atomFlags = new ArrayList<>();
 
-    @FXML
-    private Button castRayButton;
-
-    @FXML
-    private AnchorPane scenePane;
-
-    /**
-     * Method to handle casting rays from text input box
-     */
-    @FXML
-    private void castRay() {
-        // Get user input from the TextField
-        String userInput = inputField.getText();
-
-        // Convert the user input to an integer
-        int raySource;
-        try {
-            raySource = Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a valid integer.");
-            return;
+    public void receiveAtoms(ArrayList<Atom> atoms) {
+        for (Atom a : atoms) {
+            atomFlags.add(a);
         }
-
-        // Determine where to cast ray from based on the user input
-        if(raySource >= 0 && raySource <= 53){
-            dataAssignment();
-            Rectangle side = array_of_sides[raySource]; //side
-            int dir;
-
-            // Direction - this is fun
-                 if (raySource >= 19 && raySource <= 35 && raySource % 2 == 1) dir = 1;
-            else if (raySource >= 10 && raySource <= 26 && raySource % 2 == 0) dir = 2;
-            else if (raySource <= 17 && raySource % 2 == 1) dir = 3;
-            else if (raySource >= 46 || raySource <= 8) dir = 4;
-            else if (raySource >= 37 && raySource % 2 == 1) dir = 5;
-            else dir = 6;
-
-            // Row and Column
-            int[] ray_place;
-            Polygon source = (Polygon) side.getUserData();
-            String string = source.getId();
-            String[] parts = string.split("(?=[A-Z])");
-
-            ray_place = convertToNumbers(parts);
-
-            // Ray calculation
-            Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
-            game.calculateRay(r);
-            int rayRes = r.getResult();
-            side.setOpacity(1);
-            if (rayRes == -1) {
-                side.setFill(Color.color(0.9, 0.8, 0.8, 1));
-                System.out.println("Hit");
-            } else if (rayRes == -2) {
-                side.setFill(Color.color(0, 0, 0.4, 1));
-                System.out.println("Return");
-            } else {
-                Rectangle endSide = array_of_sides[rayRes];
-
-                side.setFill(col);
-                endSide.setOpacity(1);
-                endSide.setFill(col);
-                col = makeColour(col);
-                System.out.println("Side");
-            }
-        }
-        else {
-            System.out.println("Invalid method number. Please enter a valid method number.");
-        }
-
     }
 
-    /**
-     * Method to make a new color for ray markers
-     * <p>18 colours including the initial one
-     * @param col Color object to have color changed from
-     * @return Color object with new color
-     */
-    private Color makeColour (Color col){
-        // hit = dark green (0, 51, 0, 1)
-        // return = dark blue (0, 0, 102, 1)
-        if (col.getRed() < 1.0){
-            return new Color(col.getRed() + 0.25, col.getGreen(), col.getBlue(), 1.0 );
-        }
-        else if (col.getGreen() < 1.0){
-            return new Color(col.getRed(), col.getGreen() + 0.25, col.getBlue(), 1.0 );
-        }
-        else if (col.getBlue() < 1.0){
-            return new Color(col.getRed(), 0.25, col.getBlue() + 0.25, 1.0 );
-        }
-        else if (col.getBlue() == 1.0){
-            return new Color(0, col.getGreen() + 0.25, 1.0, 1.0);
-        }
-        // final color - light grey
-        return new Color(0.37,0.37,0.37,1.0);
-    }
 
-    /**
-     * Button function to end the game when all atom flags are placed
-     * @param e ActionEvent to reference button press
-     */
-    @FXML
-    public void endGame(ActionEvent e) throws IOException {//when four flags are placed, button appears to end the Game
-        if(endGameButton.getOpacity() == 1){
-            int score = game.submitGame(atoms.toArray(new Atom[4]));
-            System.out.println("Game Over, your score was: " + score);
-
-            /**
-             * Trying to send the atoms from one scene to another
-             * Made a second controller to allow for multiple instances of the same objects
-             */
-            /*FXMLLoader loader = FXMLLoader.load(getClass().getResource("end-game.fxml"));
-
-            EndGameController endGameController = loader.getController();
-            endGameController.receiveAtoms(atoms);
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            scene = new Scene(loader.load());
-            */
-            Parent root = FXMLLoader.load(getClass().getResource("end-game.fxml"));
-
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            dataAssignment();
-
-            // Set atoms flags to yellow
-            /*for(Atom a : endGameController.atomFlags) {
-                array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.YELLOW);
-            }*/
-            // Set atoms to red
-            for (Atom a : game.getAtoms()) {
-                array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.RED);
-            }
-
-            //scoreField.setText("Your score was: " + score);
-        }
-        //switch to new scene
-    }
-
-    /**
-     * Method to convert hexagon name into an array of numbers for dimension
-     * @param parts Name to be converted into dimension
-     * @return int[] containing row and column numbers
-     */
-    private int[] convertToNumbers(String[] parts) {
-        int[] array = new int[2];
-        HashMap<String, Integer> numbers= new HashMap<String, Integer>();
-        numbers.put("zero", 0);
-        numbers.put("one", 1);
-        numbers.put("two", 2);
-        numbers.put("three", 3);
-        numbers.put("four", 4);
-        numbers.put("five", 5);
-        numbers.put("six", 6);
-        numbers.put("seven", 7);
-        numbers.put("eight", 8);
-
-        for(int i = 0; i < 2; i++){
-            array[i] = numbers.getOrDefault(parts[i].toLowerCase(), 0);
-        }
-        return array;
-    }
-
-    /**
-     * Function to run when a hexagon is pressed in order to place / remove an atom flag
-     * @param e MouseEvent to represent click made
-     */
-    ArrayList<Polygon> list_of_flags = new ArrayList<Polygon>();
-    @FXML
-    private void placeAtom(MouseEvent e) {//allows you to place up to 4 flags
-        int[] atom_place;
-
-        Polygon source = (Polygon) e.getSource();
-        String string = source.getId();
-        String[] parts = string.split("(?=[A-Z])");
-
-        atom_place = convertToNumbers(parts);
-        Atom atom = new Atom(atom_place[0], atom_place[1], false);
-
-        if(source.getFill() == Color.YELLOW) {
-            source.setFill(Color.DODGERBLUE);
-            System.out.println("Removed atom flag");
-            atoms.remove(atom);
-            flag--;
-            endGameButton.setOpacity(0);
-            list_of_flags.remove(source);
-        }
-        else{
-            if(flag < 3){
-                source.setFill(Color.YELLOW);
-                System.out.println("Placed atom flag");
-                atoms.add(atom);
-                flag++;
-                list_of_flags.add(source);
-            }
-            else if(flag < 4){
-                source.setFill(Color.YELLOW);
-                System.out.println("Placed atom flag");
-                atoms.add(atom);
-                flag++;
-                endGameButton.setOpacity(1);
-                list_of_flags.add(source);
-            }
-        }
-
-    }
-
-    /**
-     *
-     */
-    @FXML
-    private Button logoutButton;
-
-    /**
-     * Function to handle when window "x" is pressed, or exit button is pressed
-     * @param event Event detecting close button request
-     */
     @FXML
     public void logout(ActionEvent event){
 
@@ -369,10 +119,11 @@ public class GameController {
         alert.setContentText("Are you sure you want to stop playing this super fun game???");
 
         if(alert.showAndWait().get() == ButtonType.OK){
-            stage = (Stage) scenePane.getScene().getWindow();
+            stage = (Stage) endScenePane.getScene().getWindow();
             System.out.println("Thanks for playing");
             stage.close();
         }
 
     }
+
 }
