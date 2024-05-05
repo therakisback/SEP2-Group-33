@@ -253,29 +253,16 @@ public class GameController {
              * Trying to send the atoms from one scene to another
              * Made a second controller to allow for multiple instances of the same objects
              */
-            /*FXMLLoader loader = FXMLLoader.load(getClass().getResource("end-game.fxml"));
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("end-game.fxml"));
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.show();
 
             EndGameController endGameController = loader.getController();
             endGameController.receiveAtoms(atoms);
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            scene = new Scene(loader.load());
-            */
-            Parent root = FXMLLoader.load(getClass().getResource("end-game.fxml"));
 
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            dataAssignment();
-
-            // Set atoms flags to yellow
-            /*for(Atom a : endGameController.atomFlags) {
-                array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.YELLOW);
-            }*/
-            // Set atoms to red
-            for (Atom a : game.getAtoms()) {
-                array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.RED);
-            }
+            endGameController.receiveRealAtoms(game.getAtoms());
 
             //scoreField.setText("Your score was: " + score);
         }

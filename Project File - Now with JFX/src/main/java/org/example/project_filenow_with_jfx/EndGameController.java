@@ -102,10 +102,24 @@ public class EndGameController {
     private Scene scene;
     private Parent root;
     public ArrayList<Atom> atomFlags = new ArrayList<>();
+    public Atom[] realAtoms = new Atom[4];
 
     public void receiveAtoms(ArrayList<Atom> atoms) {
+        dataAssignment();
         for (Atom a : atoms) {
             atomFlags.add(a);
+        }
+        for(Atom a : atomFlags) {
+            array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.YELLOW);
+        }
+    }
+    public void receiveRealAtoms(Atom[] atoms) {
+        dataAssignment();
+        for (int i = 0; i < atoms.length; i++) {
+            realAtoms[i] = atoms[i];
+        }
+        for(Atom a : realAtoms) {
+            array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.GREEN);
         }
     }
 
