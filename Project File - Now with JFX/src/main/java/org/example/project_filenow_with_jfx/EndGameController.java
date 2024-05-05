@@ -115,7 +115,7 @@ public class EndGameController {
     private TextField scoreField, usernameField;
 
     @FXML
-    private TextArea topTen, playerHighlight;
+    private TextArea topTen;
     @FXML
     private Button usernameButton;
     boolean pressed = false;
