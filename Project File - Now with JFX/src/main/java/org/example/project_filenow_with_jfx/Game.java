@@ -155,7 +155,6 @@ public class Game {
             int col;
             if (row <= 4)   col = Math.abs(random.nextInt() % (row + 5));
             else            col = random.nextInt(13 - row);
-            System.out.println("Row: " + row + "\t Col: " + col);
             /*col = switch (row) {
                 //up until the 5th row, the columns up to which they go to = that row + 4
                 case 0, 1, 2, 3, 4 -> random.nextInt(row + 4) + 1;
