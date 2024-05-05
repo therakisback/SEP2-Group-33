@@ -264,6 +264,7 @@ public class GameController {
             endGameController.receiveRealAtoms(game.getAtoms());
             endGameController.receiveScore(score);
             endGameController.game = game;
+            endGameController.showRay(game.getRays().getFirst());
 
             /*
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("end-game.fxml"));

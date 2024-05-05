@@ -24,9 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EndGameController {
-    public EndGameController(){
-
-    }
     @FXML
     public Polygon zeroZero, zeroOne, zeroTwo, zeroThree, zeroFour,
             oneZero, oneOne, oneTwo, oneThree, oneFour, oneFive,
@@ -146,10 +143,10 @@ public class EndGameController {
         game.writeToLeaderboard(username, score);
     }
     public void showRay(Ray ray){
-        int originX = 76;
-        int originY = 57;
-        int exampleX = 284;
-        int exampleY = 403;
+        int originX = 636 - 454;
+        int originY = 430 - 366;
+        int exampleX = 636 - 224;
+        int exampleY = 430 + 18;
 
 
         //int[] rayStart = ray.getPath().getFirst();
