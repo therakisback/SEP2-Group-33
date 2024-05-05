@@ -189,11 +189,6 @@ public class GameController {
 
             // Ray calculation
             Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
-
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("end-game.fxml"));
-            EndGameController endGameController = loader.getController();
-            endGameController.showRay(r);
-
             game.calculateRay(r);
             int rayRes = r.getResult();
             side.setOpacity(1);
@@ -269,6 +264,14 @@ public class GameController {
             endGameController.receiveScore(score);
             endGameController.showTopTen(game.getLeaderboard());
             endGameController.game = game;
+            endGameController.showRay(game.getRays().getFirst());
+
+            /*
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("end-game.fxml"));
+            EndGameController endGameController = loader.getController();
+            endGameController.showRay(r);
+             */
+
 
             //scoreField.setText("Your score was: " + score);
         }

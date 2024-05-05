@@ -103,7 +103,7 @@ public class EndGameController {
         array_of_hexagons[8][0] = eightZero; array_of_hexagons[8][1] = eightOne;array_of_hexagons[8][2] = eightTwo;array_of_hexagons[8][3] = eightThree;array_of_hexagons[8][4] = eightFour;
     }
     @FXML
-    private AnchorPane endScenePane;
+    public AnchorPane endScenePane;
     protected Game game;
     int score;
     private Stage stage;
@@ -118,6 +118,7 @@ public class EndGameController {
     private TextField scoreField, usernameField;
     @FXML
     private Button usernameButton;
+    boolean pressed = false;
 
 
     public void receiveAtoms(ArrayList<Atom> atoms) {
@@ -144,10 +145,27 @@ public class EndGameController {
     }
 
     public void getUsername(ActionEvent e) {
-        String username = usernameField.getText();
-        game.writeToLeaderboard(username, score);
+        if (!pressed) {
+            String username = usernameField.getText();
+            if (username.contains("Username") || username.length() > 14 || username.contains(" ") || username.isEmpty()) return;
+            game.writeToLeaderboard(username, score);
+            pressed = true;
+        }
     }
     public void showRay(Ray ray){
+        int originX = 636 - 454;
+        int originY = 430 - 366;
+        int exampleX = 636 - 224;
+        int exampleY = 430 + 18;
+
+
+        //int[] rayStart = ray.getPath().getFirst();
+        //int[] rayEnd = ray.getPath().getLast();
+        Line line1 = new Line(originX, originY, exampleX, exampleY);
+        line1.setStroke(Color.BLACK);
+        line1.setStrokeWidth(5);
+
+        endScenePane.getChildren().addAll(line1);
 
         /*
         double startX = 100;
