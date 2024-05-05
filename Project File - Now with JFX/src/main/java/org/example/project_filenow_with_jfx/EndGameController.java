@@ -134,7 +134,7 @@ public class EndGameController {
         this.score = score;
     }
 
-    public void getUsername(MouseEvent e) {
+    public void getUsername(ActionEvent e) {
         String username = usernameField.getText();
         game.writeToLeaderboard(username, score);
     }

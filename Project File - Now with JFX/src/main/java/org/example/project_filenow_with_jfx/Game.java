@@ -508,7 +508,7 @@ public class Game {
                 int oldScore = Integer.parseInt(s.substring((s.length())-2, s.length()-1));
                 if (oldScore > score) {     // If next score is greater than current, we are at boundary
                     fw.write(username + "\t\t\t" + score + "\n");
-                    fw.write(s);
+                    fw.write(s + "\n");
                     written = true;
                     break;
                 } else fw.write(s);         // Otherwise score is less than (better)
