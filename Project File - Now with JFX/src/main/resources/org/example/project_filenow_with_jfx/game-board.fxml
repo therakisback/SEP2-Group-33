@@ -72,20 +72,20 @@
       <Polygon fx:id="threeSeven" fill="DODGERBLUE" layoutX="362.0" layoutY="184.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="threeZero" fill="DODGERBLUE" layoutX="-2.0" layoutY="186.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
       <Polygon fx:id="fiveZero" fill="DODGERBLUE" layoutX="-2.0" layoutY="273.0" onMousePressed="#placeAtom" points="100.0, 0.0, 130.0, 0.0, 145.0, 25.98, 130.0, 51.96, 100.0, 51.96, 85.0, 25.98" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
-      <Button fx:id="logoutButton" layoutX="558.0" layoutY="13.0" mnemonicParsing="false" onAction="#logout" text="Exit" />
-      <Label layoutX="11.0" layoutY="565.0" prefHeight="38.0" prefWidth="378.0" text="Place or remove atom flags by selecting hexagon" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="logoutButton" layoutX="737.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" text="Exit" />
+      <Label layoutX="175.0" layoutY="564.0" prefHeight="38.0" prefWidth="422.0" text="Place or remove atom flags by clicking on a hexagon" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Myanmar Text Bold" size="16.0" />
          </font>
       </Label>
       <Button fx:id="endGameButton" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#endGame" opacity="0.0" text="End Game" />
-      <Label layoutX="11.0" layoutY="527.0" prefHeight="38.0" prefWidth="240.0" text="Cast ray by writing start side -&gt;" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="181.0" layoutY="526.0" prefHeight="38.0" prefWidth="240.0" text="Cast ray by writing start side -&gt;" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Myanmar Text Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="inputField" layoutX="272.0" layoutY="526.0" promptText="0-53" />
-      <Button fx:id="castRayButton" layoutX="423.0" layoutY="523.0" mnemonicParsing="false" onAction="#castRay" text="Cast Ray" />
+      <TextField fx:id="inputField" layoutX="425.0" layoutY="533.0" promptText="0-53" />
+      <Button fx:id="castRayButton" layoutX="576.0" layoutY="530.0" mnemonicParsing="false" onAction="#castRay" text="Cast Ray" />
       <Label layoutX="150.0" layoutY="67.0" text="1" />
       <Label layoutX="167.0" layoutY="43.0" text="0" textOverrun="WORD_ELLIPSIS" wrapText="true" />
       <Label layoutX="146.0" layoutY="85.0" text="2" />
