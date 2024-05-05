@@ -39,7 +39,6 @@ public class Display_Board extends Application {
         alert.setContentText("Are you sure you want to stop playing this super fun game???");
 
         if(alert.showAndWait().get() == ButtonType.OK){
-            System.out.println("Great Success");
             stage.close();
         }
 

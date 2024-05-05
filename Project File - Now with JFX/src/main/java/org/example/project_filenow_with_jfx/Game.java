@@ -42,6 +42,7 @@ public class Game {
      * @param r Ray object to be used.
      */
     public void calculateRay(Ray r) throws IllegalArgumentException{
+        System.out.println(Arrays.toString(trueAtoms));
 
         // Starting variables / Actions
 
@@ -59,7 +60,7 @@ public class Game {
         int count = 0;      // Boolean to check if it's the first tick of the ray.
         mainloop:
         while(true) {
-            //System.out.println(r);
+            System.out.println(r);
             // Basic Checks ----------
             // Check hexagons neighboring ray for atoms
             // created here so "atom bounce checkers" don't have to create their own
@@ -125,7 +126,7 @@ public class Game {
             // Edge Check   ----------
 
             // Debug        ----------
-            if (count > 65) {System.out.println(" Ray loop didn't end"); break;}     // Prevents infinite looping
+            if (count > 65) {System.out.println("Ray loop didn't end"); break;}     // Prevents infinite looping
             count++;
         }
     }
@@ -155,18 +156,6 @@ public class Game {
             int col;
             if (row <= 4)   col = Math.abs(random.nextInt() % (row + 5));
             else            col = random.nextInt(13 - row);
-            /*col = switch (row) {
-                //up until the 5th row, the columns up to which they go to = that row + 4
-                case 0, 1, 2, 3, 4 -> random.nextInt(row + 4) + 1;
-                //on the 5th row, the column goes up to 7
-                case 5 -> random.nextInt(7) + 1;
-                //on the 6th row, the column goes up to 6
-                case 6 -> random.nextInt(6) + 1;
-                //on the 7th row, the column goes up to 5
-                case 7 -> random.nextInt(5) + 1;
-                //on the 8th row, the column goes up to 4
-                default -> random.nextInt(4) + 1;
-            };*/
             boolean pass = true;
             for (int k = 0; k < i; k++) {
                 if (row == trueAtoms[k].getRow() && col == trueAtoms[k].getCol()) {i--; continue colLoop;}
@@ -197,8 +186,6 @@ public class Game {
      */
     public int submitGame(Atom[] atomFlags) {
         int score = 0;
-        System.out.println("Atoms: " + Arrays.toString(trueAtoms));
-        System.out.println("Flags: " + Arrays.toString(atomFlags));
         for (Atom atom : trueAtoms) {
             int count = 0;
             for (Atom flag : atomFlags) {

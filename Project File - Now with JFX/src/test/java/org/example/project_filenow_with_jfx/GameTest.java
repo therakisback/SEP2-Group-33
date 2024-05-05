@@ -2,6 +2,8 @@ package org.example.project_filenow_with_jfx;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
@@ -96,5 +98,18 @@ public class GameTest {
         Ray r = new Ray(8,4, 1, 27);
         g.calculateRay(r);
         assertEquals(2, r.getResult());
+    }
+
+    @Test
+    public void buggyTrash() {
+        g = new Game(
+                new Atom(3,2, false),
+                new Atom(4,3, false),
+                new Atom(3,6, false),
+                new Atom(4,5, false));
+
+        Ray r = new Ray(0,4, 5,45);
+        g.calculateRay(r);
+        assertEquals(22, r.getResult());
     }
 }

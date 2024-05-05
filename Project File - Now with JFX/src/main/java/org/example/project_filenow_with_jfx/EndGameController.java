@@ -136,9 +136,9 @@ public class EndGameController {
             realAtoms[i] = atoms[i];
         }
         for(Atom a : realAtoms) {
-            array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.GREEN);
-            double originX = 115 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutX();
-            double originY = 27 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutY();
+            array_of_hexagons[a.getCol()][a.getRow()].setFill(Color.GREEN);
+            double originX = 115 + array_of_hexagons[a.getCol()][a.getRow()].getLayoutX();
+            double originY = 27 + array_of_hexagons[a.getCol()][a.getRow()].getLayoutY();
             Circle influence = new Circle(originX, originY, 50, Color.WHITE);
             influence.setOpacity(.4);
             endScenePane.getChildren().addAll(influence);
@@ -161,11 +161,9 @@ public class EndGameController {
     public void showRay(Rectangle rectangle){
         dataAssignment();
         for(int i = 0; i < 53; i++){
-            System.out.println(rectangle.getId()+ "  " + array_of_sides[i].getId());
             if( rectangle.getId().equals(array_of_sides[i].getId()) ){
                 array_of_sides[i].setFill(rectangle.getFill());
                 array_of_sides[i].setOpacity(1);
-                System.out.println("winner");
             }
         }
 
@@ -202,7 +200,6 @@ public class EndGameController {
 
         if(alert.showAndWait().get() == ButtonType.OK){
             stage = (Stage) endScenePane.getScene().getWindow();
-            System.out.println("Thanks for playing");
             stage.close();
         }
     }
@@ -218,7 +215,6 @@ public class EndGameController {
             }
             count++;
         }
-        System.out.println(scores);
         topTen.setText(scores.toString());
     }
 

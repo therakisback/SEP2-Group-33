@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class GameController {
@@ -155,6 +156,7 @@ public class GameController {
      */
     @FXML
     private void castRay() {
+        System.out.println(Arrays.toString(game.getAtoms()));
         // Get user input from the TextField
         String userInput = inputField.getText();
 
@@ -191,16 +193,15 @@ public class GameController {
 
             // Ray calculation
             Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
+            System.out.println(r);
             game.calculateRay(r);
             int rayRes = r.getResult();
             side.setOpacity(1);
             rayBoxList.add(side);
             if (rayRes == -1) {
                 side.setFill(Color.color(0.9, 0.8, 0.8, 1));
-                System.out.println("Hit");
             } else if (rayRes == -2) {
                 side.setFill(Color.color(0, 0, 0.4, 1));
-                System.out.println("Return");
             } else {
                 Rectangle endSide = array_of_sides[rayRes];
 
@@ -208,7 +209,6 @@ public class GameController {
                 endSide.setOpacity(1);
                 endSide.setFill(col);
                 col = makeColour(col);
-                System.out.println("Side");
                 rayBoxList.add(endSide);
             }
         }
@@ -251,7 +251,6 @@ public class GameController {
     public void endGame(ActionEvent e) throws IOException {//when four flags are placed, button appears to end the Game
         if(endGameButton.getOpacity() == 1){
             int score = game.submitGame(atoms.toArray(new Atom[4]));
-            System.out.println("Game Over, your score was: " + score);
             /**
              * Trying to send the atoms from one scene to another
              * Made a second controller to allow for multiple instances of the same objects
@@ -264,6 +263,7 @@ public class GameController {
 
             EndGameController endGameController = loader.getController();
             endGameController.receiveAtoms(atoms);
+            System.out.println(Arrays.toString(game.getAtoms()));
             endGameController.receiveRealAtoms(game.getAtoms());
             endGameController.receiveScore(score);
             endGameController.game = game;
@@ -331,7 +331,6 @@ public class GameController {
 
         if(source.getFill() == Color.YELLOW) {
             source.setFill(Color.DODGERBLUE);
-            System.out.println("Removed atom flag");
             atoms.remove(atom);
             flag--;
             endGameButton.setOpacity(0);
@@ -340,14 +339,12 @@ public class GameController {
         else{
             if(flag < 3){
                 source.setFill(Color.YELLOW);
-                System.out.println("Placed atom flag");
                 atoms.add(atom);
                 flag++;
                 list_of_flags.add(source);
             }
             else if(flag < 4){
                 source.setFill(Color.YELLOW);
-                System.out.println("Placed atom flag");
                 atoms.add(atom);
                 flag++;
                 endGameButton.setOpacity(1);
@@ -377,7 +374,6 @@ public class GameController {
 
         if(alert.showAndWait().get() == ButtonType.OK){
             stage = (Stage) scenePane.getScene().getWindow();
-            System.out.println("Thanks for playing");
             stage.close();
         }
 

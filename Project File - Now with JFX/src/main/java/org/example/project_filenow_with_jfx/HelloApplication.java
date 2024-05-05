@@ -35,7 +35,6 @@ public class HelloApplication extends Application {
 
         if(alert.showAndWait().get() == ButtonType.OK){
 
-            System.out.println("Great Success");
             stage.close();
         }
 

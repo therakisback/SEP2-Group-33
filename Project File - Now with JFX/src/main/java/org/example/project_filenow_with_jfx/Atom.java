@@ -106,7 +106,7 @@ public class Atom {
      * Method to convert an Atom object into a String
      * @return String of containing position and flag state of Atom object
      */
-    public String toString() { return ("Position: (" + col + ", " + row + ") \tFlag:" + flag); }
+    public String toString() { return ("Position: (" + row + ", " + col + ") \tFlag:" + flag); }
 
     /**
      * Static method to convert an Atom object into a String
