@@ -158,11 +158,16 @@ public class EndGameController {
         }
     }
     public void showRay(Rectangle rectangle){
+        dataAssignment();
+        for(int i = 0; i < 53; i++){
+            System.out.println(rectangle.getId()+ "  " + array_of_sides[i].getId());
+            if( rectangle.getId().equals(array_of_sides[i].getId()) ){
+                array_of_sides[i].setFill(rectangle.getFill());
+                array_of_sides[i].setOpacity(1);
+                System.out.println("winner");
+            }
+        }
 
-        Rectangle r = new Rectangle();
-        r = rectangle;
-        r.setOpacity(1);
-        System.out.println("we got here baby");
 
 
         /*

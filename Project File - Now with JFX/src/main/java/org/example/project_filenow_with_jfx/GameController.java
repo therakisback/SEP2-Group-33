@@ -194,6 +194,7 @@ public class GameController {
             game.calculateRay(r);
             int rayRes = r.getResult();
             side.setOpacity(1);
+            rayBoxList.add(side);
             if (rayRes == -1) {
                 side.setFill(Color.color(0.9, 0.8, 0.8, 1));
                 System.out.println("Hit");
@@ -208,7 +209,6 @@ public class GameController {
                 endSide.setFill(col);
                 col = makeColour(col);
                 System.out.println("Side");
-                rayBoxList.add(side);
                 rayBoxList.add(endSide);
             }
         }
