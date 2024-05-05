@@ -154,6 +154,7 @@ public class EndGameController {
             String username = usernameField.getText();
             if (username.contains("Username") || username.length() > 14 || username.contains(" ") || username.isEmpty()) return;
             game.writeToLeaderboard(username, score);
+            showTopTen(game.getLeaderboard());
             pressed = true;
         }
     }
