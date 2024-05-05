@@ -253,7 +253,6 @@ public class GameController {
         if(endGameButton.getOpacity() == 1){
             int score = game.submitGame(atoms.toArray(new Atom[4]));
             System.out.println("Game Over, your score was: " + score);
-
             /**
              * Trying to send the atoms from one scene to another
              * Made a second controller to allow for multiple instances of the same objects
@@ -268,6 +267,7 @@ public class GameController {
             endGameController.receiveAtoms(atoms);
             endGameController.receiveRealAtoms(game.getAtoms());
             endGameController.receiveScore(score);
+            endGameController.showTopTen(game.getLeaderboard());
             endGameController.game = game;
 
             //scoreField.setText("Your score was: " + score);
@@ -368,4 +368,6 @@ public class GameController {
         }
 
     }
+
+
 }

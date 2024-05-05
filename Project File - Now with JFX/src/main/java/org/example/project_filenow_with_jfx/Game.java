@@ -506,8 +506,8 @@ public class Game {
             // Go through printing lines to find where new score belongs
             for (String s : ldb) {
                 int oldScore = Integer.parseInt(s.substring((s.length())-2, s.length()-1));
-                if (oldScore > score) {     // If next score is greater than current, we are at boundary
-                    fw.write(username + "\t\t\t" + score + "\n");
+                if (score < oldScore) {     // If next score is greater than current, we are at boundary
+                    fw.write(username + "\t\t\t" + score);
                     fw.write(s + "\n");
                     written = true;
                     break;

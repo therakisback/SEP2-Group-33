@@ -3,6 +3,7 @@ package org.example.project_filenow_with_jfx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,12 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +25,8 @@ import javafx.scene.shape.QuadCurve;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class EndGameController {
     @FXML
@@ -182,6 +187,35 @@ public class EndGameController {
             stage.close();
         }
 
+    }
+
+    @FXML
+    private TableView<String> table = new TableView<>();
+    public void showTopTen(List<String> board){
+        table.setEditable(true);
+
+        String name, score;
+        Scanner sc;
+
+        for (String s : board){
+            sc = new Scanner(s);
+            while(sc.hasNext()){
+                name = sc.next();
+                score = sc.next();
+            }
+        }
+
+        final Label label = new Label("Leader Board");
+        label.setFont(new Font("Grayscale", 20));
+
+        TableColumn<String, String> firstCol = new TableColumn<>("Username");
+        TableColumn<String, String> lastCol = new TableColumn<>("Score");
+
+        table.getColumns().addAll(firstCol, lastCol);
+
+        VBox vbox = new VBox();
+        vbox.setSpacing(5);
+        vbox.getChildren().addAll(label, table);
     }
 
 }
