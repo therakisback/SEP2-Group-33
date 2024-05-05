@@ -23,10 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.QuadCurve;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class EndGameController {
     @FXML
@@ -116,6 +113,9 @@ public class EndGameController {
 
     @FXML
     private TextField scoreField, usernameField;
+
+    @FXML
+    private TextArea topTen, playerHighlight;
     @FXML
     private Button usernameButton;
     boolean pressed = false;
@@ -137,6 +137,11 @@ public class EndGameController {
         }
         for(Atom a : realAtoms) {
             array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.GREEN);
+            double originX = 115 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutX();
+            double originY = 27 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutY();
+            Circle influence = new Circle(originX, originY, 50, Color.WHITE);
+            influence.setOpacity(.4);
+            endScenePane.getChildren().addAll(influence);
         }
     }
     public void receiveScore(int score) {
@@ -152,20 +157,18 @@ public class EndGameController {
             pressed = true;
         }
     }
-    public void showRay(Ray ray){
-        int originX = 636 - 454;
-        int originY = 430 - 366;
-        int exampleX = 636 - 224;
-        int exampleY = 430 + 18;
+    public void showRay(Rectangle rectangle){
+        dataAssignment();
+        for(int i = 0; i < 53; i++){
+            System.out.println(rectangle.getId()+ "  " + array_of_sides[i].getId());
+            if( rectangle.getId().equals(array_of_sides[i].getId()) ){
+                array_of_sides[i].setFill(rectangle.getFill());
+                array_of_sides[i].setOpacity(1);
+                System.out.println("winner");
+            }
+        }
 
 
-        //int[] rayStart = ray.getPath().getFirst();
-        //int[] rayEnd = ray.getPath().getLast();
-        Line line1 = new Line(originX, originY, exampleX, exampleY);
-        line1.setStroke(Color.BLACK);
-        line1.setStrokeWidth(5);
-
-        endScenePane.getChildren().addAll(line1);
 
         /*
         double startX = 100;
@@ -188,9 +191,6 @@ public class EndGameController {
          */
     }
 
-
-
-
     @FXML
     public void logout(ActionEvent event){
 
@@ -204,36 +204,21 @@ public class EndGameController {
             System.out.println("Thanks for playing");
             stage.close();
         }
-
     }
 
-    @FXML
-    private TableView<String> table = new TableView<>();
+
     public void showTopTen(List<String> board){
-        table.setEditable(true);
-
-        String name, score;
-        Scanner sc;
-
-        for (String s : board){
-            sc = new Scanner(s);
-            while(sc.hasNext()){
-                name = sc.next();
-                score = sc.next();
+        int count = 0;
+        StringBuilder scores = new StringBuilder();
+        for (String str: board){
+            if (count < 10){
+                scores.append(str);
+                scores.append(System.lineSeparator());
             }
+            count++;
         }
-
-        final Label label = new Label("Leader Board");
-        label.setFont(new Font("Grayscale", 20));
-
-        TableColumn<String, String> firstCol = new TableColumn<>("Username");
-        TableColumn<String, String> lastCol = new TableColumn<>("Score");
-
-        table.getColumns().addAll(firstCol, lastCol);
-
-        VBox vbox = new VBox();
-        vbox.setSpacing(5);
-        vbox.getChildren().addAll(label, table);
+        System.out.println(scores);
+        topTen.setText(scores.toString());
     }
 
 }
