@@ -188,7 +188,7 @@
         <Rectangle fx:id="two" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="119.0" layoutY="43.0" opacity="0.0" rotate="330.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
         <Rectangle fx:id="one" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="102.0" layoutY="63.0" opacity="0.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
       <TextField fx:id="scoreField" editable="false" layoutX="219.0" layoutY="529.0" text="Your Score was: " />
-        <TextField fx:id="usernameField" layoutX="219.0" layoutY="580.0" text="Enter Username:" />
+        <TextField fx:id="usernameField" layoutX="219.0" layoutY="580.0" text="Username" />
         <Button fx:id="usernameButton" layoutX="380.0" layoutY="580.0" mnemonicParsing="false" onAction="#getUsername" text="Submit" />
       <Line endX="46.980010986328125" endY="3.0517578125E-5" layoutX="376.0" layoutY="430.0" startX="-1.0" startY="3.0517578125E-5" stroke="#ff9024" strokeWidth="5.0" />
       <Line endX="46.980010986328125" endY="3.0517578125E-5" layoutX="323.0" layoutY="430.0" startX="-1.0" startY="3.0517578125E-5" stroke="#ff9024" strokeWidth="5.0" />
