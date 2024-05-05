@@ -98,6 +98,8 @@ public class EndGameController {
     }
     @FXML
     private AnchorPane endScenePane;
+    protected Game game;
+    int score;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -105,7 +107,9 @@ public class EndGameController {
     public Atom[] realAtoms = new Atom[4];
 
     @FXML
-    private TextField scoreField;
+    private TextField scoreField, usernameField;
+    @FXML
+    private Button usernameButton;
 
     public void receiveAtoms(ArrayList<Atom> atoms) {
         dataAssignment();
@@ -127,7 +131,15 @@ public class EndGameController {
     }
     public void receiveScore(int score) {
         scoreField.setText("Your score was: " + score);
+        this.score = score;
     }
+
+    public void getUsername(MouseEvent e) {
+        String username = usernameField.getText();
+        game.writeToLeaderboard(username, score);
+    }
+
+
 
 
     @FXML

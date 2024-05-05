@@ -263,6 +263,7 @@ public class GameController {
             endGameController.receiveAtoms(atoms);
             endGameController.receiveRealAtoms(game.getAtoms());
             endGameController.receiveScore(score);
+            endGameController.game = game;
 
             //scoreField.setText("Your score was: " + score);
         }
