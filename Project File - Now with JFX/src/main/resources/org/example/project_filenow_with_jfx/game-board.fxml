@@ -79,13 +79,13 @@
          </font>
       </Label>
       <Button fx:id="endGameButton" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#endGame" opacity="0.0" text="End Game" />
-      <Label layoutX="181.0" layoutY="526.0" prefHeight="38.0" prefWidth="240.0" text="Cast ray by writing start side -&gt;" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="181.0" layoutY="526.0" prefHeight="38.0" prefWidth="271.0" text="Cast ray by writing side number -&gt;" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Myanmar Text Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="inputField" layoutX="425.0" layoutY="533.0" promptText="0-53" />
-      <Button fx:id="castRayButton" layoutX="576.0" layoutY="530.0" mnemonicParsing="false" onAction="#castRay" text="Cast Ray" />
+      <TextField fx:id="inputField" layoutX="458.0" layoutY="533.0" promptText="0-53" />
+      <Button fx:id="castRayButton" layoutX="609.0" layoutY="530.0" mnemonicParsing="false" onAction="#castRay" text="Cast Ray" />
       <Label layoutX="150.0" layoutY="67.0" text="1" />
       <Label layoutX="167.0" layoutY="43.0" text="0" textOverrun="WORD_ELLIPSIS" wrapText="true" />
       <Label layoutX="146.0" layoutY="85.0" text="2" />
