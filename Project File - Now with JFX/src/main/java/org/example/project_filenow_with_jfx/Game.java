@@ -184,6 +184,11 @@ public class Game {
     }
 
     /**
+     * @return Arraylist of all rays processed by caluclateRay
+     */
+    public ArrayList<Ray> getRays() {return castRays;}
+
+    /**
      * Checks given atom flags with true atoms,
      * calculates score, and ends the game
      * @param atomFlags Array of flags to be checked with true atoms
@@ -505,15 +510,15 @@ public class Game {
 
             // Go through printing lines to find where new score belongs
             for (String s : ldb) {
-                int oldScore = Integer.parseInt(s.substring((s.length())-2, s.length()-1));
-                if (oldScore > score) {     // If next score is greater than current, we are at boundary
-                    fw.write(username + "\t\t\t" + score + "\n");
+                int oldScore = Integer.parseInt(s.substring((s.length())-2));
+                System.out.println(oldScore);
+                if (oldScore > score && !written) {     // If next score is greater than current, we are at boundary
+                    fw.write(String.format("%-16s%d\n", username, score));
                     fw.write(s + "\n");
                     written = true;
-                    break;
-                } else fw.write(s);         // Otherwise score is less than (better)
+                } else if (s.substring().equals(username))fw.write(s + "\n");         // Otherwise score is less than (better)
             }
-            if (!written) fw.write(username + "\t\t\t" + score + "\n");
+            if (!written) fw.write(String.format("%-16s%d\n", username, score));
             fw.close();
         } catch (IOException e) {System.out.println(e);}
     }
