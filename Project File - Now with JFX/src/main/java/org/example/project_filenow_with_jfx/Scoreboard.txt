@@ -1,5 +1,3 @@
-Ryan            20
-goober          20
+Ryan            15
 Conor           40
-goober          20
 Ema             45

@@ -505,7 +505,7 @@ public class Game {
      */
     public void writeToLeaderboard(String username, int score) {
         try {
-            if (username.contains("Username")) return;
+            if (username.contains("Username") || username.length() > 14 || username.contains(" ") || username.isEmpty()) return;
             boolean written = false;
             List<String> ldb = getLeaderboard();            // Get current scores
             FileWriter fwr = new FileWriter(fi);
@@ -513,13 +513,17 @@ public class Game {
 
             // Go through printing lines to find where new score belongs
             for (String s : ldb) {
+                boolean samePlayer = s.substring(0, s.indexOf(' ')).equals(username);
                 int oldScore = Integer.parseInt(s.substring((s.length())-2));
-                System.out.println(oldScore);
-                if (oldScore > score && !written) {     // If next score is greater than current, we are at boundary
+                if (samePlayer) {
+                    if (oldScore <= score) fw.write(s + "\n");
+                    else if (!written) fw.write(String.format("%-16s%d\n", username, score));
+                    written = true;
+                } else if (oldScore > score && !written) {     // If next score is greater than current, we are at boundary
                     fw.write(String.format("%-16s%d\n", username, score));
                     fw.write(s + "\n");
                     written = true;
-                } else if (s.substring(0,0).equals(username))fw.write(s + "\n");         // Otherwise score is less than (better)
+                } else fw.write(s + "\n");                   // Otherwise score is less than (better) and not same name
             }
             if (!written) fw.write(String.format("%-16s%d\n", username, score));
             fw.close();

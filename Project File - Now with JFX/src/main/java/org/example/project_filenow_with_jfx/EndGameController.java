@@ -116,6 +116,7 @@ public class EndGameController {
     private TextField scoreField, usernameField;
     @FXML
     private Button usernameButton;
+    boolean pressed = false;
 
 
     public void receiveAtoms(ArrayList<Atom> atoms) {
@@ -142,8 +143,12 @@ public class EndGameController {
     }
 
     public void getUsername(ActionEvent e) {
-        String username = usernameField.getText();
-        game.writeToLeaderboard(username, score);
+        if (!pressed) {
+            String username = usernameField.getText();
+            if (username.contains("Username") || username.length() > 14 || username.contains(" ") || username.isEmpty()) return;
+            game.writeToLeaderboard(username, score);
+            pressed = true;
+        }
     }
     public void showRay(Ray ray){
         int originX = 76;
