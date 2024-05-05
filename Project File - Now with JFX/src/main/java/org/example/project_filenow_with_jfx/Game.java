@@ -186,7 +186,9 @@ public class Game {
     /**
      * @return Arraylist of all rays processed by caluclateRay
      */
-    public ArrayList<Ray> getRays() {return castRays;}
+    public ArrayList<Ray> getRays() {
+        return castRays;
+    }
 
     /**
      * Checks given atom flags with true atoms,
@@ -503,6 +505,7 @@ public class Game {
      */
     public void writeToLeaderboard(String username, int score) {
         try {
+            if (username.contains("Username")) return;
             boolean written = false;
             List<String> ldb = getLeaderboard();            // Get current scores
             FileWriter fwr = new FileWriter(fi);
@@ -516,7 +519,7 @@ public class Game {
                     fw.write(String.format("%-16s%d\n", username, score));
                     fw.write(s + "\n");
                     written = true;
-                } else if (s.substring().equals(username))fw.write(s + "\n");         // Otherwise score is less than (better)
+                } else if (s.substring(0,0).equals(username))fw.write(s + "\n");         // Otherwise score is less than (better)
             }
             if (!written) fw.write(String.format("%-16s%d\n", username, score));
             fw.close();
