@@ -42,8 +42,6 @@ public class Game {
      * @param r Ray object to be used.
      */
     public void calculateRay(Ray r) throws IllegalArgumentException{
-        System.out.println(Arrays.toString(trueAtoms));
-
         // Starting variables / Actions
 
         // set true where there is an atom
@@ -60,7 +58,6 @@ public class Game {
         int count = 0;      // Boolean to check if it's the first tick of the ray.
         mainloop:
         while(true) {
-            System.out.println(r);
             // Basic Checks ----------
             // Check hexagons neighboring ray for atoms
             // created here so "atom bounce checkers" don't have to create their own

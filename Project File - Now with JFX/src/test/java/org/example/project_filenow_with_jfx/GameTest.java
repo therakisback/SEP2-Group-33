@@ -103,13 +103,13 @@ public class GameTest {
     @Test
     public void buggyTrash() {
         g = new Game(
-                new Atom(3,2, false),
-                new Atom(4,3, false),
-                new Atom(3,6, false),
-                new Atom(4,5, false));
+                new Atom(5,7, false),
+                new Atom(1,1, false),
+                new Atom(7,1, false),
+                new Atom(6,5, false));
 
-        Ray r = new Ray(0,4, 5,45);
-        g.calculateRay(r);
-        assertEquals(22, r.getResult());
+        Ray r1 = new Ray(0,3, 4,48);
+        g.calculateRay(r1);
+        assertEquals(-1, r1.getResult());
     }
 }

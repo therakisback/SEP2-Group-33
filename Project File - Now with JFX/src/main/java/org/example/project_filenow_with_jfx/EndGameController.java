@@ -136,9 +136,9 @@ public class EndGameController {
             realAtoms[i] = atoms[i];
         }
         for(Atom a : realAtoms) {
-            array_of_hexagons[a.getCol()][a.getRow()].setFill(Color.GREEN);
-            double originX = 115 + array_of_hexagons[a.getCol()][a.getRow()].getLayoutX();
-            double originY = 27 + array_of_hexagons[a.getCol()][a.getRow()].getLayoutY();
+            array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.GREEN);
+            double originX = 115 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutX();
+            double originY = 27 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutY();
             Circle influence = new Circle(originX, originY, 50, Color.WHITE);
             influence.setOpacity(.4);
             endScenePane.getChildren().addAll(influence);
