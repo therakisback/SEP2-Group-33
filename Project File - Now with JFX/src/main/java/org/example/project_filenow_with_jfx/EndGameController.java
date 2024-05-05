@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.shape.Polygon;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.QuadCurve;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -105,11 +106,14 @@ public class EndGameController {
     private Parent root;
     public ArrayList<Atom> atomFlags = new ArrayList<>();
     public Atom[] realAtoms = new Atom[4];
+    @FXML
+    public Line rayOne;
 
     @FXML
     private TextField scoreField, usernameField;
     @FXML
     private Button usernameButton;
+
 
     public void receiveAtoms(ArrayList<Atom> atoms) {
         dataAssignment();
@@ -137,6 +141,28 @@ public class EndGameController {
     public void getUsername(MouseEvent e) {
         String username = usernameField.getText();
         game.writeToLeaderboard(username, score);
+    }
+    public void showRay(Ray ray){
+
+        /*
+        double startX = 100;
+        double startY = 100;
+        double midX = 200;
+        double midY = 50;
+        double endX = 300;
+        double endY = 100;
+
+        Line line1 = new Line(startX, startY, midX, midY);
+        line1.setStroke(Color.BLACK);
+        line1.setStrokeWidth(5);
+
+        Line line2 = new Line(midX, midY, endX, endY);
+        line2.setStroke(Color.BLACK);
+        line2.setStrokeWidth(5);
+
+        // Add lines and curve to the pane
+        endScenePane.getChildren().addAll(line1, line2);
+         */
     }
 
 

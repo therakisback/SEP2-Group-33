@@ -189,6 +189,11 @@ public class GameController {
 
             // Ray calculation
             Ray r = new Ray(ray_place[0], ray_place[1], dir, raySource);
+
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("end-game.fxml"));
+            EndGameController endGameController = loader.getController();
+            endGameController.showRay(r);
+
             game.calculateRay(r);
             int rayRes = r.getResult();
             side.setOpacity(1);
