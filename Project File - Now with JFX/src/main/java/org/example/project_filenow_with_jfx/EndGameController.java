@@ -137,6 +137,11 @@ public class EndGameController {
         }
         for(Atom a : realAtoms) {
             array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.GREEN);
+            double originX = 115 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutX();
+            double originY = 27 + array_of_hexagons[a.getRow()][a.getCol()].getLayoutY();
+            Circle influence = new Circle(originX, originY, 50, Color.WHITE);
+            influence.setOpacity(.4);
+            endScenePane.getChildren().addAll(influence);
         }
     }
     public void receiveScore(int score) {
@@ -152,20 +157,13 @@ public class EndGameController {
             pressed = true;
         }
     }
-    public void showRay(Ray ray){
-        int originX = 636 - 454;
-        int originY = 430 - 366;
-        int exampleX = 636 - 224;
-        int exampleY = 430 + 18;
+    public void showRay(Rectangle rectangle){
 
+        Rectangle r = new Rectangle();
+        r = rectangle;
+        r.setOpacity(1);
+        System.out.println("we got here baby");
 
-        //int[] rayStart = ray.getPath().getFirst();
-        //int[] rayEnd = ray.getPath().getLast();
-        Line line1 = new Line(originX, originY, exampleX, exampleY);
-        line1.setStroke(Color.BLACK);
-        line1.setStrokeWidth(5);
-
-        endScenePane.getChildren().addAll(line1);
 
         /*
         double startX = 100;

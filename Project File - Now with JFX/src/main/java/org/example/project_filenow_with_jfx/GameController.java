@@ -147,6 +147,8 @@ public class GameController {
 
     @FXML
     private AnchorPane scenePane;
+    @FXML
+    ArrayList<Rectangle> rayBoxList = new ArrayList<Rectangle>();
 
     /**
      * Method to handle casting rays from text input box
@@ -206,6 +208,8 @@ public class GameController {
                 endSide.setFill(col);
                 col = makeColour(col);
                 System.out.println("Side");
+                rayBoxList.add(side);
+                rayBoxList.add(endSide);
             }
         }
         else {
@@ -264,7 +268,12 @@ public class GameController {
             endGameController.receiveScore(score);
             endGameController.showTopTen(game.getLeaderboard());
             endGameController.game = game;
-            endGameController.showRay(game.getRays().getFirst());
+
+            for(Rectangle r : rayBoxList){
+                endGameController.showRay(r);
+            }
+
+
 
             /*
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("end-game.fxml"));
