@@ -261,8 +261,8 @@ public class GameController {
 
             EndGameController endGameController = loader.getController();
             endGameController.receiveAtoms(atoms);
-
             endGameController.receiveRealAtoms(game.getAtoms());
+            endGameController.receiveScore(score);
 
             //scoreField.setText("Your score was: " + score);
         }

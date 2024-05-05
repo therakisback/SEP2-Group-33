@@ -104,6 +104,9 @@ public class EndGameController {
     public ArrayList<Atom> atomFlags = new ArrayList<>();
     public Atom[] realAtoms = new Atom[4];
 
+    @FXML
+    private TextField scoreField;
+
     public void receiveAtoms(ArrayList<Atom> atoms) {
         dataAssignment();
         for (Atom a : atoms) {
@@ -121,6 +124,9 @@ public class EndGameController {
         for(Atom a : realAtoms) {
             array_of_hexagons[a.getRow()][a.getCol()].setFill(Color.GREEN);
         }
+    }
+    public void receiveScore(int score) {
+        scoreField.setText("Your score was: " + score);
     }
 
 
