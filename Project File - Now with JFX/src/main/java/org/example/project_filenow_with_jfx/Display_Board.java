@@ -27,8 +27,7 @@ public class Display_Board extends Application {
         alert.setContentText("Cast rays by entering the number you want to cast from (0 - 53). ");
 
         if(alert.showAndWait().get() == ButtonType.OK){
-            System.out.println("Great Success");
-            stage.close();
+            alert.close();
         }
     }
 
